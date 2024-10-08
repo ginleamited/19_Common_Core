@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 21:57:51 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/08 21:57:51 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/08 21:56:57 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/08 21:57:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void ft_putchar(char c)
+int ft_sqrt(int nb)
 {
-    write(1, &c, 1);
-}
+    int i;
 
-void ft_print_numbers(void)
-{
-    int number = 0;
-
-    while (number <= 9)
-    {
-        ft_putchar(number + 48);
-        number++;
-    }
+    i = 1;
+    if (nb <= 0)
+        return (0);
+    while ((i * i) != nb && i <= (nb / i))
+        i++;
+    if (i * i == nb)
+        return (i);
+    else
+        return (0);
 }
 /*
+#include <stdio.h>
+
 int main(void)
 {
-    ft_print_numbers();
+    printf("%d \n", ft_sqrt(4));
 }
 */

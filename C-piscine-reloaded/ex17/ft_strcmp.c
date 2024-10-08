@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 21:57:51 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/08 21:57:51 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/08 21:56:30 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/08 21:56:47 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void ft_putchar(char c)
+int ft_strcmp(char *s1, char*s2)
 {
-    write(1, &c, 1);
-}
+    int i;
 
-void ft_print_numbers(void)
-{
-    int number = 0;
-
-    while (number <= 9)
-    {
-        ft_putchar(number + 48);
-        number++;
-    }
+    i = 0;
+    while (s1[i] && s2[i] && s1[i] == s2[i])
+        i++;
+    return (s1[i] - s2[i]);
 }
 /*
-int main(void)
+#include <stdio.h>
+
+int main()
 {
-    ft_print_numbers();
+    char s1[] = "abcde";
+    char s2[] = "abce";
+    printf("%d\n", ft_strcmp (s1, s2));
+    return(0);
 }
 */

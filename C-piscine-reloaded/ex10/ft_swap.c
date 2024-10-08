@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 21:57:51 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/08 21:57:51 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/08 21:57:41 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/08 21:57:41 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c)
+void ft_swap(int *a, int *b)
 {
-    write(1, &c, 1);
-}
+    int tmp;
 
-void ft_print_numbers(void)
-{
-    int number = 0;
-
-    while (number <= 9)
-    {
-        ft_putchar(number + 48);
-        number++;
-    }
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
-/*
-int main(void)
-{
-    ft_print_numbers();
-}
-*/

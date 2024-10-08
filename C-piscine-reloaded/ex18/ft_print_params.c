@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 21:57:51 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/08 21:57:51 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/08 21:56:11 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/08 22:04:52 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c)
+void ft_putstr(char *str)
 {
-    write(1, &c, 1);
-}
+    int j;
 
-void ft_print_numbers(void)
-{
-    int number = 0;
-
-    while (number <= 9)
+    j = 0;
+    while (str[j])
     {
-        ft_putchar(number + 48);
-        number++;
+        write(1, &str[j], 1);
+        j++;
     }
 }
-/*
-int main(void)
+
+int main(int ac, char **av)
 {
-    ft_print_numbers();
+    int i;
+
+    i = 1;
+    while(ac > 1 && av[i])
+    {
+        ft_putstr(av[i]);
+        write(1, "\n", 1);
+        i++;
+    }
+    return (0);
 }
-*/
