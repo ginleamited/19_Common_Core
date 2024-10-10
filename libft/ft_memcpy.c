@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 18:03:45 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/10 19:21:27 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/10 19:23:45 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/10 19:48:30 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_bzero(void *s, size_t n)
+void ft_memcpy(void *dst, const void *src, size_t n)
 {
-    size_t i = 0;
+    if (!dst && !src)
+        return NULL;
 
-    if(n != 0)
+     (unsigned char *)tmp_src = (unsigned char *)src;
+     (unsigned char *)tmp_dst = (unsigned char *)dst;
+    
+    while(n > 0)
     {
-        while(i < n)
-        {
-            ((unsigned char *)s)[i] = 0;
-            i++;
-        }
+        *tmp_dst++ = *tmp_src++;
+        n--;
     }
-    else
-        return;
-}
-
-int main(void)
-{
-    unsigned char s[]= "salut";
-
-    ft_bzero(s, 2);
-    printf("%s\n", s + 2);
+    return dst;
 }
