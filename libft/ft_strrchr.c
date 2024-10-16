@@ -1,59 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 19:24:15 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/16 14:09:16 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/16 22:05:55 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/16 23:07:38 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen (char *str)
+size_t ft_strlen (const char *str)
 {
-    int i;
+    size_t i;
 
     i = 0;
     while (str[i])
-    {
         i++;
-    }
     return (i);
 }
 
-size_t ft_strcpy (char *dst, char *src)
+char *ft_strrchr(const char *s, int c)
 {
-    int i;
 
-    i = 0;
-    while (src[i])
+    size_t i = ft_strlen(s);
+    while (i > 0)
     {
-        dst[i] = src[i];
-        i++;
+        if (s[i] == (unsigned char)c)
+            return ((char *)(s + i));
+        i--;
     }
-    dst[i] = '\0';
+    if (s[i] == (unsigned char)c)
+            return ((char *)(s + i));
     return (0);
 }
 
-char *ft_strdup(char *src)
+int main(void)
 {
-    int i;
-    char *dup;
-
-    i = ft_strlen(src);
-    dup = (malloc(sizeof(char) * (i + 1)));
-    if (dup == NULL)
-        return (NULL);
-    ft_strcpy(dup, src);
-    return (dup);
-}
-
-int main ()
-{
-        char src [] = "salut";
-        printf("%s", ft_strdup(src));
-        return (0);
+    printf("%s\n", ft_strrchr("salutmecjisjdaoijaisd", 'j'));
+    printf("%s\n", strrchr("salutmecjisjdaoijaisd", 'j'));
 }

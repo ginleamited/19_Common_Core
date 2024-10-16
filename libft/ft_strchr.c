@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 21:21:43 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/16 22:46:41 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/16 21:29:57 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/16 22:04:30 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_toupper(int c)
+char *ft_strchr(const char *s, int c)
 {
-    if (c >= 97 && c <= 122)
+    unsigned int i;
+
+    i = 0;
+    while (s[i])
     {
-        return (c - 32);
+        if (s[i] == (unsigned char)c)
+        {
+            return ((char *)s + i);
+        }
+        if (s[i] == '\0')
+        {
+            return ((char *)s + i);
+        }
+        i++;
     }
-    return (c);
+    return (0);
 }
 
 int main(void)
 {
-    printf("%c\n", ft_toupper('b'));
-    printf("%c\n", toupper('b'));
+    printf("%s\n", ft_strchr("salutmecjisjdaoijaisd", 'j'));
+    printf("%s\n", strchr("salutmecjisjdaoijaisd", 'j'));
 }
