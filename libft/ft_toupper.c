@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 21:21:43 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/16 22:46:41 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/17 19:44:05 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int ft_toupper(int c)
 {
-    if (c >= 97 && c <= 122)
-    {
-        return (c - 32);
-    }
-    return (c);
+	if (c >= 97 && c <= 122)
+	{
+		return (c - 32);
+	}
+	return (c);
 }
 
 int main(void)
 {
-    printf("%c\n", ft_toupper('b'));
-    printf("%c\n", toupper('b'));
+	printf("%c\n", ft_toupper('b'));
+	printf("%c\n", toupper('b'));
 }

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:20:34 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/10 17:18:44 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/17 19:43:45 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int ft_strlen(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while(str[i])
-        i++;
-    return(i);
+	i = 0;
+	while(str[i])
+		i++;
+	return(i);
 }

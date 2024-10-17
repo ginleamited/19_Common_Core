@@ -12,26 +12,26 @@
 
 #include "libft.h"
 
-int ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
-    if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-        return (1);
-    return (0);
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	return (0);
 }
 
-int main()
+int	main(void)
 {
-    char *str = "salut";  // Define a string to test
-    int i = 0;
+	char	*str;
+	int i;
 
-    while (str[i] != '\0') 
-    {
-        if (ft_isalpha(str[i]))
-            printf("'%c' is alpha\n", str[i]);
-        else 
-            printf("'%c' is not alpha\n", str[i]);
-        i++;
-    }    
-
-    return (0);
+	*str = "salut";
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (ft_isalpha(str[i]))
+			printf("'%c' is alpha\n", str[i]);
+		else
+			printf("'%c' is not alpha\n", str[i]);
+		i++;
+	}
 }

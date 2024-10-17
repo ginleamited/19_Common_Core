@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 19:24:15 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/16 14:09:16 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/17 19:43:21 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,46 @@
 
 size_t ft_strlen (char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (str[i])
-    {
-        i++;
-    }
-    return (i);
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
 }
 
 size_t ft_strcpy (char *dst, char *src)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (src[i])
-    {
-        dst[i] = src[i];
-        i++;
-    }
-    dst[i] = '\0';
-    return (0);
+	i = 0;
+	while (src[i])
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (0);
 }
 
 char *ft_strdup(char *src)
 {
-    int i;
-    char *dup;
+	int i;
+	char *dup;
 
-    i = ft_strlen(src);
-    dup = (malloc(sizeof(char) * (i + 1)));
-    if (dup == NULL)
-        return (NULL);
-    ft_strcpy(dup, src);
-    return (dup);
+	i = ft_strlen(src);
+	dup = (malloc(sizeof(char) * (i + 1)));
+	if (dup == NULL)
+		return (NULL);
+	ft_strcpy(dup, src);
+	return (dup);
 }
 
 int main ()
 {
-        char src [] = "salut";
-        printf("%s", ft_strdup(src));
-        return (0);
+		char src [] = "salut";
+		printf("%s", ft_strdup(src));
+		return (0);
 }

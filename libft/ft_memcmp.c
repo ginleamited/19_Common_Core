@@ -1,46 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 15:06:24 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 19:42:23 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/17 19:41:43 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/17 20:17:30 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dst, const void *src, size_t len)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char *tmp_src;
-	unsigned char *tmp_dst;
-	size_t i;
+	unsigned char	*tmp_s1;
+	unsigned char	*tmp_s2;
+	size_t	i;
 
-	if (!dst && !src)
-		return (NULL);
-	
-	tmp_src = (unsigned char*) src;
-	tmp_dst = (unsigned char*) dst;
 	i = 0;
+	tmp_s1 = (void *)s1;
+	tmp_s2 = (void *)s2;
+	if (n == 0)
+		return (0);
+	while ((tmp_s1[i] && tmp_s2[i]) && (tmp_s1[i] == tmp_s2[i]) && (i < n - 1))
+		i++;
+	return (tmp_s1[i] - tmp_s2[i]);
+}
 
-	if (tmp_dst > tmp_src)
-	{
-		while (len > 0)
-		{
-			tmp_dst[len] = tmp_src[len];
-			len--;
-		}
-	}
-	if (tmp_dst < tmp_src)
-	{
-		while (i < len)
-		{
-			tmp_dst[i] = tmp_src[i];
-			i++;
-		}
-	}
-	return (dst);
-
+int	main(void)
+{
+	printf("%d\n", ft_memcmp("saluto", "saluti", 5));
+	printf("%d\n", memcmp("saluto", "saluti", 5));
 }
