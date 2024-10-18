@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:28:39 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 19:43:59 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/18 21:53:25 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 65 && c <= 90)
 	{
@@ -20,9 +20,10 @@ int ft_tolower(int c)
 	}
 	return (c);
 }
-
-int main(void)
+/*
+int	main(void)
 {
 	printf("%c\n", ft_tolower('A'));
 	printf("%c\n", tolower('B'));
 }
+*/

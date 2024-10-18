@@ -6,15 +6,15 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 19:24:15 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 19:43:21 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/18 21:48:32 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen (char *str)
+size_t	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -24,9 +24,9 @@ size_t ft_strlen (char *str)
 	return (i);
 }
 
-size_t ft_strcpy (char *dst, char *src)
+size_t	ft_strcpy(char *dst, char *src)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (src[i])
@@ -38,10 +38,10 @@ size_t ft_strcpy (char *dst, char *src)
 	return (0);
 }
 
-char *ft_strdup(char *src)
+char	*ft_strdup(char *src)
 {
-	int i;
-	char *dup;
+	int		i;
+	char	*dup;
 
 	i = ft_strlen(src);
 	dup = (malloc(sizeof(char) * (i + 1)));
@@ -50,10 +50,10 @@ char *ft_strdup(char *src)
 	ft_strcpy(dup, src);
 	return (dup);
 }
-
-int main ()
+/*
+int	main(void)
 {
-		char src [] = "salut";
-		printf("%s", ft_strdup(src));
-		return (0);
+	char	src [] = "salut";
+	printf("%s", ft_strdup(src));
 }
+*/

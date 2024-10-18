@@ -6,25 +6,22 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:06:24 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 19:42:23 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/18 21:53:53 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char *tmp_src;
-	unsigned char *tmp_dst;
-	size_t i;
+	unsigned char	*tmp_src;
+	unsigned char	*tmp_dst;
+	size_t			i;
 
 	if (!dst && !src)
 		return (NULL);
-	
-	tmp_src = (unsigned char*) src;
-	tmp_dst = (unsigned char*) dst;
-	i = 0;
-
+	tmp_src = (unsigned char *) src;
+	tmp_dst = (unsigned char *) dst;
 	if (tmp_dst > tmp_src)
 	{
 		while (len > 0)
@@ -33,8 +30,9 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 			len--;
 		}
 	}
-	if (tmp_dst < tmp_src)
+	else if (tmp_dst < tmp_src)
 	{
+		i = 0;
 		while (i < len)
 		{
 			tmp_dst[i] = tmp_src[i];
@@ -42,5 +40,10 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 		}
 	}
 	return (dst);
+}
 
+int	main(void)
+{
+	printf("%s", ft_memmove("destination", "source", 3));
+	printf("%s", memmove("destination", "source", 3));
 }

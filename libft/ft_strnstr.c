@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 20:18:02 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 20:48:14 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/18 21:51:42 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,28 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	unsigned int	i;
 	unsigned int	j;
 
-	if (!*needle)
-		return ((char *)haystack);
 	i = 0;
+	j = 0;
+	if (needle[0] == 0)
+		return ((char *)haystack);
 	while (haystack[i] && i < len)
 	{
-		if (haystack[i] == (unsigned char)needle)
+		while ((haystack[i + j] == needle[j])
+			&& haystack[i + j] && (i + j < len))
 		{
-			while (needle[j])
-			{
-				
-				j++;
-			}
+			j++;
+			if (needle[j] == '\0')
+				return ((char *)haystack + i);
 		}
-		return ((char *)haystack + i);
 		i++;
-	}
-	if (haystack[i] == '\0')
-	{
-		return ((char *)haystack + i);
+		j = 0;
 	}
 	return (0);
 }
-
+/*
 int	main(void)
 {
 	printf("%s\n", ft_strnstr("salutmecjisjdaoijaisd", "m", 13));
 	printf("%s\n", strnstr("salutmecjisjdaoijaisd", "m", 13));
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:40:42 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 20:32:24 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/18 21:56:36 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		return (dst);
 	tmp_src = (unsigned char *)src;
 	tmp_dst = (unsigned char *)dst;
-	while s(n > 0)
+	while (n > 0)
 	{
 		*(tmp_dst++) = *(tmp_src++);
 		n--;
 	}
 	return (dst);
 }
-
-int main(void)
+/*
+int	main(void)
 {
-	char src[] = "source";
-	char dst[20];
-	
+	char	src[];
+	char	dst[20];
+
+	src[] = "source";
 	ft_memcpy(dst, src, 2);
-	
 	dst[2] = '\0';
-	
 	printf("Destination: %s\n", dst);
 }
+*/

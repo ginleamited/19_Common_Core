@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:27:38 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 19:29:08 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/18 21:46:21 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (0);
 }
-
+/*
 int	main(void)
 {
 	printf("%s\n", ft_memchr("salutmecjisjdaoijaisd", 'j', 10));
 	printf("%s\n", memchr("salutmecjisjdaoijaisd", 'j', 10));
 }
+*/

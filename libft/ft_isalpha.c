@@ -18,11 +18,11 @@ int	ft_isalpha(int c)
 		return (1);
 	return (0);
 }
-
+/*
 int	main(void)
 {
 	char	*str;
-	int i;
+	int		i;
 
 	*str = "salut";
 	i = 0;
@@ -35,3 +35,4 @@ int	main(void)
 		i++;
 	}
 }
+*/

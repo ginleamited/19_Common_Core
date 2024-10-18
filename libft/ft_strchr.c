@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 21:29:57 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 20:20:44 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/18 21:48:24 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (0);
 }
-
+/*
 int	main(void)
 {
 	printf("%s\n", ft_strchr("salutmecjisjdaoijaisd", 'j'));
 	printf("%s\n", strchr("salutmecjisjdaoijaisd", 'j'));
 }
+*/

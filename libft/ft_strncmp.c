@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 00:26:38 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 19:57:44 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/18 21:51:32 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 		i++;
 	return (s1[i] - s2[i]);
 }
-
+/*
 int	main(void)
 {
 	printf("%d", ft_strncmp("saluto", "saluti", 5));
 }
+*/

@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 21:21:43 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 19:44:05 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/18 21:53:45 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 97 && c <= 122)
 	{
@@ -20,9 +20,10 @@ int ft_toupper(int c)
 	}
 	return (c);
 }
-
-int main(void)
+/*
+int	main(void)
 {
 	printf("%c\n", ft_toupper('b'));
 	printf("%c\n", toupper('b'));
 }
+*/
