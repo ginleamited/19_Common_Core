@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:06:24 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/18 21:53:53 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/19 05:49:00 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	tmp_src = (unsigned char *) src;
 	tmp_dst = (unsigned char *) dst;
 	if (tmp_dst > tmp_src)
-	{
-		while (len > 0)
-		{
+		while (len-- > 0)
 			tmp_dst[len] = tmp_src[len];
-			len--;
-		}
-	}
 	else if (tmp_dst < tmp_src)
 	{
 		i = 0;
@@ -41,9 +36,10 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (dst);
 }
-
+/*
 int	main(void)
 {
 	printf("%s", ft_memmove("destination", "source", 3));
 	printf("%s", memmove("destination", "source", 3));
 }
+*/
