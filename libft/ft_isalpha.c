@@ -18,21 +18,19 @@ size_t	ft_isalpha(size_t c)
 		return (1);
 	return (0);
 }
-/*
-int	main(void)
-{
-	char	*str;
-	int		i;
+// int	main(void)
+// {
+// 	char	*str;
+// 	int		i;
 
-	*str = "salut";
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (ft_isalpha(str[i]))
-			printf("'%c' is alpha\n", str[i]);
-		else
-			printf("'%c' is not alpha\n", str[i]);
-		i++;
-	}
-}
-*/
+// 	*str = "salut";
+// 	i = 0;
+// 	while (str[i] != '\0')
+// 	{
+// 		if (ft_isalpha(str[i]))
+// 			printf("'%c' is alpha\n", str[i]);
+// 		else
+// 			printf("'%c' is not alpha\n", str[i]);
+// 		i++;
+// 	}
+// }

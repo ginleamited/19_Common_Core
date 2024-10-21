@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 17:56:31 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/21 16:44:11 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 00:21:16 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,13 @@ void	*ft_calloc(size_t count, size_t size)
 	}
 	return (tmp);
 }
-/*
-int	main(void)
-{
-	int	*arr;
+// int	main(void)
+// {
+// 	int	*arr;
 
-	arr = (int *)ft_calloc(3, sizeof(int));
-	if (arr == NULL)
-		return (1);
-	printf("%d %d %d\n", arr[0], arr[1], arr[2]);
-	free(arr);
-}
-*/
+// 	arr = (int *)ft_calloc(3, sizeof(int));
+// 	if (arr == NULL)
+// 		return (1);
+// 	printf("%d %d %d\n", arr[0], arr[1], arr[2]);
+// 	free(arr);
+// }

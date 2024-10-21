@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 22:05:55 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/21 17:04:59 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 00:23:56 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ char	*ft_strrchr(const char *s, int c)
 		return ((char *)(s + i));
 	return (0);
 }
-/*
-int main(void)
-{
-	printf("%s\n", ft_strrchr("salutmecjisjdaoijaisd", 'j'));
-	printf("%s\n", strrchr("salutmecjisjdaoijaisd", 'j'));
-}
-*/
+// int main(void)
+// {
+// 	printf("%s\n", ft_strrchr("salutmecjisjdaoijaisd", 'j'));
+// 	printf("%s\n", strrchr("salutmecjisjdaoijaisd", 'j'));
+// }

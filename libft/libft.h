@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:03:52 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/21 16:39:37 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/21 23:54:29 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char	*ft_strdup(char *src);
 
 #endif

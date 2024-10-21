@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 20:18:02 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/21 16:39:56 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 00:23:48 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-/*
-int	main(void)
-{
-	printf("%s\n", ft_strnstr("salutmecjisjdaoijaisd", "m", 13));
-	printf("%s\n", strnstr("salutmecjisjdaoijaisd", "m", 13));
-}
-*/
+// int	main(void)
+// {
+// 	printf("%s\n", ft_strnstr("salutmecjisjdaoijaisd", "m", 13));
+// 	printf("%s\n", strnstr("salutmecjisjdaoijaisd", "m", 13));
+// }

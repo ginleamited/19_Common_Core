@@ -6,11 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:35:08 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/17 19:00:33 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 00:20:45 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+#include "libft.h"
+
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	signe;
@@ -35,3 +37,12 @@ int	ft_atoi(char *str)
 	}
 	return (resultat * signe);
 }
+
+// #include <stdlib.h>
+
+// int	main(void)
+// {
+// 	printf("%d\n", ft_atoi(src));
+// 	printf("%d\n", atoi(src));
+// }
+// 	 char	*src = "-21474836490000000009/=0";

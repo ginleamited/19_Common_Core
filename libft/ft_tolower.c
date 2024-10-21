@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:28:39 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/21 16:39:58 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 00:24:42 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ int	ft_tolower(int c)
 	}
 	return (c);
 }
-/*
-int	main(void)
-{
-	printf("%c\n", ft_tolower('A'));
-	printf("%c\n", tolower('B'));
-}
-*/
+// int	main(void)
+// {
+// 	printf("%c\n", ft_tolower('A'));
+// 	printf("%c\n", tolower('B'));
+// }

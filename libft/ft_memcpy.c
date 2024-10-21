@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:40:42 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/21 16:39:53 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 00:22:00 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,13 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
-/*
-int	main(void)
-{
-	char	src[];
-	char	dst[20];
+// int	main(void)
+// {
+// 	char	src[];
+// 	char	dst[20];
 
-	src[] = "source";
-	ft_memcpy(dst, src, 2);
-	dst[2] = '\0';
-	printf("Destination: %s\n", dst);
-}
-*/
+// 	src[] = "source";
+// 	ft_memcpy(dst, src, 2);
+// 	dst[2] = '\0';
+// 	printf("Destination: %s\n", dst);
+// }

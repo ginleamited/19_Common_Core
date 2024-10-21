@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:03:45 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/21 00:47:05 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 00:21:05 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ void	ft_bzero(void *s, size_t n)
 		}
 	}
 }
-/*
-int	main(void)
-{
-	unsigned char	s[];
+// int	main(void)
+// {
+// 	unsigned char	s[];
 
-	s[] = "salut";
-	ft_bzero(s, 2);
-	printf("%s\n", s + 2);
-}
-*/
+// 	s[] = "salut";
+// 	ft_bzero(s, 2);
+// 	printf("%s\n", s + 2);
+// }
