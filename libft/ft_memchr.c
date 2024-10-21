@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:27:38 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/18 21:46:21 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/21 16:38:19 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, size_t c, size_t n)
 {
 	unsigned char	*tmp_s;
 	unsigned char	i;
@@ -33,10 +33,9 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (0);
 }
-/*
+
 int	main(void)
 {
 	printf("%s\n", ft_memchr("salutmecjisjdaoijaisd", 'j', 10));
 	printf("%s\n", memchr("salutmecjisjdaoijaisd", 'j', 10));
 }
-*/

@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 00:33:28 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/18 21:54:20 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/21 16:37:51 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+size_t	ft_isdigit(size_t c)
 {
 	if (c >= 48 && c <= 57)
 		return (1);

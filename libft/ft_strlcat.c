@@ -6,27 +6,17 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:25:10 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/19 05:39:57 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/21 16:43:16 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-}
-
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	i;
+	size_t	src_len;
+	size_t	dst_len;
 
 	i = 0;
 	src_len = ft_strlen(src);
@@ -45,4 +35,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		dst[dst_len + i] = '\0';
 		return (src_len + dst_len);
 	}
+	return (0);
 }

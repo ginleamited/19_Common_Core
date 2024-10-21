@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 19:28:14 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/21 01:15:13 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/21 16:32:19 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	i = ft_strlen(src);
-	if (dstsize > i + 1)
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	else if (dstsize > i + 1)
 	{
 		ft_memcpy(dst, src, i + 1);
 	}
@@ -26,20 +28,15 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 		ft_memcpy(dst, src, dstsize - 1);
 		dst[dstsize - 1] = 0;
 	}
-	return (src_len);
+	return (i);
 }
-size_t	i;
+/*
+int	main(void)
 {
-if (dstsize == 0)
-	return (ft_strlen(src));
+	char		dst[10];
+	const char	src[] = "salut";
 
-i = 0;
-while (src[i] != '\0' && i < dstsize - 1)
-{
-	dst[i] = src[i]
-	i++;
+	printf("%zu\n%s\n", ft_strlcpy(dst, src, 10), dst);
+	printf("%lu\n%s\n", strlcpy(dst, src, 10), dst);
 }
-dst[i] = '\0';
-
-return (ft_strlen(src));
-}
+*/

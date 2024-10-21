@@ -6,11 +6,25 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 21:29:57 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/18 21:48:24 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/21 17:17:24 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	return (NULL);
+}
+/*
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -31,7 +45,6 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (0);
 }
-/*
 int	main(void)
 {
 	printf("%s\n", ft_strchr("salutmecjisjdaoijaisd", 'j'));
