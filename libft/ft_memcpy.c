@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:40:42 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 00:22:00 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 19:09:21 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,5 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 // 	dst[2] = '\0';
 // 	printf("Destination: %s\n", dst);
 // }
+
+// Copy src to dst

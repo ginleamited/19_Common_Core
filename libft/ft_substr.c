@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:21:03 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 00:24:32 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 20:36:54 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,6 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 // {
 // 	printf("%s", ft_substr("Bonjour comment ca va?", 5, 8));
 // }
+
+// select only the part of the string that begin with start and 
+// finish at start + len and the last is \0

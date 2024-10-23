@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:25:10 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/21 16:43:16 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 19:32:04 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,4 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	}
 	return (0);
 }
+// Print src after dst and terminate with \0

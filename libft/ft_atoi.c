@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:35:08 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 00:20:45 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 19:00:36 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	signe;
-	int	resultat;
+	int		i;
+	int		signe;
+	long	resultat;
 
 	i = 0;
 	signe = 1;
 	resultat = 0;
 	while ((str[i] == 32) || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	while (str[i] == 43 || str[i] == 45)
+	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == 45)
 			signe *= -1;
@@ -38,11 +38,9 @@ int	ft_atoi(const char *str)
 	return (resultat * signe);
 }
 
-// #include <stdlib.h>
-
 // int	main(void)
 // {
+// 	 char	*src = "-2147483649000000000999999989";
 // 	printf("%d\n", ft_atoi(src));
 // 	printf("%d\n", atoi(src));
 // }
-// 	 char	*src = "-21474836490000000009/=0";

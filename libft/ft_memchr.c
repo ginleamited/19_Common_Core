@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:27:38 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 00:21:42 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 19:05:10 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*ft_memchr(const void *s, size_t c, size_t n)
 	}
 	if (tmp_s[i] == '\0')
 	{
-		return ((void *)tmp_s + i);
+		return (NULL);
 	}
 	return (0);
 }
@@ -38,3 +38,5 @@ void	*ft_memchr(const void *s, size_t c, size_t n)
 // 	printf("%s\n", ft_memchr("salutmecjisjdaoijaisd", 'j', 10));
 // 	printf("%s\n", memchr("salutmecjisjdaoijaisd", 'j', 10));
 // }
+
+// Find the letter in the memory

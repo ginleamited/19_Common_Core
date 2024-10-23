@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 22:05:55 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 00:23:56 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 20:14:58 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ char	*ft_strrchr(const char *s, int c)
 			return ((char *)(s + i));
 		i--;
 	}
-	if (s[i] == (unsigned char)c)
-		return ((char *)(s + i));
 	return (0);
 }
 // int main(void)
@@ -32,3 +30,5 @@ char	*ft_strrchr(const char *s, int c)
 // 	printf("%s\n", ft_strrchr("salutmecjisjdaoijaisd", 'j'));
 // 	printf("%s\n", strrchr("salutmecjisjdaoijaisd", 'j'));
 // }
+
+// find the last occurence of the letter

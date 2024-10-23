@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 15:45:03 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 00:22:19 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 19:11:56 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,5 @@ void	*ft_memset(void *b, int c, size_t len)
 
 // 	printf("%s", ft_memset(b, c, 2));
 // }
+
+// Write len times of character c in b

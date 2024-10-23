@@ -34,3 +34,5 @@ size_t	ft_isalpha(size_t c)
 // 		i++;
 // 	}
 // }
+
+// If it's alphabet

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 15:06:24 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 00:22:09 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 19:10:11 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,5 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 // 	printf("%s", ft_memmove("destination", "source", 3));
 // 	printf("%s", memmove("destination", "source", 3));
 // }
+
+// Copy src in dst and can overlap

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 00:47:18 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/21 16:39:06 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/22 19:05:46 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,3 +18,5 @@ size_t	ft_isalpha(size_t c)
 		return (1);
 	return (0);
 }
+
+// If it's alphanumeric
