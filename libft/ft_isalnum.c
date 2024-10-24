@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 00:47:18 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 19:05:46 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/24 00:46:49 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_isalpha(size_t c)
+size_t	ft_isalnum(size_t c)
 {
 	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || (c >= 48 && c <= 57))
 		return (1);

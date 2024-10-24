@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 22:05:55 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/24 19:05:39 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/24 01:29:37 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/24 23:37:26 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	**ft_split(const char *s, char c)
 {
 	size_t	i;
 
 	i = ft_strlen(s);
-	while (i > 0)
-	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)(s + i));
-		i--;
-	}
-	if (i == -0 && (s[i] != (unsigned char) c))
-		return (0);
-	return ((char *)(s + i));
 }
-// int main(void)
-// {
-// 	printf("%s\n", ft_strrchr("salutmecjisjdaoijaisd", 'j'));
-// 	printf("%s\n", strrchr("salutmecjisjdaoijaisd", 'j'));
-// }
 
-// find the last occurence of the letter
+static int	word_counter(const char *str, char c)
+{
+	
+}
+static char	*fill_word(const char *str, int start, int end)
+{
+	
+}
