@@ -6,52 +6,57 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 01:25:36 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/25 02:09:28 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/27 21:40:07 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	get_len(int n)
+static int	get_len(int nbr)
 {
-	int	len;
+	int	i;
 
-	len = 1;
-	if (n < 0)
-		len++;
-	while (n / 10 != 0)
+	i = 0;
+	if (nbr <= 0)
+		i++;
+	while (nbr != 0)
 	{
-		n /= 10;
-		len++;
+		nbr /= 10;
+		i++;
 	}
-	return (len);
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
 	char	*str;
+	int		i;
 	int		len;
-	long	num;
+	long	nbr;
 
-	num = n;
-	len = get_len(n);
+	nbr = n;
+	len = get_len(nbr);
+	i = len - 1;
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	str[len] = '\0';
-	if (num < 0)
-		num = -num;
-	while (--len >= 0)
+	if (nbr == 0)
+		str[0] = '0';
+	if (nbr < 0)
+		str[0] = '-';
+	if (nbr < 0)
+		nbr = -nbr;	
+	while (nbr > 0)
 	{
-		str[len] = num % 10 + '0';
-		num /= 10;
-		if (len == 0 && n < 0)
-			str[0] = '-';
+		str[i] = (nbr % 10) + '0';
+		nbr = nbr / 10;
+		i--;
 	}
 	return (str);
 }
-// int	main(void)
-// {
-// 	int	src = -21474836;
-// 	printf("%s\n", ft_itoa(src));
-// }
+int	main(void)
+{
+	int	src = -21474836;
+	printf("%s\n", ft_itoa(src));
+}
