@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 14:20:34 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 19:58:06 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:34:16 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
+// EXPLANATION:
 // count character

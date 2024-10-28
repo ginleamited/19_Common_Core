@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:28:39 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 20:20:00 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:34:36 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int	ft_tolower(int c)
 // 	printf("%c\n", tolower('B'));
 // }
 
+// EXPLANATION:
 // put the capital letters in lower case

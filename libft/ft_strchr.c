@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 21:29:57 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 20:15:14 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:34:00 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ char	*ft_strchr(const char *s, int c)
 // 	printf("%s\n", strchr("salutmecjisjdaoijaisd", 'j'));
 // }
 
+// EXPLANATION:
 // Find the first occurence of the character in the string

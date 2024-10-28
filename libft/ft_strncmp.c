@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 00:26:38 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 20:05:34 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:34:19 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 // 	printf("%d", ft_strncmp("saluto", "saluti", 5));
 // }
 
+// EXPLANATION:
 // compare s1 and s2 with ascii value with n maximum

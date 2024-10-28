@@ -6,30 +6,24 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:27:38 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 19:05:10 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:33:33 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, size_t c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*tmp_s;
-	unsigned char	i;
+	size_t			i;
 
 	i = 0;
 	tmp_s = (unsigned char *)s;
 	while (i < n)
 	{
 		if (tmp_s[i] == (unsigned char)c)
-		{
-			return ((void *)tmp_s + i);
-		}
+			return ((void *)(tmp_s + i));
 		i++;
-	}
-	if (tmp_s[i] == '\0')
-	{
-		return (NULL);
 	}
 	return (0);
 }
@@ -39,4 +33,14 @@ void	*ft_memchr(const void *s, size_t c, size_t n)
 // 	printf("%s\n", memchr("salutmecjisjdaoijaisd", 'j', 10));
 // }
 
+// EXPLANATION:
 // Find the letter in the memory
+
+// DEBUGGING: 
+//The condition if (tmp_s[i] == '\0') in the loop after 
+// i < n is redundant and incorrect. The function should stop reading 
+// as soon as i == n is reached; no need to check for '\0'.
+
+// The return value return ((void *)tmp_s + i); is incorrect because 
+// it adds i to the tmp_s pointer before casting to void *. Instead, 
+// it should add i after casting to void *.

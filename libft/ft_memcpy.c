@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:40:42 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 19:09:21 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:32:28 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	unsigned char	*tmp_src;
 	unsigned char	*tmp_dst;
 
-	if (dst == 0 || src == 0)
-		return (dst);
+	if (!dst && !src && n > 0)
+		return (NULL);
 	tmp_src = (unsigned char *)src;
 	tmp_dst = (unsigned char *)dst;
 	while (n > 0)
@@ -39,4 +39,14 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 // 	printf("Destination: %s\n", dst);
 // }
 
+// EXPLANATION:
 // Copy src to dst
+
+// DEBUGGING:
+// If both dst and src being NULL when n > 0. If both are 
+// NULL with n > 0, it will return NULL instead of trying 
+// to copy, thereby avoiding the crash.
+
+// If only one of dst or src is NULL, the function will still 
+// crash, maintaining the standard behavior for memcpy when 
+// an invalid pointer is provided.

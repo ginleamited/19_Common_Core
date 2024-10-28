@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 17:56:31 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 19:06:07 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:32:56 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void	*ft_calloc(size_t count, size_t size)
 // 	free(arr);
 // }
 
+// EXPLANATION:
 // Allocate memory and replace it by 0

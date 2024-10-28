@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:35:08 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/25 01:39:37 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:32:43 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,6 @@ int	ft_atoi(const char *str)
 // 	printf("%d\n", ft_atoi(src));
 // 	printf("%d\n", atoi(src));
 // }
+
+// EXPLANATION:
+

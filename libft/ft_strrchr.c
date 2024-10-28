@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 22:05:55 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/24 19:05:39 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:34:25 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ char	*ft_strrchr(const char *s, int c)
 // 	printf("%s\n", strrchr("salutmecjisjdaoijaisd", 'j'));
 // }
 
+// EXPLANATION:
 // find the last occurence of the letter

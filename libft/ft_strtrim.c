@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:47:06 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/24 19:45:36 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:34:28 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,3 +63,5 @@ char	*ft_strtrim(const char *s1, const char *set)
 // 		free(str_trimmed);
 // 	}
 // }
+
+// EXPLANATION:

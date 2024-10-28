@@ -6,16 +6,18 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:46:14 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/22 19:04:49 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:33:24 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_isprint(size_t c)
+int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }
+
+// EXPLANATION:
 // If it's printable

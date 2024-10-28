@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	ft_isalpha(size_t c)
+int	ft_isalpha(int c)
 {
 	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);
@@ -35,4 +35,5 @@ size_t	ft_isalpha(size_t c)
 // 	}
 // }
 
+// EXPLANATION:
 // If it's alphabet

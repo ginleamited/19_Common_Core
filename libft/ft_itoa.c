@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 01:25:36 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/27 21:40:07 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:33:29 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_itoa(int n)
 	if (nbr < 0)
 		str[0] = '-';
 	if (nbr < 0)
-		nbr = -nbr;	
+		nbr = -nbr;
 	while (nbr > 0)
 	{
 		str[i] = (nbr % 10) + '0';
@@ -55,8 +55,10 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
-int	main(void)
-{
-	int	src = -21474836;
-	printf("%s\n", ft_itoa(src));
-}
+// int	main(void)
+// {
+// 	int	src = -21474836;
+// 	printf("%s\n", ft_itoa(src));
+// }
+
+// EXPLANATION:
