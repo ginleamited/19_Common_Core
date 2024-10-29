@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:41:43 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:33:37 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/28 18:37:13 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,18 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 
 // EXPLANATION:
 // Compare the memory value of two strings
+
+// DEBUGGING:
+// Removed the (tmp_s1[i] && tmp_s2[i]) condition to ensure 
+// that the comparison does not stop at a null character.
+// just like in the standard memcmp
+
+// The loop now only checks if i < n and stops as soon 
+// as tmp_s1[i] differs from tmp_s2[i].
+
+// If i reaches n, this means all n bytes are identical, 
+// so the function returns 0.
+
+// If a difference is found before reaching n, 
+// it returns the difference between tmp_s1[i] and tmp_s2[i], 
+// as expected in memcmp.
