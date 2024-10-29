@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 01:29:37 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 22:09:12 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/29 16:52:26 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,9 @@ static void	ft_strcpy(char *dst, const char *src, char c, int src_j)
 static char	*ft_stralloc(const char *src, char c, int *k)
 {
 	char	*dst;
-	int		src_j;
 	int		start;
 
 	dst = NULL;
-	src_j = *k;
 	while (src[*k] != '\0')
 	{
 		if (src[*k] != c)
@@ -179,6 +177,9 @@ static void	ft_free(char **strs)
 // until it occurs c or NULL, then NULL terminate the word[i] at the end
 
 //? FT_STRALLOC
+// To allocate memory and return the newly allocated word
+// We initialize *dst to NULL because it provides a safe starting point
+// to random memory locations
 // 
 
 //? INT MAIN
