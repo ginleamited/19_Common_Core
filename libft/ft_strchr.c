@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 21:29:57 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/30 13:51:10 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 17:56:44 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
-		if (*s == (char)c)
+		if (*s == (unsigned char)c)
 			return ((char *)s);
 		s++;
 	}
-	if (c == '\0')
+	if ((unsigned char)c == '\0')
 		return ((char *)s);
 	return (NULL);
 }
@@ -53,3 +53,6 @@ char	*ft_strchr(const char *s, int c)
 
 //* EXPLANATION:
 // Find the first occurence of the character in the string
+
+//* DEBUGGING:
+// cast (unsigned char) instead of (char) avoid more issues

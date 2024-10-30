@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 01:29:37 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/30 13:51:06 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 17:58:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ static void	ft_free(char **strs)
 	i = 0;
 	while (strs[i])
 	{
-		free(strs);
+		free(strs[i]);
 		i++;
 	}
 	free(strs);
