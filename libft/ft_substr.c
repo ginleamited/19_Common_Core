@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:21:03 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:34:33 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:51:54 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,18 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	new_string[i] = '\0';
 	return (new_string);
 }
+
+//* MAIN
 // int	main(void)
 // {
 // 	printf("%s", ft_substr("Bonjour comment ca va?", 5, 8));
 // }
 
-// EXPLANATION:
+//* EXPLANATION:
 // select only the part of the string that begin with start and 
 // finish at start + len and the last is \0
 
-// DEBUGGING: 
+//* DEBUGGING: 
 // The issue here is that when start is greater than 
 // or equal to the length of s, the function should return an empty 
 // string, not a string with a single space. Currently, you’re returning 

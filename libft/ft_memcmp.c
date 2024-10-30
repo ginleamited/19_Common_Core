@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:41:43 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:37:13 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:50:45 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,18 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		return (0);
 	return (tmp_s1[i] - tmp_s2[i]);
 }
+
+//* MAIN
 // int	main(void)
 // {
 // 	printf("%d\n", ft_memcmp("saluto", "saluti", 5));
 // 	printf("%d\n", memcmp("saluto", "saluti", 5));
 // }
 
-// EXPLANATION:
+//* EXPLANATION:
 // Compare the memory value of two strings
 
-// DEBUGGING:
+//* DEBUGGING:
 // Removed the (tmp_s1[i] && tmp_s2[i]) condition to ensure 
 // that the comparison does not stop at a null character.
 // just like in the standard memcmp

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:46:14 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:33:24 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:50:33 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ int	ft_isprint(int c)
 	return (0);
 }
 
-// EXPLANATION:
+//* MAIN
+
+//* EXPLANATION:
 // If it's printable

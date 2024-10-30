@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:35:08 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:32:43 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:52:21 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_atoi(const char *str)
 	return (resultat * signe);
 }
 
+//* MAIN
 // int	main(void)
 // {
 // 	 char	*src = "-2147483649000000000999999989";
@@ -45,5 +46,4 @@ int	ft_atoi(const char *str)
 // 	printf("%d\n", atoi(src));
 // }
 
-// EXPLANATION:
-
+//* EXPLANATION:

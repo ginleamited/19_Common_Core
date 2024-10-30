@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 01:25:36 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 19:42:05 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:50:38 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,12 @@ char	*ft_itoa(int n)
 	}
 	return (str);
 }
+
+//* MAIN
 // int	main(void)
 // {
 // 	int	src = -21474836;
 // 	printf("%s\n", ft_itoa(src));
 // }
 
-// EXPLANATION:
+//* EXPLANATION:

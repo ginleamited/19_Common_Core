@@ -18,12 +18,14 @@ int	ft_isalpha(int c)
 		return (1);
 	return (0);
 }
+
+//* MAIN
 // int	main(void)
 // {
 // 	char	*str;
 // 	int		i;
 
-// 	*str = "salut";
+// 	(*str) = "salut";
 // 	i = 0;
 // 	while (str[i] != '\0')
 // 	{
@@ -35,5 +37,5 @@ int	ft_isalpha(int c)
 // 	}
 // }
 
-// EXPLANATION:
+// *EXPLANATION:
 // If it's alphabet

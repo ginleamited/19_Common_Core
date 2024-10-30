@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 22:05:55 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/30 13:51:49 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/30 16:11:22 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/30 16:17:06 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
+	int	i;
 
-	i = ft_strlen(s);
-	while (i > 0)
+	i = 0;
+	while (s[i])
 	{
-		if (s[i] == (unsigned char)c)
-			return ((char *)(s + i));
-		i--;
+		write(fd, &s[i], 1);
+		i++;
 	}
-	if (i == -0 && (s[i] != (unsigned char) c))
-		return (0);
-	return ((char *)(s + i));
 }
 
 //* MAIN
-// int main(void)
-// {
-// 	printf("%s\n", ft_strrchr("salutmecjisjdaoijaisd", 'j'));
-// 	printf("%s\n", strrchr("salutmecjisjdaoijaisd", 'j'));
-// }
 
-//* EXPLANATION:
-// find the last occurence of the letter
+//* EXPLANATION

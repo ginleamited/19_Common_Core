@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:03:45 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:32:50 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:49:20 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_bzero(void *s, size_t n)
 		}
 	}
 }
+
+//* MAIN
 // int	main(void)
 // {
 // 	unsigned char	s[];
@@ -35,5 +37,5 @@ void	ft_bzero(void *s, size_t n)
 // 	printf("%s\n", s + 2);
 // }
 
-// EXPLANATION:
+//* EXPLANATION:
 // Write 0 

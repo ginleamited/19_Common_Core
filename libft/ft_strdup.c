@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 19:24:15 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:34:03 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:51:13 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	*ft_strdup(char *src)
 	ft_strlcpy(dup, src, i + 1);
 	return (dup);
 }
+
+//* MAIN
 // int	main(void)
 // {
 // 	char	*src = NULL;
@@ -32,5 +34,5 @@ char	*ft_strdup(char *src)
 // printf("%s\n", ft_strdup(src));
 // }
 
-// EXPLANATION:
+//* EXPLANATION:
 // Duplicate 

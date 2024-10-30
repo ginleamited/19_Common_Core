@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:47:06 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:34:28 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:47:52 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	return (new_result);
 }
 
+//* MAIN
 // int	main(void)
 // {
 // 	char *str_trimmed = ft_strtrim("   aab  aaHELddbabLObbb  aabb     ", "ab ");
@@ -64,4 +65,4 @@ char	*ft_strtrim(const char *s1, const char *set)
 // 	}
 // }
 
-// EXPLANATION:
+//* EXPLANATION:

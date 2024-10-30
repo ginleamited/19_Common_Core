@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:27:38 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:33:33 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:50:41 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,18 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (0);
 }
+
+//* MAIN
 // int	main(void)
 // {
 // 	printf("%s\n", ft_memchr("salutmecjisjdaoijaisd", 'j', 10));
 // 	printf("%s\n", memchr("salutmecjisjdaoijaisd", 'j', 10));
 // }
 
-// EXPLANATION:
+//* EXPLANATION:
 // Find the letter in the memory
 
-// DEBUGGING: 
+//* DEBUGGING: 
 //The condition if (tmp_s[i] == '\0') in the loop after 
 // i < n is redundant and incorrect. The function should stop reading 
 // as soon as i == n is reached; no need to check for '\0'.

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 00:47:18 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:33:02 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:49:39 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ int	ft_isalnum(int c)
 	return (0);
 }
 
-// EXPLANATION:
+//* MAIN
+
+//* EXPLANATION:
 // If it's alphanumeric

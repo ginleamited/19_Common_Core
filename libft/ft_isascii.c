@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 13:31:25 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:33:12 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:50:16 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int	ft_isascii(int c)
 	return (0);
 }
 
-// EXPLANATION:
+//* MAIN
+
+//* EXPLANATION:
 // we don't write c >= 0 because size_t is unsigned integer
 // and is always non-negative
 // If it's in ascii

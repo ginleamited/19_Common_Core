@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:40:42 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:32:28 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:50:49 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
+
+//* MAIN
 // int	main(void)
 // {
 // 	char	src[];
@@ -39,10 +41,10 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 // 	printf("Destination: %s\n", dst);
 // }
 
-// EXPLANATION:
+//* EXPLANATION:
 // Copy src to dst
 
-// DEBUGGING:
+//* DEBUGGING:
 // If both dst and src being NULL when n > 0. If both are 
 // NULL with n > 0, it will return NULL instead of trying 
 // to copy, thereby avoiding the crash.

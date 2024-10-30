@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strmapi.c                                          :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 21:56:23 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/29 21:57:14 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/30 16:01:54 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/30 16:11:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
 {
-	
+	write(fd, &c, 1);
 }
+
+//* MAIN
+
+//* EXPLANATION
+// first param of the write is the file descriptor

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:37:31 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:34:08 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:51:16 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (result);
 }
 
+//* MAIN
 // int	main(void)
 // {
 // 	char	s1[] = "HELLO";
@@ -43,4 +44,4 @@ char	*ft_strjoin(char *s1, char *s2)
 // 	printf("%s\n", result);
 // }
 
-// EXPLANATION:
+//* EXPLANATION:

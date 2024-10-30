@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 01:29:37 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/29 21:55:16 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:51:06 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ static void	ft_free(char **strs)
 	}
 	free(strs);
 }
+
+//* MAIN
 // int main(void)
 // {
 // 	char **result;

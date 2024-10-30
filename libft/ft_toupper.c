@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 21:21:43 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:34:39 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:52:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ int	ft_toupper(int c)
 	}
 	return (c);
 }
+
+//* MAIN
 // int	main(void)
 // {
 // 	printf("%c\n", ft_toupper('b'));
 // 	printf("%c\n", toupper('b'));
 // }
 
-// EXPLANATION:
+//* EXPLANATION:
 // put the letters in capital case

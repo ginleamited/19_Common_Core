@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 19:28:14 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/28 18:34:14 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/30 13:51:22 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	}
 	return (i);
 }
+
+//* MAIN
 // int	main(void)
 // {
 // 	char		dst[10];
@@ -39,5 +41,5 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 // 	printf("%lu\n%s\n", strlcpy(dst, src, 10), dst);
 // }
 
-// EXPLANATION:
+//* EXPLANATION:
 // Copy src in dst and nul terminate
