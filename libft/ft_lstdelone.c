@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 22:42:45 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/31 15:33:30 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/31 15:56:42 by jilin             #+#    #+#             */
+/*   Updated: 2024/10/31 16:29:59 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	*ft_lstsize(t_list *lst)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	int	counter;
-	
-	counter = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		counter++;
-	}
-	return (counter)
+	if (!lst || !del)
+		return ;
+	del (lst->content)
+	free (lst);
 }
-
 //* MAIN
 
 //* EXPLANATION
-// We have to return the size
-// lst = lst->next : It will go from node to node as long counter increase
+// del (lst->content) : this will call del function to delete
+// the "content" which is pointed to
+// Then free(lst) : free the node

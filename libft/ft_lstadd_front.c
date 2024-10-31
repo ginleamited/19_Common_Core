@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 22:20:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/30 22:42:26 by jilin            ###   ########.fr       */
+/*   Updated: 2024/10/31 15:32:40 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	lstadd_front(t_list **lst, t_list *new)
+int	ft_lstaddfront(t_list **lst, t_list *new)
 {
 	if (lst && new)
 	{
