@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 18:00:33 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/31 15:31:17 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/31 15:56:42 by jilin             #+#    #+#             */
+/*   Updated: 2024/11/01 03:05:26 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// typedef struct s_list
-// {
-// 	void			*content;
-// 	struct s_list	*next;
-// }	t_list;
-
-t_list	*ft_lstnew(void *content)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	t_list	*node;
-
-	node = malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
+	if (!lst || !del)
+		return ;
+	del (lst->content);
+	free (lst);
 }
-
 //* MAIN
 
 //* EXPLANATION
-// create and initialize a new node for a linked list
-// node->content sets the value to content
-// node->next sets the value to NULL
+// del (lst->content) : this will call del function to delete
+// the "content" which is pointed to
+// Then free(lst) : free the node

@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 22:42:45 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/31 15:33:30 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/30 22:20:17 by jilin             #+#    #+#             */
+/*   Updated: 2024/11/01 03:00:19 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	*ft_lstsize(t_list *lst)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int	counter;
-	
-	counter = 0;
-	while (lst != NULL)
+	if (lst && new)
 	{
-		lst = lst->next;
-		counter++;
+		new->next = *lst;
+		*lst = new;
 	}
-	return (counter)
 }
 
 //* MAIN
 
 //* EXPLANATION
-// We have to return the size
-// lst = lst->next : It will go from node to node as long counter increase
+// Add a new element in the front of a list
+// if (lst && new) : check if it is NULL pointers
+// new->next = *lst : new will point where lst points
+// (*lst) = new : *lst will points to new

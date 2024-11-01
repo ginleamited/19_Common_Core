@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 22:20:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/31 15:32:40 by jilin            ###   ########.fr       */
+/*   Created: 2024/10/30 18:00:33 by jilin             #+#    #+#             */
+/*   Updated: 2024/11/01 01:18:56 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstaddfront(t_list **lst, t_list *new)
+t_list	*ft_lstnew(void *content)
 {
-	if (lst && new)
-	{
-		new->next = *lst;
-		*lst = new;
-	}
+	t_list	*node;
+
+	node = malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }
 
 //* MAIN
 
 //* EXPLANATION
-// Add a new element in the front of a list
-// if (lst && new) : check if it is NULL pointers
-// new->next = *lst : new will point where lst points
-// (*lst) = new : *lst will points to new
+// create and initialize a new node for a linked list
+// node->content sets the value to content
+// node->next sets the value to NULL
