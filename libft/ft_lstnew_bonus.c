@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 18:00:33 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/01 01:18:56 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/01 19:01:28 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_list	*ft_lstnew(void *content)
 	return (node);
 }
 
-//* MAIN
-
-//* EXPLANATION
+// * MAIN
+//
+// * EXPLANATION
 // create and initialize a new node for a linked list
 // node->content sets the value to content
 // node->next sets the value to NULL

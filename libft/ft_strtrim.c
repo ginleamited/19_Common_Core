@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 22:47:06 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/30 13:47:52 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/01 19:21:38 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	ft_count_size(const char *s1, const char *set)
 	int	end;
 	int	s_len;
 
+	if (!s1 || !set)
+		return (0);
 	s_len = ft_strlen(s1);
 	start = 0;
 	end = s_len - 1;

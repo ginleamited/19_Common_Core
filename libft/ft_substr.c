@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:21:03 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/30 13:51:54 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/01 19:08:27 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	size_t	i;
 	char	*new_string;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	while (s[i])
 		i++;

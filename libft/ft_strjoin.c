@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:37:31 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/30 13:51:16 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/01 18:32:53 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	if (!s1)
+		return (s2);
+	if (!s2)
+		return (s1);
 	result = (char *) malloc(ft_strlen(s1)
 			+ (ft_strlen(s2) + 1) * sizeof(char));
 	if (!result)

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 01:29:37 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/30 17:58:01 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/01 19:12:26 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**ft_split(const char *str, char c)
 	int		word;
 	int		pos;
 
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	i = 0;
 	pos = 0;

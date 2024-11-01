@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 21:56:23 by jilin             #+#    #+#             */
-/*   Updated: 2024/10/30 14:23:27 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/01 19:15:57 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*resultat;
 
+	if (!s || !f)
+		return (NULL);
 	i = 0;
 	resultat = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!resultat)
