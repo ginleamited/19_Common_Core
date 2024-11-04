@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:37:42 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/04 17:31:37 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/04 17:43:22 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,4 @@ int	ft_printf(const char*, ...)
 	if 
 }
 
-int	check_param ()
+int	printf_format (va_list ap, )

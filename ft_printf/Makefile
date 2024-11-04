@@ -6,14 +6,12 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/03 18:25:04 by jilin             #+#    #+#              #
-#    Updated: 2024/11/04 17:39:29 by jilin            ###   ########.fr        #
+#    Updated: 2024/11/04 17:51:26 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARIABLES
 
-HEADER =printf.h
-# header file on the top of each file
 NAME = libftprintf.a
 # name of output library
 
