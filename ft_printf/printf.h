@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:34:58 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/04 17:32:01 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/05 00:44:40 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,8 @@
 
 # include <unistd.h>
 # include <stdio.h>
-# include <stddef.h>
 # include <stdlib.h>
-# include <string.h>
-# include <ctype.h>
+# include <stdarg.h>
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
 
 #endif
