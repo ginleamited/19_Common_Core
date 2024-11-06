@@ -6,72 +6,34 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/03 18:25:04 by jilin             #+#    #+#              #
-#    Updated: 2024/11/04 17:51:26 by jilin            ###   ########.fr        #
+#    Updated: 2024/11/07 00:07:33 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# VARIABLES
-
 NAME = libftprintf.a
-# name of output library
 
-CC = cc
-# compiler use cc
-CFLAGS = -Wall -Wextra -Werror
-# flags
+CC = cc -Wall -Wextra -Werror
 
-LIBFT_PATH = ./libft
+LIB = ar -rcs
 
-LIBFT = $(LIBFT_PATH)/libft.a
-
-MAKE_LIB = ar -rcs
-# ar -rc creates or replace the library $(NAME) with 
-# the given object files ($(OBJ_FILES)).
-
-INCS = .
-
-SRC = ft_printf.c \
-		ft_
+SRC = ft_printf.c functions.c functions_hex.c
 
 OBJ = $(SRC:.c=.o)
-# created by replacing .c with .o
 
-bonus : all
+$(NAME): $(OBJ)
+		$(LIB) $(NAME) $(OBJ)
 
-# RULES
+%.o: %.c ft_printf.h
+	$(CC) -c $< -o $@
 
 all: $(NAME)
-# if not up-to-date, run the rule to build it
-
-$(NAME): $(OBJ) $(LIBFT)
-		$(MAKE_LIB) $(NAME) $(OBJ)
-# build static library libft.a by archiving all the
-# object files in $(OBJ)
-
-%.o: %.c
-# compiles each .c source file into a .o object file
-	$(CC) $(CFLAGS) -c $< -I$(INCS)
-# $< is the first prerequisite (the .c file), 
-
-$(LIBFT) :
-		cd $(LIBFT_PATH) && make
-		cp $(LIBFT) $(NAME)
-
-# CLEANING RULES
 
 clean:
-	rm -f $(OBJ) $(NAME)
-# Removes all object files ($(OBJ) and $(BONUS_OBJ))
+	rm -f $(OBJ)
 
 fclean: clean
-	cd $(LIBFT_PATH) && make fclean
-# Calls clean and also removes the library file $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
-# Rebuilds the library by first calling fclean 
-# (clean everything) and then all (rebuild)
 
 .PHONY: all clean fclean re
-# tells make that all, clean, fclean, and re are not 
-# actual files, but rather labels for commands, ensuring 
-# that make always executes them
