@@ -6,11 +6,11 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:37:42 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/07 00:12:31 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/07 00:35:32 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	printf_format(char c, va_list args);
 

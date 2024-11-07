@@ -6,11 +6,11 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:21:32 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/07 00:14:57 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/07 00:57:10 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_putchar(char c)
 {
@@ -22,6 +22,8 @@ int	ft_putstr(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (write(1, "(null)", 6));
 	i = 0;
 	while (str[i])
 	{
@@ -30,6 +32,7 @@ int	ft_putstr(char *str)
 	}
 	return (i);
 }
+//In printf, when it's NULL, output (null)
 
 int	ft_putnbr(int nb)
 {
