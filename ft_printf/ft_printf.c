@@ -6,19 +6,18 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:37:42 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/07 17:09:47 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/07 19:42:05 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	printf_format(char c, va_list args);
 
 int	ft_printf(const char *str, ...)
 {
 	int		count;
 	va_list	args;
 	int		i;
+	int		result;
 
 	i = 0;
 	count = 0;
@@ -26,12 +25,14 @@ int	ft_printf(const char *str, ...)
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%' && str[i + 1] != '\0')
-		{
-			i++;
-			count += printf_format(str[i], args);
-		}
+			count += printf_format(str[++i], args);
 		else
-			count += write(1, &str[i], 1);
+		{
+			result = write(1, &str[i], 1);
+			if (result == -1)
+				return (va_end(args), -1);
+			count += result;
+		}
 		i++;
 	}
 	va_end(args);
@@ -45,6 +46,8 @@ int	ft_printf(const char *str, ...)
 //Then call printf_format function by calling each functions
 //If not % just write the string
 //va_end : close the variadic
+//we declare result so we can see in each % how much it is, 
+//if it is -1 then we just va_end and return -1. If not increment in count
 
 int	printf_format(char c, va_list args)
 {
@@ -56,11 +59,11 @@ int	printf_format(char c, va_list args)
 	else if (c == 's')
 		count += ft_putstr(va_arg(args, char *));
 	else if (c == 'p')
-		count += ft_0xputpointerhex(va_arg(args, unsigned long long), 0);
+		count += ft_printhex(va_arg(args, unsigned long long), 0);
 	else if (c == 'd' || c == 'i')
 		count += ft_putnbr(va_arg(args, int));
 	else if (c == 'u')
-		count += ft_putunsignednbr(va_arg(args, unsigned int));
+		count += ft_unsignednbr(va_arg(args, unsigned int));
 	else if (c == 'x')
 		count += ft_putnbrhex(va_arg(args, unsigned int), 0);
 	else if (c == 'X')
