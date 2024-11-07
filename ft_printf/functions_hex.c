@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 22:23:02 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/07 00:35:42 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/07 01:28:21 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ int	ft_0xputpointerhex(unsigned long nb, int flag)
 	int	count;
 
 	count = 0;
-	if (!nb)
-		count += ft_putstr("NULL");
-	if (nb)
-	{
-		count += ft_putstr("0x");
-		count += ft_putpointerhex(nb, flag);
-	}
+	if (nb == 0)
+		return (ft_putstr("0x0"));
+	count += ft_putstr("0x");
+	count += ft_putpointerhex(nb, flag);
 	return (count);
 }
+//* DEBUGGING
+// if nb == 0, then print 0x the adress and 0
+
+//* EXPLANATION
 //print the mem address of a pointer in hex format
 //nb : printed in hex
 //flag : lower or uppercase
@@ -49,6 +50,9 @@ int	ft_putpointerhex(unsigned long nb, int flag)
 		count += ft_putchar(base[nb % 16]);
 	return (count);
 }
+//* DEBUGGING
+
+//* EXPLANATION
 //print a nb in hex format
 //divide recursively each nb then modulo in reverse 
 //after each nb being divided, so first modulo the 
@@ -73,6 +77,7 @@ int	ft_putnbrhex(unsigned int nb, int flag)
 		count += ft_putchar(base[nb % 16]);
 	return (count);
 }
+//* DEBUGGING
 
 //* EXPLANATION:
 //print a nb in hex format depend upper or small case
