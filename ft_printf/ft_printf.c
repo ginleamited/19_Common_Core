@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:37:42 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/07 02:57:03 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/07 17:09:47 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,12 @@ int	printf_format(char c, va_list args)
 		count += ft_putnbrhex(va_arg(args, unsigned int), 1);
 	else if (c == '%')
 		count += ft_putchar('%');
+	if (count == -1)
+		return (-1);
 	return (count);
 }
+//else if : if correct, will not check others
+// if : will check every if
 
 //* MAIN
 // int main (void)
