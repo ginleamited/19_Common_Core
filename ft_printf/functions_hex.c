@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 22:23:02 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/07 19:39:54 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/07 21:30:08 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	ft_calculhex(unsigned long long nb, int flag)
 //after each nb being divided, so first modulo the 
 //smallest number, last modulo the biggest number
 //When go out from nb >= 16 then modulo the smallest number
+//will translate when ft_putchar and go through base and pick
 
 int	ft_putnbrhex(unsigned int nb, int flag)
 {
