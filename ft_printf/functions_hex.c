@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 22:23:02 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/07 01:28:21 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/07 01:35:22 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,8 @@ int	ft_putpointerhex(unsigned long nb, int flag)
 	if (flag == 1)
 		base = "0123456789ABCDEF";
 	if (nb >= 16)
-	{
 		count += ft_putpointerhex((nb / 16), flag);
-		count += ft_putchar(base[nb % 16]);
-	}
-	else
-		count += ft_putchar(base[nb % 16]);
+	count += ft_putchar(base[nb % 16]);
 	return (count);
 }
 //* DEBUGGING
