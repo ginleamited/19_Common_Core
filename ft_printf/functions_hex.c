@@ -6,21 +6,26 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 22:23:02 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/07 01:41:30 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/07 02:27:35 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_0xputpointerhex(unsigned long nb, int flag)
+int	ft_0xputpointerhex(unsigned long long nb, int flag)
 {
 	int	count;
 
 	count = 0;
 	if (nb == 0)
+	{
 		return (ft_putstr("0x0"));
-	count += ft_putstr("0x");
-	count += ft_putpointerhex(nb, flag);
+	}
+	else
+	{
+		count += ft_putstr("0x");
+		count += ft_putpointerhex(nb, flag);
+	}
 	return (count);
 }
 //* DEBUGGING
@@ -32,7 +37,7 @@ int	ft_0xputpointerhex(unsigned long nb, int flag)
 //flag : lower or uppercase
 //0x is the start of a hex adress
 
-int	ft_putpointerhex(unsigned long nb, int flag)
+int	ft_putpointerhex(unsigned long long nb, int flag)
 {
 	char	*base;
 	int		count;
@@ -41,14 +46,21 @@ int	ft_putpointerhex(unsigned long nb, int flag)
 	base = "0123456789abcdef";
 	if (flag == 1)
 		base = "0123456789ABCDEF";
-	if (nb == 0)
-		count += ft_putchar('0');
 	if (nb >= 16)
 		count += ft_putpointerhex((nb / 16), flag);
 	count += ft_putchar(base[nb % 16]);
 	return (count);
 }
 //* DEBUGGING
+
+//* MAIN
+// int main(void)
+// {
+// 	char *s = "abc";
+// 	(void)s;
+// 	printf("%d\n", printf("%p", &s));
+// 	printf("%d\n", ft_printf("%p", &s));
+// }
 
 //* EXPLANATION
 //print a nb in hex format

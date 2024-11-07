@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:37:42 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/07 00:35:32 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/07 02:57:03 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,19 @@ int	printf_format(char c, va_list args)
 	count = 0;
 	if (c == 'c')
 		count += ft_putchar(va_arg(args, int));
-	if (c == 's')
+	else if (c == 's')
 		count += ft_putstr(va_arg(args, char *));
-	if (c == 'p')
-		count += ft_putpointerhex(va_arg(args, unsigned long), 0);
-	if (c == 'd' || c == 'i')
+	else if (c == 'p')
+		count += ft_0xputpointerhex(va_arg(args, unsigned long long), 0);
+	else if (c == 'd' || c == 'i')
 		count += ft_putnbr(va_arg(args, int));
-	if (c == 'u')
-		count += ft_putunsignednbr(va_arg(args, int));
-	if (c == 'x')
-		count += ft_putnbrhex(va_arg(args, unsigned long), 0);
-	if (c == 'X')
-		count += ft_putnbrhex(va_arg(args, unsigned long), 1);
-	if (c == '%')
+	else if (c == 'u')
+		count += ft_putunsignednbr(va_arg(args, unsigned int));
+	else if (c == 'x')
+		count += ft_putnbrhex(va_arg(args, unsigned int), 0);
+	else if (c == 'X')
+		count += ft_putnbrhex(va_arg(args, unsigned int), 1);
+	else if (c == '%')
 		count += ft_putchar('%');
 	return (count);
 }

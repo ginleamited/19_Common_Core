@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:21:32 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/07 00:57:10 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/07 03:07:49 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,19 @@ int	ft_putnbr(int nb)
 	return (count);
 }
 
-int	ft_putunsignednbr(int nb)
+int	ft_putunsignednbr(unsigned int nb)
 {
 	int		count;
 
 	count = 0;
 	if (nb > 9)
-		count += ft_putnbr(nb / 10);
+		count += ft_putunsignednbr(nb / 10);
 	nb = nb % 10;
-	count += ft_putchar(nb + 48);
-	return (count);
+	return (count += ft_putchar(nb + 48), count);
 }
+
+// int main(void)
+// {
+// 	printf("%d\n", printf("%lu", LONG_MAX));
+// 	printf("%d\n", ft_printf("%u", LONG_MAX));
+// }
