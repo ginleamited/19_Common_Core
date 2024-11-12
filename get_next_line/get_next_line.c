@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 20:29:23 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/12 23:50:55 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/13 00:10:34 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,22 @@ void	append(t_list **list, char *buf)
 {
 	t_list	*new_node;
 	t_list	*last_node;
+
+	last_node = find_last_node(*list);
+	new_node = malloc(sizeof(t_list));
+	if (NULL == new_node)
+		return ;
+	if (NULL == last_node)
+		*list = new_node;
+	else
+		last_node->str_buf = buf;
+		new_node->next = NULL;
+}
+//* EXPLANATION
+// if last_node is NULL then replace *list with new_nodes
+// 
+
+char	*get_line(t_list *list)
+{
+	
 }
