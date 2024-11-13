@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 20:29:23 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/13 00:10:34 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/13 17:27:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,19 @@ void	append(t_list **list, char *buf)
 
 char	*get_line(t_list *list)
 {
+	int		str_len;
+	char	*next_str;
+
+	if (NULL == list)
+		return (NULL);
+	
+	str_len = len_to_newline(list);
+	next_str = malloc(str_len + 1);
+	if (NULL == next_str)
+		return (NULL);
+
+	copy_str(list, next_str);
+	return (next_str);
 	
 }
+
