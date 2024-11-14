@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 20:29:24 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/13 19:37:07 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/14 22:24:09 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ int	len_to_newline(t_list *list)
 	return (len);
 }
 
+//* EXPLANATION
+// Calculate length up to the first \n
+// iterate through each char in str_buf and if \n found
+// return len, go through each list
+
 void	copy_str(t_list *list, char *str)
 {
 	int i;
@@ -65,6 +70,10 @@ void	copy_str(t_list *list, char *str)
 	
 }
 
+//* EXPLANATION
+// Copy contents from the list to str until \n or \0
+// go through str_buf in each list node and copy char to str
+
 void	dealloc(t_list **list, t_list *clean_node, char *buf)
 {
 	t_list	*tmp;
@@ -87,6 +96,16 @@ void	dealloc(t_list **list, t_list *clean_node, char *buf)
 		free(clean_node);
 	}
 }
+
+//* EXPLANATION
+// t_list *tmp : temp pointer used to hold each node during list traversal
+// allowing each node to be freed sequentially
+
+// Free the list nodes, clean_node contents and reassign *list 
+// to clean_node, if it has content then it becomes the new head
+// of the list, otherwise clean_node and buf are freed
+
+
 // t_node {
 // 	int	x;
 // 	node *next ;
