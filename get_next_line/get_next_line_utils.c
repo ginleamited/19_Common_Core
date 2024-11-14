@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 20:29:24 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/13 18:05:16 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/13 19:37:07 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,34 +63,6 @@ void	copy_str(t_list *list, char *str)
 	}
 	str[k] = '\0'
 	
-}
-
-void	polish_list(t_list **list)
-{
-	t_list	*last_node;
-	t_list	*clean_node;
-	int		i;
-	int		k;
-	char	*buf;
-
-	buf = malloc(BUFFER_SIZE + 1);
-	clean_node = malloc(sizeof(t_list));
-	if (NULL == buf || NULL == clean_node)
-		return ;
-	last_node = find_last_node(*list);
-
-	i = 0;
-	k = 0;
-	while (last_node->str_buf[i] != '\0' 
-		&& last_node->str_buf[i] != '\n')
-		++i;
-	while (last_node->str_buf[i] != '\0'
-		&& last_node->str_buf[++i])
-		buf[k++] = last_node->str_buf[i];
-	buf[k] = '\0';
-	clean_node->str_buf = buf;
-	clean_node->next = NULL;
-	dealloc(list, clean_node, buf);
 }
 
 void	dealloc(t_list **list, t_list *clean_node, char *buf)
