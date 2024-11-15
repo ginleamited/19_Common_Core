@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:14 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/15 18:33:38 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/15 20:44:27 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(char *src);
 size_t	ft_strlen(const char *str);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
