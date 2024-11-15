@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 20:29:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/14 22:45:00 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/15 14:23:54 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,17 @@ typedef struct s_list
 	struct s_list	*next;//point to the next node of the list
 }	t_list;
 
+typedef struct l_stax
+{
+	t_list	*top;
+}	l_stack;
+
+void	sort(l_stack *top)
+{
+	t_list current_top = top->next;
+
+	current_top node 1
+}
 // str_buf: pointer to a dynamically allocated string (buffer)
 // containing a chunk of text read from the file.
 // ext: This is a pointer to the next node in the list, 
