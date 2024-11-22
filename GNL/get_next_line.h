@@ -6,12 +6,12 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 20:29:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/15 14:23:54 by jilin            ###   ########.fr       */
+/*   Updated: 2024/11/20 12:49:51 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef get_next_line_H
-# define get_next_line_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+
 typedef struct s_list
 {
 	char			*str_buf;//point to the buffer holding char read from file
@@ -30,11 +31,11 @@ typedef struct s_list
 typedef struct l_stax
 {
 	t_list	*top;
-}	l_stack;
+}	t_stack;
 
 void	sort(l_stack *top)
 {
-	t_list current_top = top->next;
+	t_list	current_top = top->next;
 
 	current_top node 1
 }
