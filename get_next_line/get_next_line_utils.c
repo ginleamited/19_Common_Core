@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:19 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/18 20:31:13 by jilin            ###   ########.fr       */
+/*   Updated: 2024/12/03 20:48:37 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,13 @@ char	*ft_strdup(char *src)
 	int		j;
 	char	*dup;
 
-	i = 0;
+	if (!src)
+		return (NULL);
 	j = ft_strlen(src);
-	dup = malloc(i + 1);
+	dup = malloc(j + 1);
+	if (!dup)
+		return (NULL);
+	i = 0;
 	while (i < j)
 	{
 		dup[i] = src[j];

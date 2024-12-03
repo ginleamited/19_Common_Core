@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/11/29 23:00:06 by jilin            ###   ########.fr       */
+/*   Updated: 2024/12/03 20:48:14 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,24 @@ char	*get_next_line(int fd)
 	free (buf);
 	buf = NULL;
 	if (!line)
+	{
+		free(stash);
+		stash = NULL;
 		return (NULL);
+	}
 	stash = extract(line);
 	return (line);
 }
 //* EXPLANATION
 
-// this function return one line at a time, the looping come from reading function
-// find the text before \n or \0, return text before that and extract text
+// this function return one line at a time, the looping come 
+// from reading function
+// find the text before \n or \0, return text before that and 
+// extract text
 // after it to use it later for the next call of GNL
 
-// at first we declare static char stash to keep its data after each extract call
+// at first we declare static char stash to keep its data after 
+// each extract call
 // read function will continue from where it stopped until read over
 // 
 
@@ -67,7 +74,6 @@ char	*get_next_line(int fd)
 // extract processes the current line and separates 
 // any leftover data into stash for the next call.
 
-
 static char	*reading(int fd, char *buf, char *stash)
 {
 	int		line_read;
@@ -78,14 +84,18 @@ static char	*reading(int fd, char *buf, char *stash)
 	{
 		line_read = read(fd, buf, BUFFER_SIZE);
 		if (line_read == -1)
+		{
+			free(stash);
 			return (0);
+		}
 		buf[line_read] = '\0';
 		if (!stash)
 			stash = ft_strdup("");
 		stash_temp = stash;
 		stash = ft_strjoin(stash_temp, buf);
 		free(stash_temp);
-		stash_temp = NULL;
+		if (!stash)
+			return (NULL);
 		if (ft_strchr (buf, '\n'))
 			break ;
 	}
@@ -112,9 +122,12 @@ static char	*reading(int fd, char *buf, char *stash)
 // store each stash into stash_temp then strjoin stash_temp and buf
 // then send it into stash and free stash_temp
 
-// after that, free and set the tmp to NULL so we can reuse that
+// after that, if ft_strjoin allocated failed then return NULL
 
-// while loop will break when we find \n
+// when we find \n, loop will break
+
+// return stash, which hold the read data, it will be updated
+// to get_next_line, used to extract a complete line
 
 static char	*extract(char *line)
 {
