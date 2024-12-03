@@ -6,12 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/03 20:48:14 by jilin            ###   ########.fr       */
+/*   Updated: 2024/12/03 23:12:03 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+static char	*free_stuff(char *stash);
 static char	*reading(int fd, char *buf, char *stash);
 static char	*extract(char *line);
 
@@ -74,6 +75,16 @@ char	*get_next_line(int fd)
 // extract processes the current line and separates 
 // any leftover data into stash for the next call.
 
+static char	*free_stuff(char *stash)
+{
+	if (stash)
+	{
+		free(stash);
+		return (NULL);
+	}
+	return (NULL);
+}
+
 static char	*reading(int fd, char *buf, char *stash)
 {
 	int		line_read;
@@ -84,10 +95,7 @@ static char	*reading(int fd, char *buf, char *stash)
 	{
 		line_read = read(fd, buf, BUFFER_SIZE);
 		if (line_read == -1)
-		{
-			free(stash);
-			return (0);
-		}
+			return (free_stuff(stash));
 		buf[line_read] = '\0';
 		if (!stash)
 			stash = ft_strdup("");
@@ -99,6 +107,8 @@ static char	*reading(int fd, char *buf, char *stash)
 		if (ft_strchr (buf, '\n'))
 			break ;
 	}
+	if (line_read == 0 && stash && *stash == '\0')
+		return (free_stuff(stash));
 	return (stash);
 }
 
@@ -126,6 +136,8 @@ static char	*reading(int fd, char *buf, char *stash)
 
 // when we find \n, loop will break
 
+// add a condition that free if the stash is empty at the EOF
+
 // return stash, which hold the read data, it will be updated
 // to get_next_line, used to extract a complete line
 
@@ -134,11 +146,13 @@ static char	*extract(char *line)
 	size_t	count;
 	char	*left;
 
+	if (!line || *line == '\0')
+		return (NULL);
 	count = 0;
 	while (line[count] != '\n' && line[count] != '\0')
 		count++;
 	if (line[count] == '\0' || line[count + 1] == '\0')
-		return (0);
+		return (NULL);
 	left = ft_substr(line, count + 1, ft_strlen(line) - count);
 	if (!left || *left == '\0')
 	{
@@ -159,26 +173,38 @@ static char	*extract(char *line)
 // we will store the leftover into left using ft_substr
 // if left is empty or equal to \0 then we free it and = NULL
 
+// Add a condition if ft_substr create empty string
+
 // terminate the string with count + 1 for \0
 // return leftover
 
 //* MAIN
 
-// int main()
+// int main(int argc, char **argv)
 // {
-// 	const char *file = "test.txt";
-// 	int fd = open(filename, O_RDONLY);
-// 	if (fd == -1)
-// 	{
-// 		perror("Error");
-// 		return 1;
-// 	}
-// 	char *line;
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("Line: %s", line);
-// 		free(line);
-// 	}
-// 	close(fd);
-// 	return (0);
+//     int fd;
+//     char *line;
+
+//     if (argc != 2)
+//     {
+//         printf("Usage: %s <filename>\n", argv[0]);
+//         return (1);
+//     }
+//     fd = open(argv[1], O_RDONLY);
+//     if (fd < 0)
+//     {
+//         perror("Error opening file");
+//         return (1);
+//     }
+//     while ((line = get_next_line(fd)) != NULL)
+//     {
+//         printf("Line: %s", line);
+//         free(line);
+//     }
+//     if (close(fd) < 0)
+//     {
+//         perror("Error closing file");
+//         return (1);
+//     }
+//     return (0);
 // }
