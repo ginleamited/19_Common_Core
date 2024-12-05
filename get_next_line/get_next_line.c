@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/03 23:12:03 by jilin            ###   ########.fr       */
+/*   Updated: 2024/12/04 17:40:40 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*free_stuff(char *stash);
 static char	*reading(int fd, char *buf, char *stash);
-static char	*extract(char *line);
+static char	*extract(char *txt);
 
 char	*get_next_line(int fd)
 {
@@ -41,33 +41,18 @@ char	*get_next_line(int fd)
 }
 //* EXPLANATION
 
-// this function return one line at a time, the looping come 
-// from reading function
+// this function return one line at a time, it is not a recursive,
+// the looping come from reading function
 // find the text before \n or \0, return text before that and 
-// extract text
-// after it to use it later for the next call of GNL
-
-// at first we declare static char stash to keep its data after 
-// each extract call
+// extract text after it to use it later for the next call of GNL
 // read function will continue from where it stopped until read over
-// 
 
 // we need to secure fd, BUFFER_SIZE and buf after malloc
-
-// malloc BUFFER_SIZE + 1 into buf
-// then we call function reading until uncounting \n or reach \0,
-// then we call function extract to find the leftover
-// then we return line
-
 // buf hold data read from file, line store the line to return
 // The stash is static bc we need to reain its value across calls to GNL
 // For the malloc we do BUFFER_SIZE + 1 to ensure the /0
 // Call the function reading and it will give all the stash that we will
 // store and append in line each time until we arrived to \n
-
-// Get_next_line does not recursively call itself. 
-// It loops by calling reading to fetch data 
-// and extract to manage the leftover data.
 
 // reading continues reading chunks of data into buf and appending 
 // them to stash until a newline is found or EOF is reached.
@@ -115,7 +100,7 @@ static char	*reading(int fd, char *buf, char *stash)
 //* EXPLANATION
 
 // Reads data from fd and appends it to stash until 
-// a \n is found or \0 is reached.
+// \n is found or \0 is reached.
 
 // line_read = 1 so it loop at least once and will read data
 // function read() read BUFFER_SIZE bytes from fd into buf
@@ -136,41 +121,42 @@ static char	*reading(int fd, char *buf, char *stash)
 
 // when we find \n, loop will break
 
-// add a condition that free if the stash is empty at the EOF
+// add a condition that free if the stash is empty at the EOF(line_read == 0)
 
 // return stash, which hold the read data, it will be updated
 // to get_next_line, used to extract a complete line
 
-static char	*extract(char *line)
+static char	*extract(char *txt)
 {
 	size_t	count;
 	char	*left;
 
-	if (!line || *line == '\0')
+	if (!txt || *txt == '\0')
 		return (NULL);
 	count = 0;
-	while (line[count] != '\n' && line[count] != '\0')
+	while (txt[count] != '\n' && txt[count] != '\0')
 		count++;
-	if (line[count] == '\0' || line[count + 1] == '\0')
+	if (txt[count] == '\0' || txt[count + 1] == '\0')
 		return (NULL);
-	left = ft_substr(line, count + 1, ft_strlen(line) - count);
+	left = ft_substr(txt, count + 1, ft_strlen(txt) - count);
 	if (!left || *left == '\0')
 	{
 		free(left);
 		left = NULL;
 	}
-	line[count + 1] = '\0';
+	txt[count + 1] = '\0';
 	return (left);
 }
 //* EXPLANATION
 
-// extracts the leftover of the line if found \n 
+// extracts the leftover of the txt if found \n 
 
-// Count until \n or \0 to find the size of line
-// if line[count] is \0 then there no \n so no leftover
-// if line[count + 1] is \0 then the \0 is just after the \n so no leftover
+// Count until \n or \0 to find the size of txt
+// if txt[count] is \0 then there no \n so no leftover
+// if txt[count + 1] is \0 then the \0 is just after the \n so no leftover
 
 // we will store the leftover into left using ft_substr
+// ft_substr(file, start, start + len)
 // if left is empty or equal to \0 then we free it and = NULL
 
 // Add a condition if ft_substr create empty string
@@ -183,7 +169,7 @@ static char	*extract(char *line)
 // int main(int argc, char **argv)
 // {
 //     int fd;
-//     char *line;
+//     char *txt;
 
 //     if (argc != 2)
 //     {
@@ -196,10 +182,10 @@ static char	*extract(char *line)
 //         perror("Error opening file");
 //         return (1);
 //     }
-//     while ((line = get_next_line(fd)) != NULL)
+//     while ((txt = get_next_line(fd)) != NULL)
 //     {
-//         printf("Line: %s", line);
-//         free(line);
+//         printf("txt: %s", txt);
+//         free(txt);
 //     }
 //     if (close(fd) < 0)
 //     {
