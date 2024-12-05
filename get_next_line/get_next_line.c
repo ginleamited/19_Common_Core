@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/05 03:21:41 by jilin            ###   ########.fr       */
+/*   Updated: 2024/12/05 15:56:55 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,27 +72,27 @@ static char	*free_stuff(char *stash)
 
 static char	*reading(int fd, char *buf, char *stash)
 {
-	int		line_read;
-	char	*stash_temp;
+	int		char_read;
+	char	*tmp;
 
-	line_read = 1;
-	while (line_read > 0)
+	char_read = 1;
+	while (char_read > 0)
 	{
-		line_read = read(fd, buf, BUFFER_SIZE);
-		if (line_read == -1)
+		char_read = read(fd, buf, BUFFER_SIZE);
+		if (char_read == -1)
 			return (free_stuff(stash));
-		buf[line_read] = '\0';
+		buf[char_read] = '\0';
 		if (!stash)
 			stash = ft_strdup("");
-		stash_temp = stash;
-		stash = ft_strjoin(stash_temp, buf);
-		free(stash_temp);
+		tmp = stash;
+		stash = ft_strjoin(tmp, buf);
+		free(tmp);
 		if (!stash)
 			return (NULL);
 		if (ft_strchr (buf, '\n'))
 			break ;
 	}
-	if (line_read == 0 && stash && *stash == '\0')
+	if (char_read == 0 && stash && *stash == '\0')
 		return (free_stuff(stash));
 	return (stash);
 }
@@ -102,26 +102,26 @@ static char	*reading(int fd, char *buf, char *stash)
 // Reads data from fd and appends it to stash until 
 // \n is found or \0 is reached.
 
-// line_read = 1 so it loop at least once and will read data
+// char_read = 1 so it loop at least once and will read data
 // function read() read BUFFER_SIZE bytes from fd into buf
-// if empty, read return 0 or if error line_read == -1
+// if empty, read return 0 or if error char_read == -1
 
 // we need buf to store each buffer between 0 and BUFFER_SIZE
 // null terminate the string read into buf with \0
 
 // if stash is NULL, set it as empty string ("") used to append
 
-// so we need a stash_temp to temporarily store stash value when we
+// so we need a tmp to temporarily store stash value when we
 // do ft_strjoin, otherwise it will erase stash when doing ft_strjoin
 
-// store each stash into stash_temp then strjoin stash_temp and buf
-// then send it into stash and free stash_temp
+// store each stash into tmp then strjoin tmp and buf
+// then send it into stash and free tmp
 
 // after that, if ft_strjoin allocated failed then return NULL
 
 // when we find \n, loop will break
 
-// add a condition that free if the stash is empty at the EOF(line_read == 0)
+// add a condition that free if the stash is empty at the EOF(char_read == 0)
 
 // return stash, which hold the read data, it will be updated
 // to get_next_line, used to extract a complete line
