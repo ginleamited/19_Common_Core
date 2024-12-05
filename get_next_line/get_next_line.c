@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/04 17:40:40 by jilin            ###   ########.fr       */
+/*   Updated: 2024/12/05 03:21:41 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,12 +156,13 @@ static char	*extract(char *txt)
 // if txt[count + 1] is \0 then the \0 is just after the \n so no leftover
 
 // we will store the leftover into left using ft_substr
-// ft_substr(file, start, start + len)
-// if left is empty or equal to \0 then we free it and = NULL
+// ft_substr(file, starting index, len), we calculate len as
+// ft_strlen - count because we want len after \n and count is \n
+// and start as count + 1 because we want to start after \n
 
 // Add a condition if ft_substr create empty string
 
-// terminate the string with count + 1 for \0
+// terminate the string with count + 1 for \0 because count is \n
 // return leftover
 
 //* MAIN
