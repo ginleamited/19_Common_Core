@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/05 16:02:44 by jilin            ###   ########.fr       */
+/*   Updated: 2024/12/06 18:03:54 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,31 +167,31 @@ static char	*extract(char *txt)
 
 //* MAIN
 
-int main(int argc, char **argv)
-{
-    int fd;
-    char *txt;
+// int main(int argc, char **argv)
+// {
+//     int fd;
+//     char *txt;
 
-    if (argc != 2)
-    {
-        printf("Usage: %s <filename>\n", argv[0]);
-        return (1);
-    }
-    fd = open(argv[1], O_RDONLY);
-    if (fd < 0)
-    {
-        perror("Error opening file");
-        return (1);
-    }
-    while ((txt = get_next_line(fd)) != NULL)
-    {
-        printf("ligne: %s", txt);
-        free(txt);
-    }
-    if (close(fd) < 0)
-    {
-        perror("Error closing file");
-        return (1);
-    }
-    return (0);
-}
+//     if (argc != 2)
+//     {
+//         printf("Usage: %s <filename>\n", argv[0]);
+//         return (1);
+//     }
+//     fd = open(argv[1], O_RDONLY);
+//     if (fd < 0)
+//     {
+//         perror("Error opening file");
+//         return (1);
+//     }
+//     while ((txt = get_next_line(fd)) != NULL)
+//     {
+//         printf("ligne: %s", txt);
+//         free(txt);
+//     }
+//     if (close(fd) < 0)
+//     {
+//         perror("Error closing file");
+//         return (1);
+//     }
+//     return (0);
+// }
