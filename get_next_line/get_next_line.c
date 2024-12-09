@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:17 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/06 18:03:54 by jilin            ###   ########.fr       */
+/*   Updated: 2024/12/09 18:24:08 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,16 @@ static char	*free_stuff(char *stash)
 	}
 	return (NULL);
 }
+
+// static char	*adding(char *stash, char *buf)
+// {
+// 	char	*new_stash;
+
+// 	new_stash = ft_strjoin(stash, buf);
+// 	free (stash);
+// 	stash = NULL;
+// 	return (new_stash);
+// }
 
 static char	*reading(int fd, char *buf, char *stash)
 {
