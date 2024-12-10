@@ -5,35 +5,48 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/07 14:18:24 by jilin             #+#    #+#              #
-#    Updated: 2024/12/07 14:19:49 by jilin            ###   ########.fr        #
+#    Created: 2024/12/10 16:29:05 by jilin             #+#    #+#              #
+#    Updated: 2024/12/10 16:29:06 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap.a
-
-CC = cc -Wall -Wextra -Werror
-
-LIB = ar -rcs
-
-SRC = push_swap.c
-
+# Variables
+NAME = push_swap
+LIBFT_DIR = libs/libft
+PRINTF_DIR = libs/ft_printf
+LIBFT = $(LIBFT_DIR)/libft.a
+PRINTF = $(PRINTF_DIR)/libftprintf.a
+SRC = src/main.c src/other.c  # Add your source files here
 OBJ = $(SRC:.c=.o)
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I includes -I $(LIBFT_DIR)/includes -I $(PRINTF_DIR)/includes
+
+# Rules
+all: $(LIBFT) $(PRINTF) $(NAME)
+
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR)
+
+$(PRINTF):
+	@$(MAKE) -C $(PRINTF_DIR)
 
 $(NAME): $(OBJ)
-		$(LIB) $(NAME) $(OBJ)
-
-%.o: %.c push_swap.h
-	$(CC) -c $< -o $@
-
-all: $(NAME)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(PRINTF)
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
+	@$(MAKE) clean -C $(LIBFT_DIR)
+	@$(MAKE) clean -C $(PRINTF_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@$(MAKE) fclean -C $(LIBFT_DIR)
+	@$(MAKE) fclean -C $(PRINTF_DIR)
 
 re: fclean all
+
+# Dependencies
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: all clean fclean re
