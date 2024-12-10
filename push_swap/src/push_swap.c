@@ -6,9 +6,8 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:16 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/10 17:10:06 by jilin            ###   ########.fr       */
+/*   Updated: 2024/12/10 17:31:40 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
-#include "../include/ft_printf.h"
+#include "../push_swap.h"

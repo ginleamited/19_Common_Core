@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:13 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/07 14:21:07 by jilin            ###   ########.fr       */
+/*   Updated: 2024/12/10 17:30:12 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <ctype.h>
+# include "include/libft.h"
+# include "include/printf.h"
 
 typedef struct s_list
 {
