@@ -10,105 +10,50 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Standard
-NAME			= libft.a
+NAME = libft.a
 
-# Directories
-INC				= inc/
-SRC_DIR			= src/
-OBJ_DIR			= obj/
+CC = gcc
 
-# Compielr and Flags
-CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror -I
-RM				= rm -f
-AR				= ar rcs
+CFLAGS = -Wall -Wextra -Werror
 
-# Source Files
-FTIS_DIR		=	$(SRC_DIR)ft_is/ft_isalnum.c \
-					$(SRC_DIR)ft_is/ft_isalpha.c \
-					$(SRC_DIR)ft_is/ft_isascii.c \
-					$(SRC_DIR)ft_is/ft_isdigit.c \
-					$(SRC_DIR)ft_is/ft_isprint.c 
+AR = ar -rcs
 
-FTMEM_DIR		=	$(SRC_DIR)ft_mem/ft_bzero.c \
-					$(SRC_DIR)ft_mem/ft_calloc.c \
-					$(SRC_DIR)ft_mem/ft_memchr.c \
-					$(SRC_DIR)ft_mem/ft_memcmp.c \
-					$(SRC_DIR)ft_mem/ft_memmove.c \
-					$(SRC_DIR)ft_mem/ft_memset.c 
+RM = rm -rf
 
-FTPUT_DIR		=	$(SRC_DIR)ft_put/ft_putchar_fd.c \
-					$(SRC_DIR)ft_put/ft_putendl_fd.c \
-					$(SRC_DIR)ft_put/ft_putnbr_fd.c \
-					$(SRC_DIR)ft_put/ft_putstr_fd.c 
+SRC_DIR = src/
 
-FTTO_DIR		=	$(SRC_DIR)ft_to/ft_atoi.c \
-					$(SRC_DIR)ft_to/ft_itoa.c \
-					$(SRC_DIR)ft_to/ft_tolower.c \
-					$(SRC_DIR)ft_to/ft_toupper.c
+OBJ_DIR = obj/
 
-FTSTR_DIR		=	$(SRC_DIR)ft_str/ft_split.c \
-					$(SRC_DIR)ft_str/ft_strchr.c \
-					$(SRC_DIR)ft_str/ft_strdup.c \
-					$(SRC_DIR)ft_str/ft_striteri.c \
-					$(SRC_DIR)ft_str/ft_strjoin.c \
-					$(SRC_DIR)ft_str/ft_strlcat.c \
-					$(SRC_DIR)ft_str/ft_strlcpy.c \
-					$(SRC_DIR)ft_str/ft_strlen.c \
-					$(SRC_DIR)ft_str/ft_strmapi.c \
-					$(SRC_DIR)ft_str/ft_strncmp.c \
-					$(SRC_DIR)ft_str/ft_strncpy.c \
-					$(SRC_DIR)ft_str/ft_strnstr.c \
-					$(SRC_DIR)ft_str/ft_strrchr.c \
-					$(SRC_DIR)ft_str/ft_strtrim.c \
-					$(SRC_DIR)ft_str/ft_substr.c 
+SRC_FILES = ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint \
+            ft_itoa ft_memchr ft_memcmp ft_memcpy ft_memmove ft_memset ft_putchar_fd ft_putendl_fd \
+            ft_putnbr_fd ft_putstr_fd ft_split ft_strchr ft_strdup ft_striteri ft_strjoin ft_strlcat \
+            ft_strlcpy ft_strlen ft_strmapi ft_strncmp ft_strnstr ft_strrchr ft_strtrim ft_substr \
+            ft_tolower ft_toupper ft_strlcat ft_toupper ft_tolower ft_printf functions_hex functions \
+			get_next_line_utils get_next_line
+BONUS_SRC_FILES = ft_lstnew_bonus ft_lstadd_front_bonus \
+			ft_lstsize_bonus ft_lstlast_bonus ft_lstadd_back_bonus ft_lstdelone_bonus ft_lstclear_bonus \
+			ft_lstiter_bonus ft_lstmap_bonus
 
-FTLST_DIR		=	$(SRC_DIR)ft_lst/ft_lstadd_back.c \
-					$(SRC_DIR)ft_lst/ft_lstadd_front.c \
-					$(SRC_DIR)ft_lst/ft_lstclear.c \
-					$(SRC_DIR)ft_lst/ft_lstdelone.c \
-					$(SRC_DIR)ft_lst/ft_lstiter.c \
-					$(SRC_DIR)ft_lst/ft_lstlast.c \
-					$(SRC_DIR)ft_lst/ft_lstmap.c \
-					$(SRC_DIR)ft_lst/ft_lstnew.c \
-					$(SRC_DIR)ft_lst/ft_lstsize.c 
+OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR), $(addsuffix _bonus.o, $(BONUS_SRC_FILES)))
+BONUS_SRC = $(addprefix $(BONUS_SRC_DIR), $(addsuffix _bonus.c, $(BONUS_SRC_FILES)))
 
-FTPRINTF_DIR	=	$(SRC_DIR)ft_printf/ft_printf.c \
-					$(SRC_DIR)ft_printf/ft_handle_char.c \
-					$(SRC_DIR)ft_printf/ft_handle_string.c \
-					$(SRC_DIR)ft_printf/ft_handle_int.c \
-					$(SRC_DIR)ft_printf/ft_handle_unsigned.c \
-					$(SRC_DIR)ft_printf/ft_handle_pointer.c	\
-					$(SRC_DIR)ft_printf/ft_handle_hex.c \
-					$(SRC_DIR)ft_printf/ft_handle_percent.c \
-					$(SRC_DIR)ft_printf/ft_printf_utils.c
+HEAD = ./include/
 
-GNL_DIR			=	$(SRC_DIR)get_next_line/get_next_line.c 
+all : $(NAME)
 
-# Concatenate all source files
-SRC 			= $(FTIS_DIR) $(FTMEM_DIR) $(FTPUT_DIR) $(FTTO_DIR) $(FTTO_DIR) $(FTSTR_DIR) $(FTLST_DIR) $(FTPRINTF_DIR) $(GNL_DIR)
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -I $(HEAD) -c $< -o $@
 
-# Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
-OBJ 			= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
+$(NAME)	: $(OBJ)
+	@$(AR) $(NAME) $(OBJ)
 
-# Build rules
-all: 			$(NAME)
+clean :
+	$(RM) $(OBJ_DIR)
 
-$(NAME): 		$(OBJ)
-				@$(AR) $(NAME) $(OBJ)
+fclean : clean
+	$(RM) $(NAME)
 
-$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
-				@mkdir -p $(@D)
-				@$(CC) $(CFLAGS) $(INC) -c $< -o $@
-
-clean:
-				@$(RM) -r $(OBJ_DIR)
-				@$(RM) .cache_exists
-
-fclean: 		clean
-				@$(RM) $(NAME)
-
-re: 			fclean all
-
-.PHONY: 		all clean fclean re
+re : fclean all

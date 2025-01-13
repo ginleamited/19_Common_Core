@@ -10,118 +10,47 @@
 #                                                                              #
 # **************************************************************************** #
 
-# VARIABLES
-
-CC = cc
-# compiler use cc
-CFLAGS = -Wall -Wextra -Werror
-# flags
-
-SRC = ft_isalpha.c \
-			ft_isdigit.c \
-            ft_isalnum.c \
-            ft_isascii.c \
-            ft_isprint.c \
-            ft_strlen.c \
-            ft_memset.c \
-            ft_bzero.c \
-            ft_memcpy.c \
-            ft_memmove.c \
-            ft_strlcpy.c \
-            ft_strlcat.c \
-            ft_toupper.c \
-	      	ft_tolower.c \
-	      	ft_strchr.c \
-	      	ft_strrchr.c \
-	      	ft_strncmp.c \
-	      	ft_memchr.c \
-	      	ft_memcmp.c \
-	      	ft_strnstr.c \
-	      	ft_atoi.c \
-	      	ft_calloc.c \
-	      	ft_strdup.c \
-		  	ft_substr.c \
-		  	ft_strjoin.c \
-		  	ft_strtrim.c \
-		  	ft_split.c \
-		  	ft_itoa.c \
-		  	ft_strmapi.c \
-		  	ft_striteri.c \
-		  	ft_putchar_fd.c \
-		  	ft_putstr_fd.c \
-		  	ft_putendl_fd.c \
-		  	ft_putnbr_fd.c \
-# source files
-
-BONUS_SRC = ft_lstnew_bonus.c \
-		  		ft_lstadd_front_bonus.c \
-		  		ft_lstsize_bonus.c \
-		 		ft_lstlast_bonus.c \
-		  		ft_lstadd_back_bonus.c \
-		  		ft_lstdelone_bonus.c \
-		  		ft_lstclear_bonus.c \
-		  		ft_lstiter_bonus.c \
-		  		ft_lstmap_bonus.c \
-# bonus files
-
-OBJ = $(SRC:.c=.o)
-# created by replacing .c with .o
-BONUS_OBJ = $(BONUS_SRC:.c=.o)
-# created by replacing .c with .o
-
-HEADER = libft.h
-# header file on the top of each file
 NAME = libft.a
-# name of output library
 
-ifeq ($(BONUS),1)
-	OBJ_FILES = $(OBJ) $(BONUS_OBJ)
-else
-	OBJ_FILES = $(OBJ)
-endif
-# OBJ_FILES: Determines whether to include 
-# BONUS_OBJ files based on the BONUS flag
+CC = gcc
 
-# RULES
+CFLAGS = -Wall -Wextra -Werror
 
-all: $(NAME)
-# if not up-to-date, run the rule to build it
+AR = ar -rcs
 
-$(NAME): $(OBJ_FILES)
-# build static library libft.a by archiving all the
-# object files in $(OBJ_FILES)
-	ar -rc $(NAME) $(OBJ_FILES)
-# ar -rc creates or replace the library $(NAME) with 
-# the given object files ($(OBJ_FILES)).
+RM = rm -rf
 
-%.o: %.c $(HEADER)
-# compiles each .c source file into a .o object file
-	$(CC) $(CFLAGS) -c $< -o $@
-# $< is the first prerequisite (the .c file), 
-# and $@ is the target (the .o file).
+SRC_DIR = src/
 
-# BONUS RULES
+OBJ_DIR = obj/
 
-bonus:
-	$(MAKE) BONUS=1 all
-# Sets the BONUS flag to 1 and calls the all target 
-# to include bonus object files in the library
+SRC_FILES = ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint \
+            ft_itoa ft_memchr ft_memcmp ft_memcpy ft_memmove ft_memset ft_putchar_fd ft_putendl_fd \
+            ft_putnbr_fd ft_putstr_fd ft_split ft_strchr ft_strdup ft_striteri ft_strjoin ft_strlcat \
+            ft_strlcpy ft_strlen ft_strmapi ft_strncmp ft_strnstr ft_strrchr ft_strtrim ft_substr \
+            ft_tolower ft_toupper ft_strlcat ft_toupper ft_tolower ft_lstnew_bonus ft_lstadd_front_bonus \
+			ft_lstsize_bonus ft_lstlast_bonus ft_lstadd_back_bonus ft_lstdelone_bonus ft_lstclear_bonus \
+			ft_lstiter_bonus ft_lstmap_bonus
 
-# CLEANING RULES
+OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-clean:
-	rm -f $(OBJ) $(BONUS_OBJ)
-# Removes all object files ($(OBJ) and $(BONUS_OBJ))
+SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 
-fclean: clean
-	rm -f $(NAME)
-# Calls clean and also removes the library file $(NAME)
+HEAD = ./include/
 
-re: fclean all
-# Rebuilds the library by first calling fclean 
-# (clean everything) and then all (rebuild)
+all : $(NAME)
 
-.PHONY: all clean fclean re
-# tells make that all, clean, fclean, and re are not 
-# actual files, but rather labels for commands, ensuring 
-# that make always executes them
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -I $(HEAD) -c $< -o $@
+
+$(NAME)	: $(OBJ)
+	@$(AR) $(NAME) $(OBJ)
+
+clean :
+	$(RM) $(OBJ_DIR)
+
+fclean : clean
+	$(RM) $(NAME)
+
+re : fclean all

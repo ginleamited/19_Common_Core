@@ -6,11 +6,11 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/03 18:25:04 by jilin             #+#    #+#              #
-#    Updated: 2024/11/07 00:07:33 by jilin            ###   ########.fr        #
+#    Updated: 2025/01/13 00:23:40 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
+NAME = ft_printf.a
 
 CC = cc -Wall -Wextra -Werror
 
