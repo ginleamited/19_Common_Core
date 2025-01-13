@@ -13,15 +13,12 @@
 NAME = libft.a
 
 CC = gcc
-
 CFLAGS = -Wall -Wextra -Werror
 
 AR = ar -rcs
-
 RM = rm -rf
 
 SRC_DIR = src/
-
 OBJ_DIR = obj/
 
 SRC_FILES = ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint \
@@ -32,11 +29,10 @@ SRC_FILES = ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii ft_isdig
 			ft_lstsize_bonus ft_lstlast_bonus ft_lstadd_back_bonus ft_lstdelone_bonus ft_lstclear_bonus \
 			ft_lstiter_bonus ft_lstmap_bonus
 
-OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:=.o))
 
-HEAD = ./include/
+HEAD = ./inc/
 
 all : $(NAME)
 

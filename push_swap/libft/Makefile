@@ -13,15 +13,12 @@
 NAME = libft.a
 
 CC = gcc
-
 CFLAGS = -Wall -Wextra -Werror
 
 AR = ar -rcs
-
 RM = rm -rf
 
 SRC_DIR = src/
-
 OBJ_DIR = obj/
 
 SRC_FILES = ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint \
@@ -30,25 +27,29 @@ SRC_FILES = ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii ft_isdig
             ft_strlcpy ft_strlen ft_strmapi ft_strncmp ft_strnstr ft_strrchr ft_strtrim ft_substr \
             ft_tolower ft_toupper ft_strlcat ft_toupper ft_tolower ft_printf functions_hex functions \
 			get_next_line_utils get_next_line
-BONUS_SRC_FILES = ft_lstnew_bonus ft_lstadd_front_bonus \
-			ft_lstsize_bonus ft_lstlast_bonus ft_lstadd_back_bonus ft_lstdelone_bonus ft_lstclear_bonus \
-			ft_lstiter_bonus ft_lstmap_bonus
 
-OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+BONUS_FILES = ft_lstnew_bonus ft_lstadd_front_bonus ft_lstsize_bonus ft_lstlast_bonus ft_lstadd_back_bonus \
+              ft_lstdelone_bonus ft_lstclear_bonus ft_lstiter_bonus ft_lstmap_bonus
+
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-BONUS_OBJ = $(addprefix $(BONUS_OBJ_DIR), $(addsuffix _bonus.o, $(BONUS_SRC_FILES)))
-BONUS_SRC = $(addprefix $(BONUS_SRC_DIR), $(addsuffix _bonus.c, $(BONUS_SRC_FILES)))
+OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:=.o))
 
-HEAD = ./include/
+BONUS_SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(BONUS_FILES)))
+BONUS_OBJ = $(addprefix $(OBJ_DIR), $(BONUS_FILES:=.o))
+
+HEAD = ./inc/
 
 all : $(NAME)
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -I $(HEAD) -c $< -o $@
 
 $(NAME)	: $(OBJ)
 	@$(AR) $(NAME) $(OBJ)
+
+bonus: $(OBJ) $(BONUS_OBJ)
+	$(AR) $(NAME) $(BONUS_OBJ)
 
 clean :
 	$(RM) $(OBJ_DIR)
