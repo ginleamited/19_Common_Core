@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:37:42 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/13 00:18:02 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/13 01:18:30 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ int	printf_format(char c, va_list args)
 // if : will check every if
 
 //* MAIN
-int main (void)
-{
-	printf("test jej kkskk%d", 44);
-}
+// int main (void)
+// {
+// 	printf("test jej kkskk%d", 44);
+// }
 
 //* EXPLANATION:
 //printf will print count and string
