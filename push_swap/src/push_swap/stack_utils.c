@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:05:30 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/20 21:08:52 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/18 17:59:18 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ bool	stack_sorted(t_stack_node *stack)
 	}
 	return (true);
 }
+
+//* EXPLANATION:
+
 
 t_stack_node	*find_min(t_stack_node *stack)
 {
@@ -44,3 +47,5 @@ t_stack_node	*find_min(t_stack_node *stack)
 	}
 	return (min_node)
 }
+
+//* EXPLANATION:

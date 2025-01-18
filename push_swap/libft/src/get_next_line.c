@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:17 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/13 00:39:57 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/18 20:47:50 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,17 +177,17 @@ static char	*extract(char *txt)
 
 //* MAIN
 
-// int main(int argc, char **argv)
+// int main(int ac, char **av)
 // {
 //     int fd;
 //     char *txt;
 
-//     if (argc != 2)
+//     if (ac != 2)
 //     {
-//         printf("Usage: %s <filename>\n", argv[0]);
+//         printf("Usage: %s <filename>\n", av[0]);
 //         return (1);
 //     }
-//     fd = open(argv[1], O_RDONLY);
+//     fd = open(av[1], O_RDONLY);
 //     if (fd < 0)
 //     {
 //         perror("Error opening file");

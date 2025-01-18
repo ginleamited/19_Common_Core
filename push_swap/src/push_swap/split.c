@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:49:52 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/17 17:57:36 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/18 17:58:52 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ static int	count_words(char *s, char c)
 	return (count);
 }
 
+//* EXPLANATION:
+
+
 static char *get_next_word(char *s, char c)
 {
 	static int	cursor = 0;
@@ -57,6 +60,9 @@ static char *get_next_word(char *s, char c)
 	next_word[i] = '\0';
 	return (next_word);
 }
+
+//* EXPLANATION:
+
 
 char	**split(char *s, char c)
 {
@@ -86,3 +92,5 @@ char	**split(char *s, char c)
 	result_array[i] = NULL;
 	return (result_array);
 }
+
+//* EXPLANATION:

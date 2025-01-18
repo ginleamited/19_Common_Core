@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:13 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/14 20:19:27 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/18 20:46:51 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			free_stack(t_stack_node **stack);
 void			free_errors(t_stack_node **a);
 
 //***Stack initiation
-void			init_stack_a(t_stack_node **a, char **argv); //Initiate stack `a` before processing
+void			init_stack_a(t_stack_node **a, char **av); //Initiate stack `a` before processing
 char			**split(char *s, char c); //To handle input of numbers as a string argument, e.g. enclosed in " "
 
 //***Nodes initiation

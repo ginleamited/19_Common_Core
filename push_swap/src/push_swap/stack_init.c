@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:27:26 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/14 00:14:13 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/18 20:46:51 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ long	ft_atoi(const char *str)
 	return (resultat * signe);
 }
 
+//* EXPLANATION:
+
+
 static void	append_node(t_stack_node **stack, int n)
 {
 	t_stack_node	*node;
@@ -64,17 +67,20 @@ static void	append_node(t_stack_node **stack, int n)
 	}
 }
 
-void	init_stack_a(t_stack_node **a, char **argv)
+//* EXPLANATION:
+
+
+void	init_stack_a(t_stack_node **a, char **av)
 {
 	long	n;
 	int		i;
 	
 	i = 0;
-	while (argv[i])
+	while (av[i])
 	{
-		if (error_syntax(argv[i]))
+		if (error_syntax(av[i]))
 			free_error(a);
-		n = ft_atoi(argv[i]);
+		n = ft_atoi(av[i]);
 		if (n > INT_MAX || n < INT_MIN)
 			free_error(a);
 		if (error_duplicate(*a, (int)n))
@@ -83,6 +89,9 @@ void	init_stack_a(t_stack_node **a, char **argv)
 		i++;
 	}
 }
+
+//* EXPLANATION:
+
 
 t_stack_node	*get_cheapest(t_stack_node *stack)
 {
@@ -96,9 +105,37 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 	}
 	return (NULL);
 }
+
+//* EXPLANATION:
+// This function searches for the cheapest node
+// So we loop in every node in the stack until NULL, for each node we check
+// using the boolean if the cheapest flag is true.
+// If found, then return stack.
+// If not found, moves to the next node.
+// In the end, if still no found, return NULL
+
 void	prep_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_name)
 {
 	while (*stack != top_node)
 	{
-		
+		if (stack_name == 'a')
+		{
+			if (top_node->above_median)
+				ra(stack, false);
+			else
+				rra(stack, false);
+		}
+		else if (stack_name == 'b')
+		{
+			if (top_node->above_median)
+				rb(stack, false);
+			else
+				rrb(stack, false);
+		}
 	}
+}
+
+//* EXPLANATION:
+// This function moves the required node to the top of the stack
+// It will check in each stack if the required node is above median or not,
+// resulting doing rotate or reverse rotate
