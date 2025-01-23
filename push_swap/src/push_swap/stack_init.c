@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:27:26 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/23 15:40:13 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/23 17:17:51 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,18 @@ static void	append_node(t_stack_node **stack, int n)
 }
 
 //* EXPLANATION:
-// This function appends a new node to the stack
-// If the stack is empty, then return
-// Allocate memory for the new node
+//? This function searches the last node and appends a new node to the stack
+// (*node) stores the address of the new node created with the value of `n`
+// (*last_node) stores the address of the last node in the stack
+// Add a protection to check if the stack is empty
+//? Allocate memory for the new node
+// Assign the next node to NULL because it is the last node in the stack
 // Assign the value of the new node to `n`
-// Assign the next node to NULL
 // Assign the cheapest flag to 0
-// If the stack is empty, then assign the new node to the stack
-// If the stack is not empty, then find the last node in the stack
-// Assign the next node to the last node
-// Assign the previous node to the last node
-
+//? If the stack is empty, then assign the new node to the stack
+//? If the stack is not empty, then find the last node in the stack
+// Append the new node to the last node
+// Update the previous node to the last node
 
 void	init_stack_a(t_stack_node **a, char **av)
 {
@@ -101,14 +102,13 @@ void	init_stack_a(t_stack_node **a, char **av)
 }
 
 //* EXPLANATION:
-// Check if the input is a number or not
-// If not, then free the stack
-// To check the overflow, if the number is too big or too small, then free the stack
+//? This function initializes the stack `a`
+// Check if the input is a number or not, if not then free the stack
+// Check the overflow, if the number is too big or too small, then free the stack
 // If the number is duplicate, then free the stack
-// If everything is fine, then append the node to linked list by taking a
+//? If everything is fine, then append the node to linked list by taking a
 // a pointer to stack `a`, create a new node and assign `n` to that new node
-// Repeat until the end of the inputI
-
+// Repeat until the end of the input
 
 t_stack_node	*get_cheapest(t_stack_node *stack)
 {
@@ -124,10 +124,10 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 }
 
 //* EXPLANATION:
-// This function searches for the cheapest node
-// So we loop in every node in the stack until NULL, for each node we check
-// using the boolean if the cheapest flag is true.
-// If found, then return stack.
+//? This function searches for the cheapest node
+// So it loop through in each node in the stack and check if 
+// the cheapest flag is true.
+// If found, then return the a pointer to that node
 // If not found, moves to the next node.
 // In the end, if still no found, return NULL
 
@@ -153,6 +153,9 @@ void	prep_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_name
 }
 
 //* EXPLANATION:
-// This function moves the required node to the top of the stack
-// It will check in each stack if the required node is above median or not,
-// resulting doing rotate or reverse rotate
+//? This function moves the required node to the top of the stack
+// First, it checks if the node is already at the top of the stack
+// If not, then it will check if the node is above the median or not
+//? If above median, then rotate the stack
+//? If not above median, then reverse rotate the stack
+// Repeat until the required node is at the top of the stack
