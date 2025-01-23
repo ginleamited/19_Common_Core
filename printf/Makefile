@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/03 18:25:04 by jilin             #+#    #+#              #
-#    Updated: 2025/01/13 18:56:24 by jilin            ###   ########.fr        #
+#    Updated: 2025/01/21 14:05:01 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 SRC_FILES = ft_printf.c functions.c functions_hex.c
+
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))
 

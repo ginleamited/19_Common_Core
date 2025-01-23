@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:27:26 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/18 20:46:51 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/23 15:40:13 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ long	ft_atoi(const char *str)
 }
 
 //* EXPLANATION:
-
+// Basic atoi function
 
 static void	append_node(t_stack_node **stack, int n)
 {
 	t_stack_node	*node;
 	t_stack_node	*last_node;
 
-	if (!slack)
+	if (!stack)
 		return ;
 	node = malloc(sizeof(t_stack_node));
 	if (!node)
@@ -68,6 +68,16 @@ static void	append_node(t_stack_node **stack, int n)
 }
 
 //* EXPLANATION:
+// This function appends a new node to the stack
+// If the stack is empty, then return
+// Allocate memory for the new node
+// Assign the value of the new node to `n`
+// Assign the next node to NULL
+// Assign the cheapest flag to 0
+// If the stack is empty, then assign the new node to the stack
+// If the stack is not empty, then find the last node in the stack
+// Assign the next node to the last node
+// Assign the previous node to the last node
 
 
 void	init_stack_a(t_stack_node **a, char **av)
@@ -91,6 +101,13 @@ void	init_stack_a(t_stack_node **a, char **av)
 }
 
 //* EXPLANATION:
+// Check if the input is a number or not
+// If not, then free the stack
+// To check the overflow, if the number is too big or too small, then free the stack
+// If the number is duplicate, then free the stack
+// If everything is fine, then append the node to linked list by taking a
+// a pointer to stack `a`, create a new node and assign `n` to that new node
+// Repeat until the end of the inputI
 
 
 t_stack_node	*get_cheapest(t_stack_node *stack)
