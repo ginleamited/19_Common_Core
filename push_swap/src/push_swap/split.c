@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:49:52 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/18 17:58:52 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/23 18:57:07 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,57 @@ static int	count_words(char *s, char c)
 }
 
 //* EXPLANATION:
+//? This function counts the number of words in a string *s separated by a delimiter c
+// bool inside_word is used to check if the cursor is inside a word or not
+// initialize count to 0 for counting the words
+//? In the first while loop, we set inside_word to false
+//? In the second while loop, we skip the character `c` at the beginning
+//? In the third while loop, we check if we are not inside a word,
+//? this means we are at the beginning of a new word, so we increment the count
+// We set inside_word to true so that we don't count the same word again
+// We increment the cursor to move to the next character
+// if *s is not NULL, then we set inside_word to false again and repeat the process
+// In the end, we return the count
 
 
-static char *get_next_word(char *s, char c)
+static char *get_next_word(char *s, char c, int *cursor)
 {
-	static int	cursor = 0;
 	char		*next_word;
 	int			len;
 	int			i;
 
 	len = 0;
 	i = 0;
-	while (s[cursor] == c)
-		++cursor;
-	while ((s[cursor + len] != c) && s[cursor + len])
-		++len;
-	next_word = malloc((size_t)len * sizeof(char) + 1);
+	if (!s || !cursor)
+		return (NULL);
+	while (s[*cursor] == c)
+		(*cursor)++;
+	while ((s[*cursor + len] != c) && s[*cursor + len])
+		len++;
+	if (len == 0)
+		return (NULL);
+	next_word = (char *)malloc((len + 1) * sizeof(char));
 	if (!next_word)
 		return (NULL);
-	while ((s[cursor] != c) && c[cursor])
-		next_word[i++] = s[cursor++];
+	while (i < len)
+		next_word[i++] = s[(*cursor)++];
 	next_word[i] = '\0';
 	return (next_word);
 }
 
 //* EXPLANATION:
-
+//? This function returns the next word in the string *s separated by a delimiter c
+// We use a cursor to keep track of the position in the string
+//? The first while loop skips the delimiter `c` at the beginning and
+//? moving the cursor until it reaches a character that is not `c`
+//? The second while loop calculates the length of the word for memory allocation
+// We allocate memory for the next_word using malloc, better (len + 1) * sizeof(char) 
+// than len * sizeof(char) + 1
+// We protect the malloc
+//? The third while loop copies the word to the next_word
+// We increment the cursor and the index i
+// We set the last character of the next_word to NULL
+// In the end, we return the next_word
 
 char	**split(char *s, char c)
 {
