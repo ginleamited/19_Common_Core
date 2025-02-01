@@ -1,9 +1,5 @@
 # libft
 
-<p align="center">
-  <img src="" />
-</p>
-
 42 school's first project, libft, is about learning how the standard functions of C programming work, by coding them from scratch and creating our very own library.
 
 > This project has been archived in the state it was in at the time of evaluation.
