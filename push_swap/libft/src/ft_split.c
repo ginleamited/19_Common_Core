@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 01:29:37 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/13 00:36:18 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/11 22:53:24 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,31 @@ static int	ft_wordcount(const char *str, char c)
 
 	i = 0;
 	word = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] != c)
+		{
+			word++;
+			while (str[i] != c && str[i] != '\0')
+				i++;
+		}
+		else
+			i++;
+	}
+	return (word);
+}
+
+static int	ft_wordcount(const char *str, char c)
+{
+	int i = 0;
+	int word = 0;
+	int leading_delim;
+	
+if (str[0] == c)
+    leading_delim = 1;
+else
+    leading_delim = 0;
+
 	while (str[i] != '\0')
 	{
 		if (str[i] != c)
