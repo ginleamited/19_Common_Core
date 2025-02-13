@@ -6,11 +6,11 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:27:26 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/23 17:17:51 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/13 22:15:08 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 long	ft_atoi(const char *str)
 {
@@ -106,8 +106,8 @@ void	init_stack_a(t_stack_node **a, char **av)
 // Check if the input is a number or not, if not then free the stack
 // Check the overflow, if the number is too big or too small, then free the stack
 // If the number is duplicate, then free the stack
-//? If everything is fine, then append the node to linked list by taking a
-// a pointer to stack `a`, create a new node and assign `n` to that new node
+//? If everything is fine, then append the node to linked list by taking an
+//? a pointer to stack `a`, create a new node and assign `n` to that new node
 // Repeat until the end of the input
 
 t_stack_node	*get_cheapest(t_stack_node *stack)

@@ -6,11 +6,11 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 21:05:30 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/12 00:18:13 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/13 21:43:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 int	stack_len(t_stack_node *stack)
 {
@@ -64,7 +64,7 @@ t_stack_node	*find_last(t_stack_node *stack)
 //* EXPLANATION:
 //? This function will return the last node in the stack
 // 	As the next node is not NULL, the stack will point to the next node
-// until the next node is NULL, then the stack will return the last node
+//  until the next node is NULL, then the stack will return the last node
 
 t_stack_node	*find_min(t_stack_node *stack)
 {
@@ -83,10 +83,17 @@ t_stack_node	*find_min(t_stack_node *stack)
 		}
 		stack = stack->next;
 	}
-	return (min_node)
+	return (min_node);
 }
 
 //* EXPLANATION:
+//? this function returns the minimum value in the stack
+// the minimum value is stored in the variable `min`, it is set up
+// as LONG_MAX to ensure that the first value in the stack is smaller
+// And the node with the minimum value is stored in the variable `min_node`
+//? In the loop, if the nbr is smaller than the min, then the min is updated
+// and min_node will point to the node with the minimum value
+// then we will check the next node
 
 t_stack_node	*find_max(t_stack_node *stack)
 {
@@ -107,3 +114,7 @@ t_stack_node	*find_max(t_stack_node *stack)
 	}
 	return (max_node);
 }
+//* EXPLANATION:
+//? this function returns the maximum value in the stack
+// it works the same way as the find_min function
+// but it will return the maximum value in the stack

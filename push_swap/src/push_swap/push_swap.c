@@ -6,11 +6,11 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:16 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/11 00:38:31 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/13 22:31:21 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 int	main(int ac, char **av)
 {
@@ -36,3 +36,15 @@ int	main(int ac, char **av)
 	return (0);
 }
 //* EXPLANATION
+//? This program will sort random numbers in ascending order
+// 	First, set both pointers in a and b to NULL
+//?  If argc is 1, means there is no argument, return 1
+//?  If argc is 2, and the first character of the first argument is NULL, return 1
+//?  If argc is 2, split the first argument by space and store it in av
+//  When we call init_stack_a, it will initialize the stack a, we add 1 to av
+//  to skip the program name.
+//?  So if the stack is not sorted:
+//?  If the stack length is 2, swap the first two elements
+//?  If the stack length is 3, sort with the sort_three function
+//?  If the stack length is more than 3, sort with the sort_stacks function
+//  In the end, free the stack and return 0
