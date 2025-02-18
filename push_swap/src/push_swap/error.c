@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 18:27:21 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/18 01:15:37 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/18 20:48:55 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,15 @@ void	free_stack(t_stack **stack)
 	while (current)
 	{
 		tmp = current->next;
-		current->nbr = 0;
 		free(current);
 		current = tmp;
 	}
 	*stack = NULL;
 }
 //* EXPLANATION:
+//? This function will free each node in the stack
+//  we use a tmp pointer to store current->next, because when we free current,
+//  current->next will be lost, then we will update current to tmp
 
 void	free_errors(t_stack_node **a)
 {
@@ -72,3 +74,4 @@ void	free_errors(t_stack_node **a)
 	exit(1);
 }
 //* EXPLANATION:
+//? This function will free the stack a and print "Error"
