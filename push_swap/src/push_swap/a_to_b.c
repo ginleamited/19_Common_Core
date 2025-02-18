@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 22:34:50 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/15 00:12:25 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/17 18:25:46 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 //* EXPLANATION:
-//? This function find 'a' node's target node in stack 'b'.
+//? This function find 'a' node's target node in stack 'b' to find the largest
+//? number in b that is smaller than the current node in a.
 // current_b and target_node store the pointer to the node in stack b
 //? match_index stores the value of the closest smaller value in stack a
 // we set the LONG_MIN value to match_index to compare it with the first value in stack b
