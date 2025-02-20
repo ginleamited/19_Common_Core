@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:15:56 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/20 11:41:02 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/20 22:10:32 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,67 @@ int main(void)
 	printf("Strings: %s, Integers: %d, Hex: %x, Percent: %%\n", "Hello", 42, 255);
 	printf("Characters written: %d\n", count);
 
+	return (0);
+}
+
+/* ************************************************************************** */
+
+#include <unistd.h>
+#include <stdarg.h>
+#include <stdio.h>
+
+static void	ft_putnbr_base(long n, int base, char *digits, int *count)
+{
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		(*count)++;
+		n = -n;
+	}
+	if (n >= base)
+		ft_putnbr_base(n / base, base, digits, count);
+	write(1, &digits[n % base], 1);
+	(*count)++;
+}
+
+static void	ft_putstr(const char *s, int *count)
+{
+	if (!s)
+		s = "(null)";
+	while (*s)
+		*count += write(1, s++, 1);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	va_list args;
+	int count = 0;
+
+	va_start(args, format);
+	while (*format)
+	{
+		if (*format == '%' && *(++format))
+		{
+			if (*format == 's')
+				ft_putstr(va_arg(args, char *), &count);
+			else if (*format == 'd')
+				ft_putnbr_base(va_arg(args, int), 10, "0123456789", &count);
+			else if (*format == 'x')
+				ft_putnbr_base(va_arg(args, unsigned int), 16, "0123456789abcdef", &count);
+			else
+				count += write(1, format, 1);
+		}
+		else
+			count += write(1, format, 1);
+		format++;
+	}
+	va_end(args);
+	return (count);
+}
+
+int main (void)
+{
+	ft_printf("Test string: %s, number: %d, hex: %x\n", "Hello", 44, 255);
+	printf("Test string: %s, number: %d, hex: %x\n", "Hello", 44, 255);
 	return (0);
 }
