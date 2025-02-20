@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 18:14:35 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/06 19:04:37 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/20 10:48:56 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char	*dest;
 	int		i;
@@ -21,6 +21,8 @@ char	*ft_strdup(char *src)
 	while (src[i])
 		i++;
 	dest = malloc(sizeof(char) * (i + 1));
+	if (!dest)
+		return (NULL);
 	i = 0;
 	while (src[i])
 	{
@@ -34,13 +36,18 @@ char	*ft_strdup(char *src)
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE];
-	static int	buffer_read;
-	static int	buffer_pos;
-	char		line[70000];
+	static int	buffer_read = 0;
+	static int	buffer_pos = 0;
+	char		*line;
 	int			i = 0;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
+
+	line = malloc(sizeof(char) * 70000);
+	if (!line)
+		return (NULL);
+
 	while (1)
 	{
 		if (buffer_pos >= buffer_read)
@@ -54,10 +61,15 @@ char	*get_next_line(int fd)
 		if (line[i - 1] == '\n')
 			break ;
 	}
-	if (i == 0)
+
+	if (i == 0 || buffer_read < 0)
+	{
+		free(line);
 		return (NULL);
+	}
+
 	line[i] = '\0';
-	return (ft_strdup(line));
+	return (line);
 }
 
 int	main()

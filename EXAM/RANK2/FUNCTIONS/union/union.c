@@ -1,23 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   union.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/20 10:12:41 by jilin             #+#    #+#             */
+/*   Updated: 2025/02/20 10:49:03 by jilin            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
 int main(int ac, char **av)
 {
     // create a lookup table for all chars in ascii table
-    int i = 0, lookup[256 = {0};
-    
+    int i = 0, lookup[256] = {0};
+
     if (ac == 3)
     {
         // loop over the whole first string
         // for each character, switch the value in
         // the lookup table
         while(av[1][i])
-        	lookup[(int)av[1][i++]] = 1;
+            lookup[(int)av[1][i++]] = 1;
         i = 0;
         // do the same thing for the second string
         while(av[2][i])
-        	lookup[(int)av[2][i++]] = 1;
+            lookup[(int)av[2][i++]] = 1;
         i = 0;
-        
+
         // loop over the first string to write the
         // seen chars to the screen, switch back the
         // value in the lookup table once printed

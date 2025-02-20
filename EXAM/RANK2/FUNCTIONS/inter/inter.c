@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 01:54:01 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/12 01:54:02 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/20 10:48:59 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ int	ft_putchar(char c);
 int	main(int ac, char **av)
 {
 	int	i = 0, j;
-	// create an array of int that will act as a lookup table
-	// 256 is because of the ascii table, each one will
-	// correspond to a single character
 	int	lookup[256] = {};
 
 	if (ac == 3)
@@ -56,4 +53,44 @@ int	main(int ac, char **av)
 int	ft_putchar(char c)
 {
 	return write(1, &c, 1);
+}
+
+#include <unistd.h>
+
+int ft_putchar(char c);
+
+int main(int ac, char **av)
+{
+    int i = 0;
+    int lookup[256] = {0}; // Lookup table to track characters
+
+    if (ac == 3)
+    {
+        // Mark characters from the second string (av[2]) in the lookup table
+        while (av[2][i])
+        {
+            lookup[(int)av[2][i]] = 1;
+            i++;
+        }
+
+        i = 0;
+        // Iterate through the first string (av[1]) and print characters
+        // that are present in the second string (av[2])
+        while (av[1][i])
+        {
+            if (lookup[(int)av[1][i]])
+            {
+                ft_putchar(av[1][i]);
+                lookup[(int)av[1][i]] = 0; // Mark as printed to avoid duplicates
+            }
+            i++;
+        }
+    }
+    ft_putchar('\n');
+    return 0; // Return 0 to indicate successful execution
+}
+
+int ft_putchar(char c)
+{
+    return write(1, &c, 1);
 }

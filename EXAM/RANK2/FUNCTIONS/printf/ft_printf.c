@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:15:56 by jilin             #+#    #+#             */
-/*   Updated: 2024/12/06 20:38:02 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/20 11:41:02 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	ft_putstr(const char *s, int *count)
 static void	ft_putnbr(int n, int *count)
 {
 	char c;
-	
+
 	if (n == -2147483648)
 	{
 		ft_putstr("-2147483648", count);
@@ -48,7 +48,7 @@ static void	ft_putnbr(int n, int *count)
 	(*count)++;
 }
 
-static void	ft_puthex(unsigned int n, int*count)
+static void	ft_puthex(unsigned int n, int *count)
 {
 	char *hex = "0123456789abcdef";
 
@@ -75,6 +75,11 @@ int	ft_print(const char *format, ...)
 				ft_putnbr(va_arg(args, int), &count);
 			else if (*format == 'x')
 				ft_puthex(va_arg(args, unsigned int), &count);
+			else if (*format == '%')
+			{
+				write(1, "%", 1);
+				count++;
+			}
 			else
 			{
 				write(1, format, 1);
@@ -91,7 +96,18 @@ int	ft_print(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-int main (void)
+
+int main(void)
 {
-	printf("test jej kkskk%d", 44);
+	int count;
+
+	// Test ft_print
+	count = ft_print("Strings: %s, Integers: %d, Hex: %x, Percent: %%\n", "Hello", 42, 255);
+	ft_print("Characters written: %d\n", count);
+
+	// Compare with printf
+	printf("Strings: %s, Integers: %d, Hex: %x, Percent: %%\n", "Hello", 42, 255);
+	printf("Characters written: %d\n", count);
+
+	return (0);
 }
