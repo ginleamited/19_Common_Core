@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:22 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/19 19:21:26 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/21 16:02:33 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,23 @@ static void	rev_rotate(t_stack_node **stack)
 //  Then we set the stack to last_node, so the last node will be the top node
 //  Then we update the prev pointer of the previous first node to point to the
 //  last node, so the doubly linked list is maintained
+
+void rra(t_stack_node **a, bool print)
+{
+	rev_rotate(a);
+	if (!print)
+		ft_printf("rra\n");
+}
+void rrb(t_stack_node **b, bool print)
+{
+	rev_rotate(b);
+	if (!print)
+		ft_printf("rrb\n");
+}
+void rrr(t_stack_node **a, t_stack_node **b, bool print)
+{
+	rev_rotate(a);
+	rev_rotate(b);
+	if (!print)
+		ft_printf("rrr\n");
+}
