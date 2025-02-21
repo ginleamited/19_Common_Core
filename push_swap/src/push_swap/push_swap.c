@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:16 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/13 22:31:21 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/21 22:49:05 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (1);
 	else if (ac == 2)
-		av = ft_split(av[1], ' ');
+		av = split(av[1], ' ');
 	init_stack_a(&a, av + 1);
 	if (!stack_sorted(a))
 	{

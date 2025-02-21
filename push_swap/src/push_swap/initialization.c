@@ -1,45 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:27:26 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/13 22:15:08 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/21 22:27:48 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
-
-long	ft_atoi(const char *str)
-{
-	int		i;
-	int		signe;
-	long	resultat;
-
-	i = 0;
-	signe = 1;
-	resultat = 0;
-	while ((str[i] == 32) || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == 45)
-			signe *= -1;
-		i++;
-	}
-	while (str[i] >= 48 && str[i] <= 57)
-	{
-		resultat *= 10;
-		resultat += str[i] - 48;
-		i++;
-	}
-	return (resultat * signe);
-}
-
-//* EXPLANATION:
-// Basic atoi function
 
 static void	append_node(t_stack_node **stack, int n)
 {

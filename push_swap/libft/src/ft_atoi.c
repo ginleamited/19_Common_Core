@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:35:08 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/13 00:36:18 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/21 22:28:58 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int		i;
 	int		signe;
@@ -47,3 +47,8 @@ int	ft_atoi(const char *str)
 // }
 
 //* EXPLANATION:
+//? This function converts a string to an integer
+//  It skips the white spaces and tabs
+//  If the first character is a sign, it will store the sign
+//  It will loop through the string and convert the string to an integer
+//  If the number is negative, it will multiply the result by -1

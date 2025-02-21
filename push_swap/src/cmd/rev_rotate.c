@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:22 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/21 16:02:33 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/21 17:36:09 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,18 @@ void rra(t_stack_node **a, bool print)
 	if (!print)
 		ft_printf("rra\n");
 }
+//* EXPLANATION:
+//? Put the bottom node of stack a to the top of the stack
+
 void rrb(t_stack_node **b, bool print)
 {
 	rev_rotate(b);
 	if (!print)
 		ft_printf("rrb\n");
 }
+//* EXPLANATION:
+//? Put the bottom node of stack b to the top of the stack
+
 void rrr(t_stack_node **a, t_stack_node **b, bool print)
 {
 	rev_rotate(a);
@@ -56,3 +62,5 @@ void rrr(t_stack_node **a, t_stack_node **b, bool print)
 	if (!print)
 		ft_printf("rrr\n");
 }
+//* EXPLANATION:
+//? Put the bottom node of both stacks to the top of the stack
