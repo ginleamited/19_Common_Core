@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:15:56 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/20 22:10:32 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/20 22:49:08 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,3 +173,7 @@ int main (void)
 	printf("Test string: %s, number: %d, hex: %x\n", "Hello", 44, 255);
 	return (0);
 }
+
+//* EXPLANATION:
+//? The ft_printf function is a simplified version of the printf function
+//  
