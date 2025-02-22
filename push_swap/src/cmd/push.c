@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:20 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/19 19:11:39 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/22 14:11:59 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-static void push(t_stack **dst, t_stack **src)
+static void push(t_stack_node **dst, t_stack_node **src)
 {
 	t_stack_node	*top_node;
 	
@@ -47,7 +47,7 @@ static void push(t_stack **dst, t_stack **src)
 //  Then we will assign top_node to dst, so the node in top_node will be
 //  on the top of dst
 
-void	push_a(t_stack_node **a, t_stack_node **b, bool print)
+void	pa(t_stack_node **a, t_stack_node **b, bool print)
 {
 	push(a, b);
 	if (!print)
@@ -56,7 +56,7 @@ void	push_a(t_stack_node **a, t_stack_node **b, bool print)
 //* EXPLANATION:
 //? This function is pushing the top element of a to the top of b
 
-void	push_b(t_stack_node **a, t_stack_node **b, bool print)
+void	pb(t_stack_node **a, t_stack_node **b, bool print)
 {
 	push(b, a);
 	if (!print)

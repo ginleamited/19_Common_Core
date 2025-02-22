@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:27:26 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/21 22:27:48 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/22 13:59:16 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ void	init_stack_a(t_stack_node **a, char **av)
 	while (av[i])
 	{
 		if (error_syntax(av[i]))
-			free_error(a);
+			free_errors(a);
 		n = ft_atoi(av[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			free_error(a);
+			free_errors(a);
 		if (error_duplicate(*a, (int)n))
-			free_error(a);
+			free_errors(a);
 		append_node(a, (int)n);
 		i++;
 	}

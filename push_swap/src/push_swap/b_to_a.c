@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 22:34:55 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/17 18:25:34 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/22 13:43:21 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void set_target_b(t_stack_node *a, t_stack_node *b)
 		while (current_a)
 		{
 			if (current_a->nbr > b->nbr
-				&& (current_a->nbr < match_index)
+				&& (current_a->nbr < match_index))
 			{
 				match_index = current_a->nbr;
 				target_node = current_a;
@@ -50,3 +50,12 @@ static void set_target_b(t_stack_node *a, t_stack_node *b)
 //  If not, we iterate through the stack a.
 //?  If match_index not changed, we set the target node to the smallest in stack a.
 //  If target node is found, we will update it and we will find the target node of the next node in b.
+
+void	init_nodes_b(t_stack_node *a, t_stack_node *b) //Define a function that prepares the nodes for pushing `b` to `a`
+{
+	current_index(a);
+	current_index(b);
+	set_target_b(a, b);
+}
+//* EXPLANATION:
+//? This function prepares the nodes for pushing `b` to `a`

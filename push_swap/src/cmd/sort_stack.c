@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:26 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/21 22:03:25 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/22 14:11:48 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void min_on_top(t_stack_node **a)
 {
 	while ((*a)->nbr != find_min(*a)->nbr)
 	{
-		if (find_min(*a)->above_median
+		if (find_min(*a)->above_median)
 			ra(a, false);
 		else
 			rra(a, false);

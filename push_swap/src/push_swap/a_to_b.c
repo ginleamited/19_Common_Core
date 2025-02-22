@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 22:34:50 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/17 18:25:46 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/22 13:36:13 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	current_index(t_stack_node *stack)
 {
 	int		i;
-	int		medium;
+	int		median;
 
 	i = 0;
 	if (!stack)

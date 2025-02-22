@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 18:27:21 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/18 20:48:55 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/22 13:58:58 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	error_duplicate(t_stack_node *a, int n)
 //? This function check if there is duplicate input in a
 //  If a->nbr == n, means there is a duplicate and it is already in n
 
-void	free_stack(t_stack **stack)
+void	free_stack(t_stack_node **stack)
 {
 	t_stack_node *tmp;
 	t_stack_node *current;

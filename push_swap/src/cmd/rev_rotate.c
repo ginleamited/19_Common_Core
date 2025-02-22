@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:22 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/21 17:36:09 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/22 13:29:00 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	rev_rotate(t_stack_node **stack)
 	last_node->next = *stack;
 	last_node->prev = NULL;
 	*stack = last_node;
-	last->next->prev = last;
+	last_node->next->prev = last_node;
 }
 //* EXPLANATION:
 //?	This function is rotating the stack's bottom node to the top

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 22:33:29 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/21 22:46:54 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/22 13:57:32 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,19 @@ static int	count_words(char *s, char c)
 	bool	inside_word;
 
 	count = 0;
-	inside_word = false;
 	while (*s)
 	{
+		inside_word = false;
 		while (*s == c)
 			++s;
-		if (*s && *s != c)
+		while (*s && *s != c)
 		{
-			count++;
-			while (*s && *s != c)
-				++s;
+			if (!inside_word)
+			{
+				count++;
+				inside_word = true;
+			}
+			++s;
 		}
 	}
 	return (count);
@@ -35,15 +38,16 @@ static int	count_words(char *s, char c)
 
 //* EXPLANATION:
 //? This function counts the number of words in a string *s separated by a delimiter c
-// bool inside_word is used to check if the cursor is inside a word or not
-// initialize count to 0 for counting the words
-//? In the first while loop, we set inside_word to false
+// Inside_word is a cursor to check if inside a word or not
+// Initialize count to 0 for counting the words
+//? In the first while loop, we iterate untill end of string
+//? and we set the bool to false to check if we are inside a word
 //? In the second while loop, we skip the character `c` at the beginning
-//? In the third while loop, we check if we are not inside a word,
-//? this means we are at the beginning of a new word, so we increment the count
-// We set inside_word to true so that we don't count the same word again
-// We increment the cursor to move to the next character
-// if *s is not NULL, then we set inside_word to false again and repeat the process
+//? In the third while loop, we check if we are inside a word,
+//? this means we are at the beginning of a new word, so we increment the count,
+//? as we have set the bool to true, we are not incrementing the count again,
+//? and we will increment s until finding a c, then we increment s to skip the c
+// After each word, we set the bool to false again and repeat the process
 // In the end, we return the count
 
 static char	*get_next_word(char *s, char c, int *cursor)
