@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/17 18:16:10 by jilin             #+#    #+#              #
-#    Updated: 2025/02/23 14:32:53 by jilin            ###   ########.fr        #
+#    Updated: 2025/02/24 03:19:07 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,18 +25,18 @@ CFLAGS				= -Wall -Werror -Wextra -I
 RM					= rm -f
 
 # Source Files
-COMMANDS_DIR		=	$(SRC_DIR)cmd/push.c \
-						$(SRC_DIR)cmd/rev_rotate.c \
-						$(SRC_DIR)cmd/rotate.c \
-						$(SRC_DIR)cmd/sort_stack.c \
-						$(SRC_DIR)cmd/sort_three.c \
-						$(SRC_DIR)cmd/swap.c
+COMMANDS_DIR		=	$(SRC_DIR)cmd/to_push.c \
+						$(SRC_DIR)cmd/to_rev_rotate.c \
+						$(SRC_DIR)cmd/to_rotate.c \
+						$(SRC_DIR)cmd/to_sort.c \
+						$(SRC_DIR)cmd/to_sort3.c \
+						$(SRC_DIR)cmd/to_swap.c
 
-PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/error.c \
-						$(SRC_DIR)push_swap/a_to_b.c \
-						$(SRC_DIR)push_swap/b_to_a.c \
+PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/errors.c \
+						$(SRC_DIR)push_swap/init_a.c \
+						$(SRC_DIR)push_swap/init_b.c \
+						$(SRC_DIR)push_swap/init.c \
 						$(SRC_DIR)push_swap/push_swap.c \
-						$(SRC_DIR)push_swap/initialization.c \
 						$(SRC_DIR)push_swap/utils.c \
 
 # Concatenate all source files
