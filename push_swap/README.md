@@ -31,8 +31,6 @@ The program can be checked with the provided checker, like this :
 ARG="3 0 9 2 -1"; ./push_swap $ARG | ./checker $ARG
 ```
 
-You can also simply ```make test3```, ```make test5```, ```make test100``` or ```make test500``` to quickly test the program with that number of values to sort.
-
 You can visualize this push_swap algorithm in action with [O-reo's push_swap visualizer](https://github.com/o-reo/push_swap_visualizer):
 
 ![Push_swap visualization by mcombeau](https://github.com/mcombeau/push_swap/blob/main/subject/push_swap_visualization.gif)
@@ -75,4 +73,3 @@ The grade depends on how efficient the program's sorting process is.
 Validating the project requires at least 80/100.
 
 ---
-Made by jilin: jilin@student.s19.be | LinkedIn:  | Website:
