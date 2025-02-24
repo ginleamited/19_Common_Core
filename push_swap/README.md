@@ -4,9 +4,6 @@ push_swap is a 42 school algorithm project where we must sort a given list of ra
 
 > This project has been archived in the state it was in at the time of evaluation.
 
-## Status
-
-
 ## Usage
 
 Git clone the repository and cd into it. Then use ```make``` to compile.
@@ -71,5 +68,3 @@ The grade depends on how efficient the program's sorting process is.
   * 1 point for less than 11500
 
 Validating the project requires at least 80/100.
-
----
