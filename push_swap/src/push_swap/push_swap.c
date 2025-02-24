@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:16 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/24 20:49:44 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 21:20:22 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ int	main(int ac, char **av)
 //?  If argc is 1, means there is no argument, return 1
 //?  If argc is 2, and the first character of the first argument is NULL, return 1
 //?  If argc is 2, split the first argument by space and store it in av
-//?  If
-//  When we call init_stack_a, it will initialize the stack a, we add 1 to av
-//  to skip the program name.
+//?  If argc is not 2, av + 1 to skip the program name
+//?  If argc is 2, av is the first argument, then we will free it
 //?  So if the stack is not sorted:
 //?  If the stack length is 2, swap the first two elements
 //?  If the stack length is 3, sort with the sort_three function
