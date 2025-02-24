@@ -26,10 +26,10 @@ The program can be checked with the provided checker, like this :
 ARG="3 0 9 2 -1"; ./push_swap $ARG | ./checker $ARG
 ```
 ## Pseudo code
-```
 
 [Turk Algorithm](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
 
+```
 // Initialize two stacks: 'a' (containing input numbers) and 'b' (empty)
 
 // Step 1: Input Validation and Initialization
@@ -93,7 +93,7 @@ ARG="3 0 9 2 -1"; ./push_swap $ARG | ./checker $ARG
 	- change the "push_swap file path" to `../../push_swap`
 
 
-## 42 checker
+## 42 Checker
 
 1. Download the correct file from the subject page, e.g. for Mac, or Linux, inside the same directory as your executable.
 2. Running the checker likely won't work, as it won't have the executable permission. Check by typing in the terminal `ls -l`
@@ -109,7 +109,7 @@ ARG="3 0 9 2 -1"; ./push_swap $ARG | ./checker $ARG
 		- If x = 500 then n < 11500
 		- Note: the lesser instructions our algorithm returns, the more evaluation points we will get.
 
-## push_swap tester
+## Push_swap tester
 
 [Gemartin99's push_swap tester](https://github.com/gemartin99/Push-Swap-Tester)
 
