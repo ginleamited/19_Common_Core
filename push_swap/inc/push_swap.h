@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:13 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/23 14:32:25 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 20:16:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int				error_syntax(char *str_n);
 int				error_duplicate(t_stack_node *a, int n);
 void			free_stack(t_stack_node **stack);
 void			free_errors(t_stack_node **a);
+void			ft_free(char **strs);
 
 //***Stack initiation
 void			init_stack_a(t_stack_node **a, char **av); //Initiate stack `a` before processing
