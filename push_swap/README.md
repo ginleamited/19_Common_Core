@@ -54,7 +54,7 @@ ARG="3 0 9 2 -1"; ./push_swap $ARG | ./checker $ARG
 //		- 'b' should be in descending order
 
 // 	- Formula to find the 'cheapest' : x moves to bring 'a' to top + x moves to bring 'a'->target node to top = 'push cost'
-//  - If the 'push cost' is 0, push directly
+//	- If the 'push cost' is 0, push directly
 
 // Step 4: Sorting Remaining Elements in 'a'
 //	- If 'a' contains exactly three elements:
