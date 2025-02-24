@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*   to_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:26 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/22 14:11:48 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 21:49:39 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-static void	rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
+static void	rotate_both(t_stack_node **a,
+	t_stack_node **b, t_stack_node *cheapest_node)
 {
-	while (*b != cheapest_node->target_node && *a!= cheapest_node)
+	while (*b != cheapest_node->target_node && *a != cheapest_node)
 		rr(a, b, false);
 	current_index(*a);
 	current_index(*b);
 }
 //* EXPLANATION:
-//? Rotate both top node to the bottom until the cheapest node is at the top of the stack
-//  As long as the current b is not a's cheapest target node and a is not the cheapest node
+//? Rotate both top node to the bottom until the cheapest node 
+//? is at the top of the stack
+//  As long as the current b is not a's cheapest target node
+//  and a is not the cheapest node
 //  Rotate both stacks
 //  Update the index of the current node in both stacks
 
-static void rev_rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *cheapest_node)
+static void	rev_rotate_both(t_stack_node **a,
+	t_stack_node **b, t_stack_node *cheapest_node)
 {
 	while (*b != cheapest_node->target_node && *a != cheapest_node)
 		rrr(a, b, false);
@@ -33,19 +37,22 @@ static void rev_rotate_both(t_stack_node **a, t_stack_node **b, t_stack_node *ch
 	current_index(*b);
 }
 //* EXPLANATION:
-//? Rotate both bottom node to the top until the cheapest node is at the top of the stack
-//  As long as the current b is not a's cheapest target node and a is not the cheapest node
+//? Rotate both bottom node to the top until the cheapest
+//? node is at the top of the stack
+//  As long as the current b is not a's cheapest target node 
+//  and a is not the cheapest node
 //  Rotate both stacks
 //  Update the index of the current node in both stacks
 
-static void move_a_to_b(t_stack_node **a, t_stack_node **b)
+static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*cheapest_node;
-	
+
 	cheapest_node = get_cheapest(*a);
 	if (cheapest_node->above_median && cheapest_node->target_node->above_median)
 		rotate_both(a, b, cheapest_node);
-	else if (!cheapest_node->above_median && !cheapest_node->target_node->above_median)
+	else if (!cheapest_node->above_median
+		&& !cheapest_node->target_node->above_median)
 		rev_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(b, cheapest_node->target_node, 'b');
@@ -58,7 +65,7 @@ static void move_a_to_b(t_stack_node **a, t_stack_node **b)
 //  Prepares the nodes for pushing
 //  Pushes the node to stack b
 
-static void move_b_to_a(t_stack_node **a, t_stack_node **b)
+static void	move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
 	pa(a, b, false);
@@ -67,22 +74,7 @@ static void move_b_to_a(t_stack_node **a, t_stack_node **b)
 //? Prepares the target node on top for pushing to stack a
 //  Just prepares them on top for pushing back to a
 
-static void min_on_top(t_stack_node **a)
-{
-	while ((*a)->nbr != find_min(*a)->nbr)
-	{
-		if (find_min(*a)->above_median)
-			ra(a, false);
-		else
-			rra(a, false);
-	}
-}
-//* EXPLANATION:
-//? Rotates the stack until the minimum node is on top
-//  If the minimum node is above the median, rotate up
-//  If the minimum node is below the median, rotate down
-
-void sort_stacks(t_stack_node **a, t_stack_node **b)
+void	sort_stacks(t_stack_node **a, t_stack_node **b)
 {
 	int		len_a;
 

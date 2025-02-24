@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   a_to_b.c                                           :+:      :+:    :+:   */
+/*   init_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 22:34:50 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/23 13:01:45 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 22:03:14 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	current_index(t_stack_node *stack)
 
 static void	set_target_a(t_stack_node *a, t_stack_node *b)
 {
-	t_stack_node *current_b;
-	t_stack_node *target_node;
-	long match_index;
+	t_stack_node	*current_b;
+	t_stack_node	*target_node;
+	long			match_index;
 
 	while (a)
 	{
@@ -50,7 +50,7 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 		while (current_b)
 		{
 			if (current_b->nbr < a->nbr
-					&& current_b->nbr > match_index)
+				&& current_b->nbr > match_index)
 			{
 				match_index = current_b->nbr;
 				target_node = current_b;
@@ -69,14 +69,18 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 //? number in b that is smaller than the current node in a.
 // current_b and target_node store the pointer to the node in stack b
 //? match_index stores the value of the closest smaller value in stack a
-// we set the LONG_MIN value to match_index to compare it with the first value in stack b
+// we set the LONG_MIN value to match_index to compare it with the
+// first value in stack b
 //? We set up *current_b to reset its value after each iteration of a
 // we set the current_b as b to iterate through the stack b
-// If the nbr of b is smaller than the nbr of a and bigger than the match_index, 
+// If the nbr of b is smaller than the nbr of a and bigger
+// than the match_index, 
 // we set the match_index to the nbr of b and the target_node to the current_b
 // if not, we iterate through the stack b.
-//? Check if match_index is still LONG_MIN, if it is, we set the target node to the maximum value in stack b
-// if not, match_index is the closest smaller value in stack b, we set the target node to the target_node
+//? Check if match_index is still LONG_MIN, if it is, we set the target
+//? node to the maximum value in stack b
+// if not, match_index is the closest smaller value in stack b, we set the
+// target node to the target_node
 //? Then we will try to find the target node for the next node in stack a
 
 static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
@@ -86,7 +90,7 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 
 	len_a = stack_len(a);
 	len_b = stack_len(b);
-	while(a)
+	while (a)
 	{
 		a->push_cost = a->index;
 		if (!(a->above_median))
@@ -110,11 +114,11 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 //? push_cost += (len_b - index of target node in b).
 // Move to the next to calculate the cost.
 
-void set_cheapest(t_stack_node *stack)
+void	set_cheapest(t_stack_node *stack)
 {
-	long	cheapest_value;
-	t_stack_node *cheapest_node;
-	
+	long			cheapest_value;
+	t_stack_node	*cheapest_node;
+
 	if (!stack)
 		return ;
 	cheapest_value = LONG_MAX;
@@ -138,7 +142,7 @@ void set_cheapest(t_stack_node *stack)
 // Check the next node.
 //? If we find the cheapest node, we set the cheapest value to true.
 
-void init_nodes_a(t_stack_node *a, t_stack_node *b)
+void	init_nodes_a(t_stack_node *a, t_stack_node *b)
 {
 	current_index(a);
 	current_index(b);
@@ -147,4 +151,5 @@ void init_nodes_a(t_stack_node *a, t_stack_node *b)
 	set_cheapest(a);
 }
 //* EXPLANATION:
-//? This function initializes the nodes of stack a needed for the push_swap algorithm.
+//? This function initializes the nodes of stack a
+//? needed for the push_swap algorithm.

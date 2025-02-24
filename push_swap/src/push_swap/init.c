@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialization.c                                   :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 19:27:26 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/24 03:09:46 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 21:52:51 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	init_stack_a(t_stack_node **a, char **av)
 {
 	long	n;
 	int		i;
-	
+
 	i = 0;
 	while (av[i])
 	{
@@ -75,7 +75,8 @@ void	init_stack_a(t_stack_node **a, char **av)
 //* EXPLANATION:
 //? This function initializes the stack `a`
 // Check if the input is a number or not, if not then free the stack
-// Check the overflow, if the number is too big or too small, then free the stack
+// Check the overflow, if the number is too big or too small,
+// then free the stack
 // If the number is duplicate, then free the stack
 //? If everything is fine, then append the node to linked list by taking an
 //? a pointer to stack `a`, create a new node and assign `n` to that new node
@@ -102,7 +103,8 @@ t_stack_node	*get_cheapest(t_stack_node *stack)
 // If not found, moves to the next node.
 // In the end, if still no found, return NULL
 
-void	prep_for_push(t_stack_node **stack, t_stack_node *top_node, char stack_name)
+void	prep_for_push(t_stack_node **stack,
+	t_stack_node *top_node, char stack_name)
 {
 	while (*stack != top_node)
 	{

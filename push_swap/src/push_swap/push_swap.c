@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:16 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/24 21:20:22 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 22:01:37 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
-	
+
 	a = NULL;
 	b = NULL;
 	if (ac == 1 || (ac == 2 && !av[1][0]))
@@ -35,16 +35,17 @@ int	main(int ac, char **av)
 			sa(&a, false);
 		else if (stack_len(a) == 3)
 			sort_three(&a);
-		else	sort_stacks(&a, &b);
+		else
+			sort_stacks(&a, &b);
 	}
-	free_stack(&a);
-	return (0);
+	return (free_stack(&a), 0);
 }
 //* EXPLANATION
 //? This program will sort random numbers in ascending order
 // 	First, set both pointers in a and b to NULL
 //?  If argc is 1, means there is no argument, return 1
-//?  If argc is 2, and the first character of the first argument is NULL, return 1
+//?  If argc is 2, and the first character of the first argument is NULL,
+//?  return 1
 //?  If argc is 2, split the first argument by space and store it in av
 //?  If argc is not 2, av + 1 to skip the program name
 //?  If argc is 2, av is the first argument, then we will free it

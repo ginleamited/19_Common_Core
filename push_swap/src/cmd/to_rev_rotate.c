@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*   to_rev_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:22 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/22 13:29:00 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 21:41:24 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void	rev_rotate(t_stack_node **stack)
 //?	This function is rotating the stack's bottom node to the top
 //  If the stack is empty or has only one node, nothing to rotate
 //  Set last_node to the last node of the stack
-//  when we set the last_node->prev->next to NULL, we are detaching the last node,
+//  When we set the last_node->prev->next to NULL, 
+//  we are detaching the last node,
 //  the second last node will be the last node
 //  When we point the next to *stack, it point to the top node of the stack
 //  Last node-s prev will be NULL, because it is the top node now
@@ -37,7 +38,7 @@ static void	rev_rotate(t_stack_node **stack)
 //  Then we update the prev pointer of the previous first node to point to the
 //  last node, so the doubly linked list is maintained
 
-void rra(t_stack_node **a, bool print)
+void	rra(t_stack_node **a, bool print)
 {
 	rev_rotate(a);
 	if (!print)
@@ -46,7 +47,7 @@ void rra(t_stack_node **a, bool print)
 //* EXPLANATION:
 //? Put the bottom node of stack a to the top of the stack
 
-void rrb(t_stack_node **b, bool print)
+void	rrb(t_stack_node **b, bool print)
 {
 	rev_rotate(b);
 	if (!print)
@@ -55,7 +56,7 @@ void rrb(t_stack_node **b, bool print)
 //* EXPLANATION:
 //? Put the bottom node of stack b to the top of the stack
 
-void rrr(t_stack_node **a, t_stack_node **b, bool print)
+void	rrr(t_stack_node **a, t_stack_node **b, bool print)
 {
 	rev_rotate(a);
 	rev_rotate(b);

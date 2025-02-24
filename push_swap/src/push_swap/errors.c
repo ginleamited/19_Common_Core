@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 18:27:21 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/24 20:33:10 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 21:52:31 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	error_syntax(char *str_n)
 }
 //* EXPLANATION:
 //? This function return 1 if the input is not a number including the sign
-//  In the while loop we preincrement 1 because we already checked the first char,
+//  In the while loop we preincrement 1 because we 
+//	already checked the first char,
 //  it is checking if the rest of the input is a number or not.
 
 int	error_duplicate(t_stack_node *a, int n)
@@ -48,9 +49,9 @@ int	error_duplicate(t_stack_node *a, int n)
 
 void	free_stack(t_stack_node **stack)
 {
-	t_stack_node *tmp;
-	t_stack_node *current;
-	
+	t_stack_node	*tmp;
+	t_stack_node	*current;
+
 	if (!stack)
 		return ;
 	current = *stack;

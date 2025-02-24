@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/17 18:16:10 by jilin             #+#    #+#              #
-#    Updated: 2025/02/24 03:19:07 by jilin            ###   ########.fr        #
+#    Updated: 2025/02/24 21:51:34 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ RM					= rm -f
 COMMANDS_DIR		=	$(SRC_DIR)cmd/to_push.c \
 						$(SRC_DIR)cmd/to_rev_rotate.c \
 						$(SRC_DIR)cmd/to_rotate.c \
+						$(SRC_DIR)cmd/to_sort_top.c \
 						$(SRC_DIR)cmd/to_sort.c \
 						$(SRC_DIR)cmd/to_sort3.c \
 						$(SRC_DIR)cmd/to_swap.c

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_three.c                                       :+:      :+:    :+:   */
+/*   to_sort3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:29 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/23 14:07:23 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 21:51:47 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-void sort_three(t_stack_node **a)
+void	sort_three(t_stack_node **a)
 {
 	t_stack_node	*biggest_node;
-	
+
 	biggest_node = find_max(*a);
 	if (biggest_node == *a)
 		ra(a, false);

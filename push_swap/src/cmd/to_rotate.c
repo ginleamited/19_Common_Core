@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   to_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:24 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/22 13:32:03 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 21:41:36 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	rotate(t_stack_node **stack)
 //  will be last_node, so double linked list is maintained
 //  Last_node's next is the old first node NULL its next node
 
-void ra(t_stack_node **a, bool print)
+void	ra(t_stack_node **a, bool print)
 {
 	rotate(a);
 	if (!print)
@@ -45,7 +45,7 @@ void ra(t_stack_node **a, bool print)
 //* EXPLANATION:
 //? Put the top node of stack a to the bottom of the stack
 
-void rb(t_stack_node **b, bool print)
+void	rb(t_stack_node **b, bool print)
 {
 	rotate(b);
 	if (!print)
@@ -54,7 +54,7 @@ void rb(t_stack_node **b, bool print)
 //* EXPLANATION:
 //? Put the top node of stack b to the bottom of the stack
 
-void rr(t_stack_node **a, t_stack_node **b, bool print)
+void	rr(t_stack_node **a, t_stack_node **b, bool print)
 {
 	rotate(a);
 	rotate(b);

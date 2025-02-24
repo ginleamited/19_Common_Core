@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   to_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:20 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/23 13:35:26 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/24 21:40:37 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
 
-static void push(t_stack_node **dst, t_stack_node **src)
+static void	push(t_stack_node **dst, t_stack_node **src)
 {
 	t_stack_node	*top_node;
-	
+
 	if (!*src)
 		return ;
 	top_node = *src;
@@ -42,8 +42,8 @@ static void push(t_stack_node **dst, t_stack_node **src)
 //  If dst is empty, we will assign top_node to dst and Null terminate
 //  If not, top_node will point to the first node of dst, 
 //  as top_node -> [top_node1] -> [dst1] -> [dst2] -> NULL
-//  then we will make sure in this double linked list, next and prev
-//  are pointing to the right node, so the prev of top_node->next will not be NULL
+//  then we will make sure in this double linked list, next and prev are 
+// pointing to the right node, so the prev of top_node->next will not be NULL
 //  Then we will assign top_node to dst, so the node in top_node will be
 //  on the top of dst
 
