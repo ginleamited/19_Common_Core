@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 20:55:20 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/22 14:11:59 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/23 13:35:26 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	pa(t_stack_node **a, t_stack_node **b, bool print)
 //* EXPLANATION:
 //? This function is pushing the top element of a to the top of b
 
-void	pb(t_stack_node **a, t_stack_node **b, bool print)
+void	pb(t_stack_node **b, t_stack_node **a, bool print)
 {
 	push(b, a);
 	if (!print)

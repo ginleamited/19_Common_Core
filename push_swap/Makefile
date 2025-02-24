@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/17 18:16:10 by jilin             #+#    #+#              #
-#    Updated: 2025/02/22 13:30:08 by jilin            ###   ########.fr        #
+#    Updated: 2025/02/23 14:32:53 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,15 +36,14 @@ PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/error.c \
 						$(SRC_DIR)push_swap/a_to_b.c \
 						$(SRC_DIR)push_swap/b_to_a.c \
 						$(SRC_DIR)push_swap/push_swap.c \
-						$(SRC_DIR)push_swap/split.c \
 						$(SRC_DIR)push_swap/initialization.c \
-						$(SRC_DIR)push_swap/utils.c
+						$(SRC_DIR)push_swap/utils.c \
 
 # Concatenate all source files
 SRCS 				= $(COMMANDS_DIR) $(PUSH_SWAP_DIR)
 
 # Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
-OBJ 				= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+OBJ					= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
 # Build rules
 start:				
