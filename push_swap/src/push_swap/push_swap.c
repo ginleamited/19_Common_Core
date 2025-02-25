@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:16 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/25 01:16:42 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/25 01:18:44 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ int	main(int ac, char **av)
 		else
 			sort_stacks(&a, &b);
 	}
+}
+
 	// print_stack(a);
 	// return (free_stack(&a), 0);
-}
 
 //* EXPLANATION
 //? This program will sort random numbers in ascending order
