@@ -6,11 +6,23 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:16 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/24 22:01:37 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/25 01:16:42 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/push_swap.h"
+
+// void	print_stack(t_stack_node *stack)
+// {
+// 	t_stack_node	*current;
+
+// 	current = stack;
+// 	while (current)
+// 	{
+// 		printf("%d\n", current->nbr);
+// 		current = current->next;
+// 	}
+// }
 
 int	main(int ac, char **av)
 {
@@ -38,8 +50,10 @@ int	main(int ac, char **av)
 		else
 			sort_stacks(&a, &b);
 	}
-	return (free_stack(&a), 0);
+	// print_stack(a);
+	// return (free_stack(&a), 0);
 }
+
 //* EXPLANATION
 //? This program will sort random numbers in ascending order
 // 	First, set both pointers in a and b to NULL
