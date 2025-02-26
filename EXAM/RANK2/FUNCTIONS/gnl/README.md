@@ -3,7 +3,7 @@
 Assignment name : get_next_line
 Expected files : get_next_line.c
 Allowed functions: read, free, malloc
-
+-
 Write a function named get_next_line which prototype should be:
 char *get_next_line(int fd);
 
