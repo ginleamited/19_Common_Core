@@ -113,67 +113,116 @@ int main(void)
 }
 
 /* ************************************************************************** */
-
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdio.h>
+#include <unistd.h> //→ Provides write() function for output.
+#include <stdarg.h> //→ Provides macros (va_list, va_start, va_arg, va_end) to handle variable arguments.
+#include <stdio.h> //→ Included for testing with printf().
+#include <limits.h> //→ Defines INT_MIN (-2147483648), useful for handling integer overflow.
 
 static void	ft_putnbr_base(long n, int base, char *digits, int *count)
+// long n → Allows handling of int values safely (prevents overflow when n == INT_MIN).
+// int base → Specifies the numerical base (10 for decimal, 16 for hexadecimal).
+// char *digits → Holds the characters representing digits (e.g., "0123456789abcdef" for base 16).
+// int *count → Pointer to a counter tracking the number of characters printed.
 {
 	if (n < 0)
 	{
+		if (n == INT_MIN) // Handle overflow case
+		{
+			ft_putstr("-2147483648", count);
+			return;
+		}
 		write(1, "-", 1);
 		(*count)++;
 		n = -n;
+		// If n is negative:
+		// If n == INT_MIN (-2147483648), directly print "-2147483648" (to avoid overflow when negating).
+		// Otherwise, print "-" and convert n to positive.
 	}
 	if (n >= base)
 		ft_putnbr_base(n / base, base, digits, count);
+	// Recursively divides n by base to extract higher-order digits first.
 	write(1, &digits[n % base], 1);
 	(*count)++;
+	// Converts the remainder n % base to a character using digits[] and writes it to standard output.
 }
 
 static void	ft_putstr(const char *s, int *count)
+// const char *s → Pointer to the string to print.
+// int *count → Pointer to the character count.
 {
 	if (!s)
 		s = "(null)";
+	// If s is NULL, print "(null)" instead.
 	while (*s)
 		*count += write(1, s++, 1);
+	// Iterates through s, writing each character and updating count.
 }
 
 int	ft_printf(const char *format, ...)
+// const char *format → Format string containing text and format specifiers.
+// ... → Variadic arguments.
 {
 	va_list args;
 	int count = 0;
 
 	va_start(args, format);
+	// va_list args → Stores the list of arguments.
+	// int count = 0 → Tracks the number of printed characters.
+	// va_start(args, format) → Initializes args for traversal.
 	while (*format)
+	// Iterates through format, processing characters one by one.
 	{
 		if (*format == '%' && *(++format))
+		// If format encounters %, check the next character to determine the specifier.
 		{
 			if (*format == 's')
 				ft_putstr(va_arg(args, char *), &count);
+			// va_arg(args, char *) retrieves the next argument as a char * (string).
+			// Calls ft_putstr to print it.
 			else if (*format == 'd')
-				ft_putnbr_base(va_arg(args, int), 10, "0123456789", &count);
+				ft_putnbr_base((long)va_arg(args, int), 10, "0123456789", &count);
+			va_arg(args, int) retrieves the next argument as an int.
+			// Casts it to long to prevent integer overflow.
+			// Calls ft_putnbr_base with base 10.
 			else if (*format == 'x')
 				ft_putnbr_base(va_arg(args, unsigned int), 16, "0123456789abcdef", &count);
+			// va_arg(args, unsigned int) retrieves an unsigned int (to ensure positive values).
+			// Calls ft_putnbr_base with base 16.
+			else if (*format == '%')
+				count += write(1, "%", 1);
+			// Prints a literal % when encountering %%.
 			else
+			{
+				count += write(1, "%", 1);
 				count += write(1, format, 1);
+			}
+			// Prints % followed by the unknown character.
 		}
 		else
 			count += write(1, format, 1);
+		// If not a % specifier, print the character normally.
 		format++;
+		// Moves to the next character.
 	}
 	va_end(args);
 	return (count);
+	// va_end(args) → Cleans up va_list.
+	// Returns the total count of printed characters.
 }
 
 int main (void)
 {
-	ft_printf("Test string: %s, number: %d, hex: %x\n", "Hello", 44, 255);
-	printf("Test string: %s, number: %d, hex: %x\n", "Hello", 44, 255);
+	ft_printf("Test string: %s, number: %d, hex: %x, percent: %%\n", "Hello", -2147483648, 255);
+	printf("Test string: %s, number: %d, hex: %x, percent: %%\n", "Hello", -2147483648, 255);
 	return (0);
+	// Calls ft_printf with:
+	// String: "Hello"
+	// Integer: -2147483648
+	// Hexadecimal: 255 (printed as ff)
+	// Percent sign: %%
+	// Also calls standard printf for comparison.
 }
 
 //* EXPLANATION:
 //? The ft_printf function is a simplified version of the printf function
-//  
+
