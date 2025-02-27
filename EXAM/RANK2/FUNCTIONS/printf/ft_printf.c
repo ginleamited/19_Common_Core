@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
+/*   By: jilin <jilin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:15:56 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/20 22:49:08 by jilin            ###   ########.fr       */
+/*   Updated: 2025/02/27 01:02:35 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,18 @@ int main(void)
 #include <stdio.h> //→ Included for testing with printf().
 #include <limits.h> //→ Defines INT_MIN (-2147483648), useful for handling integer overflow.
 
+static void	ft_putstr(const char *s, int *count)
+// const char *s → Pointer to the string to print.
+// int *count → Pointer to the character count.
+{
+	if (!s)
+		s = "(null)";
+	// If s is NULL, print "(null)" instead.
+	while (*s)
+		*count += write(1, s++, 1);
+	// Iterates through s, writing each character and updating count.
+}
+
 static void	ft_putnbr_base(long n, int base, char *digits, int *count)
 // long n → Allows handling of int values safely (prevents overflow when n == INT_MIN).
 // int base → Specifies the numerical base (10 for decimal, 16 for hexadecimal).
@@ -146,18 +158,6 @@ static void	ft_putnbr_base(long n, int base, char *digits, int *count)
 	// Converts the remainder n % base to a character using digits[] and writes it to standard output.
 }
 
-static void	ft_putstr(const char *s, int *count)
-// const char *s → Pointer to the string to print.
-// int *count → Pointer to the character count.
-{
-	if (!s)
-		s = "(null)";
-	// If s is NULL, print "(null)" instead.
-	while (*s)
-		*count += write(1, s++, 1);
-	// Iterates through s, writing each character and updating count.
-}
-
 int	ft_printf(const char *format, ...)
 // const char *format → Format string containing text and format specifiers.
 // ... → Variadic arguments.
@@ -181,7 +181,7 @@ int	ft_printf(const char *format, ...)
 			// Calls ft_putstr to print it.
 			else if (*format == 'd')
 				ft_putnbr_base((long)va_arg(args, int), 10, "0123456789", &count);
-			va_arg(args, int) retrieves the next argument as an int.
+			// va_arg(args, int) retrieves the next argument as an int.
 			// Casts it to long to prevent integer overflow.
 			// Calls ft_putnbr_base with base 10.
 			else if (*format == 'x')
