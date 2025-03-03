@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:16:13 by jilin             #+#    #+#             */
-/*   Updated: 2025/02/24 21:50:50 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/03 22:56:40 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 # include <stdbool.h>
 # include <limits.h>
-# include "../libft/inc/libft.h"
-# include "../libft/inc/ft_printf.h"
+# include "../lib/inc/libft.h"
 
 typedef struct s_stack_node
 {
