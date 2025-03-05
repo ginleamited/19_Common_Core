@@ -40,5 +40,7 @@ void render_map(t_game *game);
 int key_press(int key, t_game *game);
 void move_player(t_game *game, int dx, int dy);
 void exit_game(t_game *game);
+int close_window(t_game *game);
+void cleanup_game(t_game *game);
 
 #endif

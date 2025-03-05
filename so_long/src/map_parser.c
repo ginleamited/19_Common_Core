@@ -6,15 +6,32 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:12:10 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/04 00:21:23 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/05 19:00:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static int	is_valid_char(char c)
+static int	is_map_characters(t_game *game)
 {
-	return (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P');
+	int		y;
+	int		x;
+	char	c;
+
+	y = 0;
+	while (y < game->rows)
+	{
+		x = 0;
+		while (x < game->cols)
+		{
+			c = game->map[y][x];
+			if (c != '0' && c != '1' && c != 'C' && c != 'E' && c != 'P')
+				return (0);
+			x++;
+		}
+		y++;
+	}
+	return (1);
 }
 
 static int is_map_rectangular(t_game *game)
@@ -24,7 +41,7 @@ static int is_map_rectangular(t_game *game)
 	y = 0;
 	while (y < game->rows)
 	{
-		if (ft_strlen(game->map[y]) != game->cols)
+		if (ft_strlen(game->map[y]) != (size_t)game->cols)
 			return (0);
 		y++;
 	}
@@ -90,6 +107,8 @@ int	validate_map(t_game *game)
 	p_count = 0;
 	e_count = 0;
 	c_count = 0;
+	if (!is_map_characters(game))
+		return (0);
 	if (!is_map_rectangular(game))
 		return (0);
 	count_elements(game, &p_count, &e_count, &c_count);
@@ -109,6 +128,7 @@ int parse_map(t_game *game, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (0);
+
 	game->rows = 0;
 	while (get_next_line(fd) != NULL)
 		game->rows++;
@@ -117,14 +137,13 @@ int parse_map(t_game *game, char *file)
 	game->map = malloc(sizeof(char *)* (game->rows + 1));
 	if (!game->map)
 		return (0);
-
-	fd = open(fille, O_RDONLY);
+	fd = open(file, O_RDONLY);
 	y = 0;
 	while ((line = get_next_line(fd)) != NULL)
 		game->map[y++] = line;
 	game->map[y] = NULL;
 	close(fd);
-
+	
 	game->cols = ft_strlen(game->map[0]);	
 	return (validate_map(game));
 }
