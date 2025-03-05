@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 15:59:36 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/04 16:15:36 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/05 14:49:56 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ void	exit_game(t_game *game)
 		i++;
 	}
 	free(game->map);
+	
+	mlx_destroy_image(game->mlx, game->wall_img);
+	mlx_destroy_image(game->mlx, game->floor_img);
+	mlx_destroy_image(game->mlx, game->player_img);
+	mlx_destroy_image(game->mlx, game->collectibles_img);
+	mlx_destroy_image(game->mlx, game->exit_img);
+	
+	mlx_destroy_image(game->mlx, game->win);
 
-	mlx_destroy_image(game->mlx, game->)
+	exit(0);
 }

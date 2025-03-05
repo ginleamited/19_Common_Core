@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 18:37:42 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/13 00:42:10 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/05 15:52:25 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,13 @@ int	printf_format(char c, va_list args)
 //* MAIN
 // int main (void)
 // {
-// 	printf("test jej kkskk%d", 44)
+// 	printf("test jej kkskk%d", 44);
+// }
+
+// int main(void)
+// {
+// 	printf("%d\n", printf("%lu", LONG_MAX));
+// 	// printf("%d\n", ft_printf("%u", LONG_MAX));
 // }
 
 //* EXPLANATION:

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:21:32 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/13 00:39:16 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/05 15:49:08 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,3 @@ int	ft_unsignednbr(unsigned int nb)
 	nb = nb % 10;
 	return (count += ft_putchar(nb + 48), count);
 }
-
-// int main(void)
-// {
-// 	printf("%d\n", printf("%lu", LONG_MAX));
-// 	printf("%d\n", ft_printf("%u", LONG_MAX));
-// }
