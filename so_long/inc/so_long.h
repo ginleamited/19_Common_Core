@@ -7,7 +7,7 @@
 # include "../lib/inc/libft.h"
 # include "../mlx/mlx.h"
 
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 #define ESC 65307 // X11 keycode for ESC
 #define W 119    // X11 keycode for 'w'
 #define A 97     // X11 keycode for 'a'

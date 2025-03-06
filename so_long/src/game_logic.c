@@ -6,7 +6,9 @@ int is_valid_move(t_game *game, int x, int y)
         return (0);
     if (game->map[y][x] == '1') // Block walls only
         return (0);
-    return (1); // Allow movement onto 'E' even if exit is hidden
+    if (game->map[y][x] == 'E' && game->collected != game->collectibles)
+        return (0); // Block exit until all collectibles are gathered
+    return (1); // Allow movement onto 'E' only if collectibles are collected
 }
 
 void move_player(t_game *game, int dx, int dy)

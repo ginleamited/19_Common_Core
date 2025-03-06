@@ -86,6 +86,82 @@ static int is_map_surrounded_by_walls(t_game *game)
     return (1);
 }
 
+static int is_path_valid(t_game *game)
+{
+    int **visited;
+    int changed;
+    int i, j;
+    int reachable_c = 0;
+    int e_reachable = 0;
+    int total_c = game->collectibles;
+
+    // Allocate visited 2D array
+    visited = malloc(sizeof(int *) * game->rows);
+    for (i = 0; i < game->rows; i++)
+    {
+        visited[i] = malloc(sizeof(int) * game->cols);
+        for (j = 0; j < game->cols; j++)
+            visited[i][j] = 0;
+    }
+
+    // Mark player's position as visited
+    visited[game->player_y][game->player_x] = 1;
+
+    // Directions: up, down, left, right
+    int dx[] = {0, 0, -1, 1};
+    int dy[] = {-1, 1, 0, 0};
+
+    do {
+        changed = 0;
+        for (i = 0; i < game->rows; i++)
+        {
+            for (j = 0; j < game->cols; j++)
+            {
+                if (visited[i][j])
+                {
+                    // Check all four directions
+                    for (int d = 0; d < 4; d++)
+                    {
+                        int new_x = j + dx[d];
+                        int new_y = i + dy[d];
+                        if (new_x >= 0 && new_x < game->cols && new_y >= 0 && new_y < game->rows)
+                        {
+                            char tile = game->map[new_y][new_x];
+                            if (!visited[new_y][new_x] && (tile == '0' || tile == 'C' || tile == 'E' || tile == 'P'))
+                            {
+                                visited[new_y][new_x] = 1;
+                                changed = 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } while (changed);
+
+    // Check reachable collectibles and exit
+    for (i = 0; i < game->rows; i++)
+    {
+        for (j = 0; j < game->cols; j++)
+        {
+            if (visited[i][j])
+            {
+                if (game->map[i][j] == 'C')
+                    reachable_c++;
+                if (game->map[i][j] == 'E')
+                    e_reachable = 1;
+            }
+        }
+    }
+
+    // Cleanup
+    for (i = 0; i < game->rows; i++)
+        free(visited[i]);
+    free(visited);
+
+    return (reachable_c == total_c && e_reachable);
+}
+
 int validate_map(t_game *game)
 {
     int p_count = 0, e_count = 0, c_count = 0;
@@ -97,13 +173,14 @@ int validate_map(t_game *game)
     
     count_elements(game, &p_count, &e_count, &c_count);
     
-    // Assign collectibles count to the game struct
-    game->collectibles = c_count; // <-- CRITICAL FIX
+    game->collectibles = c_count;
 
     if (!is_map_surrounded_by_walls(game)) 
         return (ft_printf("Walls missing\n"), 0);
     if (p_count != 1 || e_count != 1 || c_count < 1) 
         return (ft_printf("Invalid P/E/C count\n"), 0);
+    if (!is_path_valid(game))
+        return (ft_printf("P, E, or C enclosed by walls\n"), 0);
     
     return (1);
 }

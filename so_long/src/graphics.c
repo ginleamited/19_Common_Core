@@ -8,8 +8,12 @@ int init_game(t_game *game)
     if (!game->mlx)
         return (0);
 
-    game->win = mlx_new_window(game->mlx, game->cols * TILE_SIZE,
-                               game->rows * TILE_SIZE, "so_long");
+    int window_width = game->cols * TILE_SIZE;
+	int window_height = game->rows * TILE_SIZE;
+
+	// Initialize the window
+	game->win = mlx_new_window(game->mlx, window_width, window_height, "so_long");
+
     if (!game->win)
         return (0);
 
@@ -21,7 +25,6 @@ int init_game(t_game *game)
 
     if (!game->wall_img || !game->floor_img || !game->player_img || !game->collectible_img || !game->exit_img)
         return (0);
-
     game->moves = 0;
     return (1);
 }
