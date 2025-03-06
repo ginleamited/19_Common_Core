@@ -1,149 +1,156 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   map_parser.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/03 22:12:10 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/05 19:00:01 by jilin            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../inc/so_long.h"
 
-static int	is_map_characters(t_game *game)
+static int is_map_characters(t_game *game)
 {
-	int		y;
-	int		x;
-	char	c;
+    int y, x;
+    char c;
 
-	y = 0;
-	while (y < game->rows)
-	{
-		x = 0;
-		while (x < game->cols)
-		{
-			c = game->map[y][x];
-			if (c != '0' && c != '1' && c != 'C' && c != 'E' && c != 'P')
-				return (0);
-			x++;
-		}
-		y++;
-	}
-	return (1);
+    y = 0;
+    while (y < game->rows)
+    {
+        x = 0;
+        while (x < game->cols)
+        {
+            c = game->map[y][x];
+            if (c != '0' && c != '1' && c != 'C' && c != 'E' && c != 'P')
+                return (0);
+            x++;
+        }
+        y++;
+    }
+    return (1);
 }
 
 static int is_map_rectangular(t_game *game)
 {
-	int y;
+    int y;
+    size_t len;
 
-	y = 0;
-	while (y < game->rows)
-	{
-		if (ft_strlen(game->map[y]) != (size_t)game->cols)
-			return (0);
-		y++;
-	}
-	return (1);
+    if (game->rows == 0)
+        return (0);
+    len = ft_strlen(game->map[0]);
+    y = 1;
+    while (y < game->rows)
+    {
+        if (ft_strlen(game->map[y]) != len)
+            return (0);
+        y++;
+    }
+    return (1);
 }
 
-static void	count_elements(t_game *game, int *p_count, int *e_count, int *c_count)
+static void count_elements(t_game *game, int *p_count, int *e_count, int *c_count)
 {
-	int y;
-	int x;
+    int y, x;
 
-	y = 0;
-	while (y < game->rows)
-	{
-		x = 0;
-		while (x < game->cols)
-		{
-			char c = game->map[y][x];
-			if (c == 'P')
-			{
-				(*p_count)++;
-				game->player_x = x;
-				game->player_y = y;
-			}
-			else if (c == 'E')
-				(*e_count)++;
-			else if (c == 'C')
-				(*c_count)++;
-			x++;
-		}
-		y++;
-	}
+    y = 0;
+    while (y < game->rows)
+    {
+        x = 0;
+        while (x < game->cols)
+        {
+            char c = game->map[y][x];
+            if (c == 'P')
+            {
+                (*p_count)++;
+                game->player_x = x;
+                game->player_y = y;
+            }
+            else if (c == 'E')
+                (*e_count)++;
+            else if (c == 'C')
+                (*c_count)++;
+            x++;
+        }
+        y++;
+    }
 }
 
 static int is_map_surrounded_by_walls(t_game *game)
 {
-	int y;
-	int x;
+    int y, x;
 
-	y = 0;
-	while (y < game->rows)
-	{
-		x = 0;
-		while (x < game->cols)
-		{
-			char c = game->map[y][x];
-			if ((y == 0 || y == game->rows - 1 || x == 0 || x == game->cols - 1)
-				&& c != '1')
-				return (0);
-			x++;
-		}
-		y++;
-	}
-	return (1);
+    y = 0;
+    while (y < game->rows)
+    {
+        x = 0;
+        while (x < game->cols)
+        {
+            char c = game->map[y][x];
+            if ((y == 0 || y == game->rows - 1 || x == 0 || x == game->cols - 1) && c != '1')
+                return (0);
+            x++;
+        }
+        y++;
+    }
+    return (1);
 }
 
-int	validate_map(t_game *game)
+int validate_map(t_game *game)
 {
-	int p_count;
-	int e_count;
-	int c_count;
+    int p_count = 0, e_count = 0, c_count = 0;
 
-	p_count = 0;
-	e_count = 0;
-	c_count = 0;
-	if (!is_map_characters(game))
-		return (0);
-	if (!is_map_rectangular(game))
-		return (0);
-	count_elements(game, &p_count, &e_count, &c_count);
-	if (!is_map_surrounded_by_walls(game))
-		return (0);
-	game->collectibles = c_count;
-	game->collected = 0;
-	return (p_count == 1 && e_count == 1 && c_count > 0);
+    if (!is_map_characters(game))
+    {
+        ft_printf("Invalid characters in map\n");
+        return (0);
+    }
+    if (!is_map_rectangular(game))
+    {
+        ft_printf("Map is not rectangular\n");
+        return (0);
+    }
+    count_elements(game, &p_count, &e_count, &c_count);
+    if (!is_map_surrounded_by_walls(game))
+    {
+        ft_printf("Map is not surrounded by walls\n");
+        return (0);
+    }
+    if (p_count != 1 || e_count != 1 || c_count < 1)
+    {
+        ft_printf("Invalid number of elements: P=%d, E=%d, C=%d\n", p_count, e_count, c_count);
+        return (0);
+    }
+    return (1);
 }
 
 int parse_map(t_game *game, char *file)
 {
-	int fd;
-	char *line;
-	int y;
+    int fd;
+    char *line;
+    int y;
 
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		return (0);
+    fd = open(file, O_RDONLY);
+    if (fd < 0)
+        return (0);
 
-	game->rows = 0;
-	while (get_next_line(fd) != NULL)
-		game->rows++;
-	close(fd);
-	
-	game->map = malloc(sizeof(char *)* (game->rows + 1));
-	if (!game->map)
-		return (0);
-	fd = open(file, O_RDONLY);
-	y = 0;
-	while ((line = get_next_line(fd)) != NULL)
-		game->map[y++] = line;
-	game->map[y] = NULL;
-	close(fd);
-	
-	game->cols = ft_strlen(game->map[0]);	
-	return (validate_map(game));
+    // Count rows
+    game->rows = 0;
+    while (get_next_line(fd) != NULL)
+        game->rows++;
+    close(fd);
+
+    // Allocate memory for the map
+    game->map = malloc(sizeof(char *) * (game->rows + 1));
+    if (!game->map)
+        return (0);
+
+    // Read the map
+    fd = open(file, O_RDONLY);
+    y = 0;
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        game->map[y++] = line;
+    }
+    game->map[y] = NULL;
+    close(fd);
+
+    // Validate the map
+    if (!validate_map(game))
+    {
+        cleanup_game(game); // Free the map if validation fails
+        return (0);
+    }
+
+    return (1);
 }
