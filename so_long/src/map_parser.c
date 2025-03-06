@@ -47,7 +47,7 @@ static void count_elements(t_game *game, int *p_count, int *e_count, int *c_coun
     while (y < game->rows)
     {
         x = 0;
-        while (x < game->cols)
+        while (x < game->cols) // Use game->cols here
         {
             char c = game->map[y][x];
             if (c == 'P')
@@ -91,26 +91,20 @@ int validate_map(t_game *game)
     int p_count = 0, e_count = 0, c_count = 0;
 
     if (!is_map_characters(game))
-    {
-        ft_printf("Invalid characters in map\n");
-        return (0);
-    }
-    if (!is_map_rectangular(game))
-    {
-        ft_printf("Map is not rectangular\n");
-        return (0);
-    }
+        return (ft_printf("Invalid characters\n"), 0);
+    if (!is_map_rectangular(game)) 
+        return (ft_printf("Map not rectangular\n"), 0);
+    
     count_elements(game, &p_count, &e_count, &c_count);
-    if (!is_map_surrounded_by_walls(game))
-    {
-        ft_printf("Map is not surrounded by walls\n");
-        return (0);
-    }
-    if (p_count != 1 || e_count != 1 || c_count < 1)
-    {
-        ft_printf("Invalid number of elements: P=%d, E=%d, C=%d\n", p_count, e_count, c_count);
-        return (0);
-    }
+    
+    // Assign collectibles count to the game struct
+    game->collectibles = c_count; // <-- CRITICAL FIX
+
+    if (!is_map_surrounded_by_walls(game)) 
+        return (ft_printf("Walls missing\n"), 0);
+    if (p_count != 1 || e_count != 1 || c_count < 1) 
+        return (ft_printf("Invalid P/E/C count\n"), 0);
+    
     return (1);
 }
 
@@ -124,31 +118,42 @@ int parse_map(t_game *game, char *file)
     if (fd < 0)
         return (0);
 
-    // Count rows
+    // Count rows and free lines
     game->rows = 0;
-    while (get_next_line(fd) != NULL)
+    char *tmp_line;
+    while ((tmp_line = get_next_line(fd)) != NULL)
+    {
         game->rows++;
+        free(tmp_line);
+    }
     close(fd);
 
-    // Allocate memory for the map
+    // Allocate map memory
     game->map = malloc(sizeof(char *) * (game->rows + 1));
     if (!game->map)
         return (0);
 
-    // Read the map
+    // Read and trim lines
     fd = open(file, O_RDONLY);
     y = 0;
     while ((line = get_next_line(fd)) != NULL)
     {
+        size_t len = ft_strlen(line);
+        if (len > 0 && line[len - 1] == '\n')
+            line[len - 1] = '\0';
         game->map[y++] = line;
     }
     game->map[y] = NULL;
     close(fd);
 
-    // Validate the map
+    // Initialize columns
+    game->cols = ft_strlen(game->map[0]); // <-- Critical fix
+
+    // Validate map
     if (!validate_map(game))
     {
-        cleanup_game(game); // Free the map if validation fails
+        free_map(game->map, game->rows);
+        game->map = NULL;
         return (0);
     }
 

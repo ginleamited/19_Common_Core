@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:17 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/18 20:47:50 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/18 20:49:51 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,26 @@ static char	*extract(char *txt);
 
 char	*get_next_line(int fd)
 {
-    char		*buf;
-    char		*line;
-    static char	*stash;
+	char		*buf;
+	char		*line;
+	static char	*stash;
 
-    if (fd < 0 || BUFFER_SIZE <= 0)
-        return (NULL);
-    buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-    if (!buf)
-        return (NULL);
-    line = reading(fd, buf, stash);
-    free(buf);
-    buf = NULL;
-    if (!line)
-    {
-        free(stash);
-        stash = NULL;
-        return (NULL);
-    }
-    stash = extract(line);
-    return (line);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return (NULL);
+	line = reading(fd, buf, stash);
+	free (buf);
+	buf = NULL;
+	if (!line)
+	{
+		free(stash);
+		stash = NULL;
+		return (NULL);
+	}
+	stash = extract(line);
+	return (line);
 }
 //* EXPLANATION
 

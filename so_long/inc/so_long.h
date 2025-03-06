@@ -8,11 +8,11 @@
 # include "../mlx/mlx.h"
 
 # define TILE_SIZE 32
-# define ESC 53
-# define W 13
-# define A 0
-# define S 1
-# define D 2
+#define ESC 65307 // X11 keycode for ESC
+#define W 119    // X11 keycode for 'w'
+#define A 97     // X11 keycode for 'a'
+#define S 115    // X11 keycode for 's'
+#define D 100    // X11 keycode for 'd'
 
 typedef struct s_game
 {
@@ -42,5 +42,6 @@ void move_player(t_game *game, int dx, int dy);
 void exit_game(t_game *game);
 int close_window(t_game *game);
 void cleanup_game(t_game *game);
+void free_map(char **map, int rows);
 
 #endif

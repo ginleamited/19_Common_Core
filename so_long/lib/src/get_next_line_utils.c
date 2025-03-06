@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 22:43:19 by jilin             #+#    #+#             */
-/*   Updated: 2025/01/13 00:41:52 by jilin            ###   ########.fr       */
+/*   Updated: 2025/01/12 23:32:31 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,29 @@ char	*ft_strdup(char *src)
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-    size_t		i;
-    size_t		j;
-    char		*result;
+	size_t		i;
+	size_t		j;
+	char		*result;
 
-    if (!s1 && !s2)
-        return (NULL);
-    if (!s1)
-        return (ft_strdup(s2));
-    if (!s2)
-        return (ft_strdup(s1));
-    result = (char *) malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-    if (!result)
-        return (NULL);
-    i = 0;
-    j = 0;
-    while (s1[i])
-        result[j++] = s1[i++];
-    i = 0;
-    while (s2[i])
-        result[j++] = s2[i++];
-    result[j] = '\0';
-    return (result);
+	i = 0;
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	if (!s1)
+		return (s2);
+	if (!s2)
+		return (s1);
+	result = (char *) malloc(ft_strlen(s1)
+			+ (ft_strlen(s2) + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	while (s1[i])
+		result[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		result[j++] = s2[i++];
+	result[j] = 0;
+	return (result);
 }
 
 size_t	ft_strlen(const char *str)

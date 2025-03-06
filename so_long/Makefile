@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/03 22:45:18 by jilin             #+#    #+#              #
-#    Updated: 2025/03/05 19:05:15 by jilin            ###   ########.fr        #
+#    Updated: 2025/03/06 19:28:57 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJ_DIR				= obj/
 
 # Compiler and CFlags
 CC					= gcc
-CFLAGS				= -Wall -Werror -Wextra -g3 -fsanitize=address -I
+CFLAGS				= -Wall -Werror -Wextra #-g3 -fsanitize=address -I
 RM					= rm -f
 
 # Source Files

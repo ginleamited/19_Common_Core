@@ -2,6 +2,7 @@
 
 int key_press(int key, t_game *game)
 {
+	ft_printf("Key pressed: %d\n", key); // Debug line
     if (key == ESC)
         exit_game(game);
     else if (key == W)
@@ -45,7 +46,7 @@ void exit_game(t_game *game)
     exit(0);
 }
 
-static void free_map(char **map, int rows)
+void free_map(char **map, int rows)
 {
     int y;
 
