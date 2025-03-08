@@ -13,7 +13,6 @@ int init_game(t_game *game)
 
 	// Initialize the window
 	game->win = mlx_new_window(game->mlx, window_width, window_height, "so_long");
-
     if (!game->win)
         return (0);
 

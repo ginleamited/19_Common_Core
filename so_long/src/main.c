@@ -26,6 +26,6 @@ int main(int ac, char **av)
     
     mlx_loop(game.mlx);
     
-    cleanup_game(&game);
+    exit_game(&game);
     return (0);
 }
