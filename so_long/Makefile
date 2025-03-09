@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/03 22:45:18 by jilin             #+#    #+#              #
-#    Updated: 2025/03/09 20:55:06 by jilin            ###   ########.fr        #
+#    Updated: 2025/03/09 22:11:21 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,10 @@ SRCS	=	$(SRC_DIR)main.c \
 				$(SRC_DIR)parsing.c \
 				$(SRC_DIR)logic.c \
 				$(SRC_DIR)rendering.c \
-				$(SRC_DIR)exit.c
+				$(SRC_DIR)exit.c \
+				$(SRC_DIR)backtracking.c \
+				$(SRC_DIR)validation.c 
+
 
 # Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
 OBJ					= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))

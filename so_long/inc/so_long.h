@@ -38,6 +38,7 @@ int		parse_map(t_game *game, char *file);
 int		validate_map(t_game *game);
 void	free_map(char **map, int rows);
 void	free_2d_array(void **arr, int height);
+int		is_path_valid(t_game *g);
 
 // Game Initialization and Cleanup
 int		init_game(t_game *game);
