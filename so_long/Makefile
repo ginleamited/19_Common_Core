@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/03 22:45:18 by jilin             #+#    #+#              #
-#    Updated: 2025/03/09 17:48:39 by jilin            ###   ########.fr        #
+#    Updated: 2025/03/09 20:55:06 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,13 @@ OBJ_DIR				= obj/
 
 # Compiler and CFlags
 CC					= gcc
-CFLAGS				= -Wall -Werror -Wextra -g3 #-fsanitize=address -I
+CFLAGS				= -Wall -Werror -Wextra -g3 #-fsanitize=address
 RM					= rm -f
 
 # Source Files
 SRCS	=	$(SRC_DIR)main.c \
-				$(SRC_DIR)map_parser.c \
-				$(SRC_DIR)game_logic.c \
+				$(SRC_DIR)parsing.c \
+				$(SRC_DIR)logic.c \
 				$(SRC_DIR)rendering.c \
 				$(SRC_DIR)exit.c
 

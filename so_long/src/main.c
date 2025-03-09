@@ -17,13 +17,12 @@ int main(int ac, char **av)
         return (ft_printf("ERROR: Invalid map\n"), 1);
     
     if (!init_game(&game))
-        return (ft_printf("ERROR: Game init failed\n"), cleanup_game(&game), 1);
+        return (ft_printf("ERROR: Game init failed\n"), exit_game(&game), 1);
     
     render_map(&game);
     
     mlx_hook(game.win, 2, 1L<<0, key_press, &game);
-    mlx_hook(game.win, 17, 0, close_window, &game);
-    
+	mlx_hook(game.win, 17, 0, (int (*)())exit_game, &game);    
     mlx_loop(game.mlx);
     
     exit_game(&game);

@@ -11,7 +11,6 @@ int init_game(t_game *game)
     int window_width = game->cols * TILE_SIZE;
 	int window_height = game->rows * TILE_SIZE;
 
-	// Initialize the window
 	game->win = mlx_new_window(game->mlx, window_width, window_height, "so_long");
     if (!game->win)
         return (0);
