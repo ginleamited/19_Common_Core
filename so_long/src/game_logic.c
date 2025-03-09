@@ -46,3 +46,19 @@ void move_player(t_game *game, int dx, int dy)
 
     render_map(game);
 }
+
+int key_press(int key, t_game *game)
+{
+	ft_printf("Key pressed: %d\n", key);
+    if (key == ESC)
+        exit_game(game);
+    else if (key == W)
+        move_player(game, 0, -1);
+    else if (key == A)
+        move_player(game, -1, 0);
+    else if (key == S)
+        move_player(game, 0, 1);
+    else if (key == D)
+        move_player(game, 1, 0);
+    return (0);
+}

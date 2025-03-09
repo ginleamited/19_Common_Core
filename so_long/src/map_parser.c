@@ -47,7 +47,7 @@ static void count_elements(t_game *game, int *p_count, int *e_count, int *c_coun
     while (y < game->rows)
     {
         x = 0;
-        while (x < game->cols) // Use game->cols here
+        while (x < game->cols)
         {
             char c = game->map[y][x];
             if (c == 'P')
@@ -95,7 +95,6 @@ static int is_path_valid(t_game *game)
     int e_reachable = 0;
     int total_c = game->collectibles;
 
-    // Allocate visited 2D array
     visited = malloc(sizeof(int *) * game->rows);
     for (i = 0; i < game->rows; i++)
     {
@@ -104,10 +103,8 @@ static int is_path_valid(t_game *game)
             visited[i][j] = 0;
     }
 
-    // Mark player's position as visited
     visited[game->player_y][game->player_x] = 1;
 
-    // Directions: up, down, left, right
     int dx[] = {0, 0, -1, 1};
     int dy[] = {-1, 1, 0, 0};
 
@@ -119,7 +116,6 @@ static int is_path_valid(t_game *game)
             {
                 if (visited[i][j])
                 {
-                    // Check all four directions
                     for (int d = 0; d < 4; d++)
                     {
                         int new_x = j + dx[d];
@@ -139,7 +135,6 @@ static int is_path_valid(t_game *game)
         }
     } while (changed);
 
-    // Check reachable collectibles and exit
     for (i = 0; i < game->rows; i++)
     {
         for (j = 0; j < game->cols; j++)
@@ -154,7 +149,6 @@ static int is_path_valid(t_game *game)
         }
     }
 
-    // Cleanup
     for (i = 0; i < game->rows; i++)
         free(visited[i]);
     free(visited);
@@ -195,7 +189,6 @@ int parse_map(t_game *game, char *file)
     if (fd < 0)
         return (0);
 
-    // Count rows and free lines
     game->rows = 0;
     char *tmp_line;
     while ((tmp_line = get_next_line(fd)) != NULL)
@@ -205,12 +198,10 @@ int parse_map(t_game *game, char *file)
     }
     close(fd);
 
-    // Allocate map memory
     game->map = malloc(sizeof(char *) * (game->rows + 1));
     if (!game->map)
         return (0);
 
-    // Read and trim lines
     fd = open(file, O_RDONLY);
     y = 0;
     while ((line = get_next_line(fd)) != NULL)
@@ -223,10 +214,8 @@ int parse_map(t_game *game, char *file)
     game->map[y] = NULL;
     close(fd);
 
-    // Initialize columns
-    game->cols = ft_strlen(game->map[0]); // <-- Critical fix
+    game->cols = ft_strlen(game->map[0]);
 
-    // Validate map
     if (!validate_map(game))
     {
         free_map(game->map, game->rows);
