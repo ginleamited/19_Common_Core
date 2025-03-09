@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:10:38 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/09 22:11:02 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/09 22:13:31 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	is_valid_char(char c)
 	return (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P');
 }
 
-static int	is_map_characters(t_game *g)
+int	is_map_characters(t_game *g)
 {
 	int	y;
 	int	x;
@@ -33,7 +33,7 @@ static int	is_map_characters(t_game *g)
 	return (1);
 }
 
-static int	is_map_rectangular(t_game *g)
+int	is_map_rectangular(t_game *g)
 {
 	size_t	len;
 	int		y;
@@ -48,7 +48,7 @@ static int	is_map_rectangular(t_game *g)
 	return (1);
 }
 
-static int	is_map_surrounded(t_game *g)
+int	is_map_surrounded(t_game *g)
 {
 	int	y;
 	int	x;
