@@ -50,17 +50,7 @@ static int	load_images(t_game *game)
 	return (1);
 }
 
-int	init_game(t_game *game)
-{
-	if (!init_mlx_and_window(game))
-		return (0);
-	if (!load_images(game))
-		return (0);
-	game->moves = 0;
-	return (1);
-}
-
-void	*get_image_for_tile(t_game *game, int x, int y)
+static void	*get_image_for_tile(t_game *game, int x, int y)
 {
 	char	tile;
 
@@ -72,7 +62,17 @@ void	*get_image_for_tile(t_game *game, int x, int y)
 	else if (tile == 'E')
 		return (game->exit_img);
 	else
-		return (game->floor_img);
+	return (game->floor_img);
+}
+
+int	init_game(t_game *game)
+{
+	if (!init_mlx_and_window(game))
+		return (0);
+	if (!load_images(game))
+		return (0);
+	game->moves = 0;
+	return (1);
 }
 
 void	render_map(t_game *game)

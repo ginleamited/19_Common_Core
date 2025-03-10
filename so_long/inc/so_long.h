@@ -33,21 +33,20 @@ typedef struct s_game
 	int		moves;
 }	t_game;
 
-// Map Parsing and Validation
+// Map Parsing and backtracking
 int		is_map_characters(t_game *g);
 int		is_map_rectangular(t_game *g);
 int		is_map_surrounded(t_game *g);
 int		is_path_valid(t_game *g);
-int		parse_map(t_game *game, char *file);
 int		validate_map(t_game *game);
+int		parse_map(t_game *game, char *file);
+
+// Game Cleanup
 void	free_map(char **map, int rows);
 void	free_2d_array(void **arr, int height);
 
-// Game Initialization and Cleanup
+// Initialization and Rendering
 int		init_game(t_game *game);
-void	cleanup_game(t_game *game);
-
-// Rendering and Graphics
 void	render_map(t_game *game);
 
 // Player Movement and Input
