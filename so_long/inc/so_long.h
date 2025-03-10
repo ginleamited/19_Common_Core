@@ -41,8 +41,9 @@ int		is_path_valid(t_game *g);
 int		validate_map(t_game *game);
 int		parse_map(t_game *game, char *file);
 
-// Game Cleanup
+// Game Cleanup and Exit
 void	free_map(char **map, int rows);
+int		exit_game(t_game *game);
 void	free_2d_array(void **arr, int height);
 
 // Initialization and Rendering
@@ -50,11 +51,7 @@ int		init_game(t_game *game);
 void	render_map(t_game *game);
 
 // Player Movement and Input
-int		key_press(int key, t_game *game);
 void	move_player(t_game *game, int dx, int dy);
-
-// Game Exit and Window Management
-int		exit_game(t_game *game);
-int		close_window(t_game *game);
+int		key_press(int key, t_game *game);
 
 #endif

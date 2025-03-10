@@ -12,7 +12,7 @@
 
 #include "../inc/so_long.h"
 
-int	is_valid_move(t_game *game, int x, int y)
+static int	is_valid_move(t_game *game, int x, int y)
 {
 	if (x < 0 || y < 0 || x >= game->cols || y >= game->rows)
 		return (0);
