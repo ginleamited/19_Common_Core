@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/17 18:16:10 by jilin             #+#    #+#              #
-#    Updated: 2025/02/24 21:51:34 by jilin            ###   ########.fr        #
+#    Updated: 2025/03/12 00:35:15 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME				= push_swap
 
 # Directories
-LIBFT				= ./libft/libft.a
+LIBFT				= ./lib/libft.a
 INC					= inc/
 SRC_DIR				= src/
 OBJ_DIR				= obj/
@@ -51,7 +51,7 @@ start:
 					@make all
 
 $(LIBFT):
-					@make -C ./libft
+					@make -C ./lib
 
 all: 				$(NAME)
 
@@ -65,7 +65,7 @@ $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
 
 clean:
 					@$(RM) -r $(OBJ_DIR)
-					@make clean -C ./libft
+					@make clean -C ./lib
 
 fclean: 			clean
 					@$(RM) $(NAME)
