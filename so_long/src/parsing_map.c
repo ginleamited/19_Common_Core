@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:00 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/11 19:41:01 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/11 22:10:44 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	count_element(t_game *g, char c, int *count)
 	}
 }
 
-static int	count_rows(t_game *g, char *file)
+static int	count_line(t_game *g, char *file)
 {
 	int		fd;
 	char	*line;
@@ -108,7 +108,7 @@ int	validate_map(t_game *g)
 
 int	parse_map(t_game *g, char *file)
 {
-	if (!count_rows(g, file))
+	if (!count_line(g, file))
 		return (0);
 	g->map = malloc(sizeof(char *) * (g->rows + 1));
 	if (!g->map)
