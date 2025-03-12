@@ -49,6 +49,7 @@ void	free_2d_array(void **arr, int height);
 // Initialization and Rendering
 int		init_game(t_game *game);
 void	render_map(t_game *game);
+void	display_moves(t_game *game);
 
 // Player Movement and Input
 void	move_player(t_game *game, int dx, int dy);
