@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:07 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/11 19:41:09 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/12 20:28:57 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	*get_image_for_tile(t_game *game, int x, int y)
 	else if (tile == 'E')
 		return (game->exit_img);
 	else
-	return (game->floor_img);
+		return (game->floor_img);
 }
 
 int	init_game(t_game *game)
@@ -80,7 +80,6 @@ void	render_map(t_game *game)
 	int		x;
 	int		y;
 	void	*img;
-	char	moves_str[20];
 
 	y = 0;
 	while (y < game->rows)
@@ -89,14 +88,13 @@ void	render_map(t_game *game)
 		while (x < game->cols)
 		{
 			img = get_image_for_tile(game, x, y);
-			mlx_put_image_to_window(game->mlx, game->win, img, x
-				* TILE_SIZE, y * TILE_SIZE);
+			mlx_put_image_to_window(game->mlx, game->win, img,
+				x * TILE_SIZE, y * TILE_SIZE);
 			x++;
 		}
 		y++;
 	}
 	mlx_put_image_to_window(game->mlx, game->win, game->player_img,
 		game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
-	sprintf(moves_str, "Moves: %d", game->moves);
-	mlx_string_put(game->mlx, game->win, 10, 20, 0xFFFFFF, moves_str);
+	display_moves(game);
 }

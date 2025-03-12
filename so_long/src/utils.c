@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:54 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/11 19:40:56 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/12 20:27:20 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,20 @@ int	is_map_surrounded(t_game *g)
 		}
 	}
 	return (1);
+}
+
+void	display_moves(t_game *game)
+{
+	char	*moves;
+	char	*moves_str;
+
+	moves = ft_itoa(game->moves);
+	if (!moves)
+		return ;
+	moves_str = ft_strjoin("Moves: ", moves);
+	free(moves);
+	if (!moves_str)
+		return ;
+	mlx_string_put(game->mlx, game->win, 10, 20, 0xFFFFFF, moves_str);
+	free(moves_str);
 }
