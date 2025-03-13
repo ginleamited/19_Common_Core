@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:07 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 17:27:37 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/13 18:08:13 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static int	init_mlx_and_window(t_game *game)
 	if (!game->win)
 		return (0);
 	return (1);
-	game->mlx = mlx_init();
 }
 
 int	load_images(t_game *game)

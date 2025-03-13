@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:13 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 17:13:31 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/13 18:08:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ int	exit_game(t_game *game)
 	while (++i < game->rows && game->map[i])
 		free(game->map[i]);
 	free(game->map);
+	if (game->player_up)
+		mlx_destroy_image(game->mlx, game->player_up);
+	if (game->player_down)
+		mlx_destroy_image(game->mlx, game->player_down);
+	if (game->player_left)
+		mlx_destroy_image(game->mlx, game->player_left);
+	if (game->player_right)
+		mlx_destroy_image(game->mlx, game->player_right);
 	if (game->wall_img)
 		mlx_destroy_image(game->mlx, game->wall_img);
 	if (game->floor_img)
