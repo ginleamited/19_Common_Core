@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:05:45 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 18:42:58 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/13 18:48:20 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_game	game;
-	init_game_struct(&game);
-	init_game(&game);
+	
 	char	*ext;
 
 	if (ac != 2)
