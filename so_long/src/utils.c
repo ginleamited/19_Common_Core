@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:54 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 17:11:11 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/13 18:42:41 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,27 @@ int	is_map_surrounded(t_game *g)
 		}
 	}
 	return (1);
+}
+
+void	init_game_struct(t_game *game)
+{
+	game->mlx = NULL;
+	game->win = NULL;
+	game->map = NULL;
+	game->player_up = NULL;
+	game->player_down = NULL;
+	game->player_left = NULL;
+	game->player_right = NULL;
+	game->wall_img = NULL;
+	game->floor_img = NULL;
+	game->player_img = NULL;
+	game->collectible_img = NULL;
+	game->exit_img = NULL;
+	game->player_x = 0;
+	game->player_y = 0;
+	game->moves = 0;
+	game->collected = 0;
+	game->collectibles = 0;
 }
 
 void	display_moves(t_game *game)
