@@ -30,6 +30,10 @@ typedef struct s_game
 	void	*collectible_img;
 	void	*exit_img;
 	void	*player_img;
+	void	*player_up;
+	void	*player_down;
+	void	*player_left;
+	void	*player_right;
 	int		moves;
 }	t_game;
 
