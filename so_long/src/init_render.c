@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:07 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 17:10:25 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/13 17:27:37 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,14 @@ static int	init_mlx_and_window(t_game *game)
 	int	window_width;
 	int	window_height;
 
+	window_width = 0;
+	window_height = 0;
 	game->mlx = mlx_init();
 	if (!game->mlx)
+	{
+		ft_printf("Error: Failed to initialize MLX\n");
 		return (0);
+	}
 	window_width = game->cols * TILE_SIZE;
 	window_height = game->rows * TILE_SIZE;
 	game->win = mlx_new_window(game->mlx, window_width,
@@ -27,6 +32,7 @@ static int	init_mlx_and_window(t_game *game)
 	if (!game->win)
 		return (0);
 	return (1);
+	game->mlx = mlx_init();
 }
 
 int	load_images(t_game *game)
