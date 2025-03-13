@@ -6,16 +6,11 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:54 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/12 20:38:48 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/13 15:48:21 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-static int	is_valid_char(char c)
-{
-	return (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P');
-}
 
 int	is_map_characters(t_game *g)
 {
@@ -27,8 +22,12 @@ int	is_map_characters(t_game *g)
 	{
 		x = -1;
 		while (++x < g->cols)
-			if (!is_valid_char(g->map[y][x]))
+		{
+			if (!(g->map[y][x] == '0' || g->map[y][x] == '1' ||
+				g->map[y][x] == 'C' || g->map[y][x] == 'E' ||
+				g->map[y][x] == 'P'))
 				return (0);
+		}
 	}
 	return (1);
 }
