@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 14:28:10 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/13 17:04:25 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,6 @@ static int	is_valid_move(t_game *game, int x, int y)
 	return (1);
 }
 
-static void	player_direction(t_game *game, int dx, int dy)
-{
-	if (dx == 1)
-		game->player_img = game->player_right;
-	else if (dx == -1)
-		game->player_img = game->player_left;
-	else if (dy == 1)
-		game->player_img = game->player_down;
-	else if (dy == -1)
-		game->player_img = game->player_up;
-}
-
 void	move_player(t_game *game, int dx, int dy)
 {
 	int	new_x;
@@ -46,7 +34,6 @@ void	move_player(t_game *game, int dx, int dy)
 		return ;
 	game->moves++;
 	ft_printf("Moves: %d\n", game->moves);
-	player_direction(game, dx, dy);
 	if (game->map[new_y][new_x] == 'C')
 	{
 		game->collected++;
