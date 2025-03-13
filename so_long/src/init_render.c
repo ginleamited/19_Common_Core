@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:07 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 17:01:29 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/13 17:10:25 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,32 @@ static int	init_mlx_and_window(t_game *game)
 	return (1);
 }
 
-static int	load_images(t_game *game)
+int	load_images(t_game *game)
 {
 	int	width;
 	int	height;
 
-	game->wall_img = mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm",
-			&width, &height);
-	game->floor_img = mlx_xpm_file_to_image(game->mlx, "assets/floor.xpm",
-			&width, &height);
-	game->player_img = mlx_xpm_file_to_image(game->mlx, "assets/player.xpm",
-			&width, &height);
+	game->wall_img = mlx_xpm_file_to_image(game->mlx,
+			"assets/wall.xpm", &width, &height);
+	game->floor_img = mlx_xpm_file_to_image(game->mlx,
+			"assets/floor.xpm", &width, &height);
 	game->collectible_img = mlx_xpm_file_to_image(game->mlx,
 			"assets/collectibles.xpm", &width, &height);
-	game->exit_img = mlx_xpm_file_to_image(game->mlx, "assets/exit.xpm",
-			&width, &height);
-	if (!game->wall_img || !game->floor_img || !game->player_img
-		|| !game->collectible_img || !game->exit_img)
+	game->exit_img = mlx_xpm_file_to_image(game->mlx,
+			"assets/exit.xpm", &width, &height);
+	game->player_up = mlx_xpm_file_to_image(game->mlx,
+			"assets/player_up.xpm", &width, &height);
+	game->player_down = mlx_xpm_file_to_image(game->mlx,
+			"assets/player_down.xpm", &width, &height);
+	game->player_left = mlx_xpm_file_to_image(game->mlx,
+			"assets/player_left.xpm", &width, &height);
+	game->player_right = mlx_xpm_file_to_image(game->mlx,
+			"assets/player_right.xpm", &width, &height);
+	if (!game->wall_img || !game->floor_img || !game->collectible_img
+		|| !game->exit_img || !game->player_up || !game->player_down
+		|| !game->player_left || !game->player_right)
 		return (0);
+	game->player_img = game->player_down;
 	return (1);
 }
 
