@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:07 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 20:12:45 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/13 22:24:15 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	load_images(t_game *game)
 			"assets/enemy.xpm", &width, &height);
 	if (!game->wall_img || !game->floor_img || !game->collectible_img
 		|| !game->exit_img || !game->player_up || !game->player_down
-		|| !game->player_left || !game->player_right) || (!game->enemy_img)
+		|| !game->player_left || !game->player_right || !game->enemy_img)
 		return (0);
 	game->player_img = game->player_down;
 	return (1);
@@ -110,5 +110,5 @@ void	render_map(t_game *game)
 	mlx_put_image_to_window(game->mlx, game->win, game->player_img,
 		game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
 	display_moves(game);
-	render_ennemies(game);
+	render_enemies(game);
 }
