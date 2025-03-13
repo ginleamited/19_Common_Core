@@ -6,32 +6,14 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:13 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 18:08:01 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/13 18:21:41 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	free_map(char **map, int rows)
+static void	free_images(t_game *game)
 {
-	int	y;
-
-	if (!map)
-		return ;
-	y = -1;
-	while (++y < rows)
-		free(map[y]);
-	free(map);
-}
-
-int	exit_game(t_game *game)
-{
-	int	i;
-
-	i = -1;
-	while (++i < game->rows && game->map[i])
-		free(game->map[i]);
-	free(game->map);
 	if (game->player_up)
 		mlx_destroy_image(game->mlx, game->player_up);
 	if (game->player_down)
@@ -50,6 +32,24 @@ int	exit_game(t_game *game)
 		mlx_destroy_image(game->mlx, game->collectible_img);
 	if (game->exit_img)
 		mlx_destroy_image(game->mlx, game->exit_img);
+}
+
+static void	free_map(char **map, int rows)
+{
+	int	i;
+
+	if (!map)
+		return ;
+	i = -1;
+	while (++i < rows)
+		free(map[i]);
+	free(map);
+}
+
+int	exit_game(t_game *game)
+{
+	free_map(game->map, game->rows);
+	free_images(game);
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
