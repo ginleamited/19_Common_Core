@@ -46,7 +46,6 @@ int		validate_map(t_game *game);
 int		parse_map(t_game *game, char *file);
 
 // Game Cleanup and Exit
-void	free_map(char **map, int rows);
 int		exit_game(t_game *game);
 void	free_2d_array(void **arr, int height);
 
