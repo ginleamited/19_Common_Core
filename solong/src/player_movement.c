@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 17:10:37 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 02:05:26 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ void	move_player(t_game *game, int dx, int dy)
 	new_y = game->player_y + dy;
 	if (!is_valid_move(game, new_x, new_y))
 		return ;
+		enemy = game->enemies;
+	while (enemy)
+	{
+		if (enemy->x == new_x && enemy->y == new_y)
+		{
+			ft_printf("💀 Game Over! You were caught by an enemy.\n");
+			exit_game(game);
+		}
+		enemy = enemy->next;
+	}
 	game->moves++;
 	ft_printf("Moves: %d\n", game->moves);
 	player_direction(game, dx, dy);
