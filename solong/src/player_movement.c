@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/15 00:20:53 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/15 00:29:24 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	move_player(t_game *game, int dx, int dy)
 {
 	int	new_x;
 	int	new_y;
-
+	
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
 	t_enemy	*enemy;
 	printf("move_player: player_x: %d, player_y: %d\n", game->player_x+dx, game->player_y+dy);
-
+	
 	if (!is_valid_move(game, new_x, new_y))
 		return ;
 	enemy = game->enemies;
@@ -76,73 +76,6 @@ void	move_player(t_game *game, int dx, int dy)
 	}
 	render_map(game);
 }
-/*
-void move_player(t_game *game, int dx, int dy)
-{
-	printf("move_player: player_x: %d, player_y: %d\n", game->player_x+dx, game->player_y+dy);
-    int new_x = game->player_x + dx;
-    int new_y = game->player_y + dy;
-    t_enemy *enemy;
-
-    
-    // Check if the move is valid (boundaries, walls, etc.)
-    if (!is_valid_move(game, new_x, new_y))
-        return;
-
-    // Check for enemy collision first (before moving)
-    enemy = game->enemies;
-    while (enemy)
-    {
-        if (enemy->x == new_x && enemy->y == new_y)
-        {
-            ft_printf("💀 Game Over! You were caught by an enemy.\n");
-            exit_game(game);
-            return; // Technically unnecessary due to exit_game, but for clarity
-        }
-        enemy = enemy->next;
-    }
-
-    // Handle collectibles before moving (if applicable)
-    if (game->map[new_y][new_x] == 'C')
-    {
-        game->collected++;
-        game->map[new_y][new_x] = '0';
-    }
-
-    // Update move count and direction
-    game->moves++;
-    ft_printf("Moves: %d\n", game->moves);
-    player_direction(game, dx, dy);
-
-    // Move player: clear old position, update coordinates
-    game->map[game->player_y][game->player_x] = '0';
-    game->player_x = new_x;
-    game->player_y = new_y;
-
-    // Check win condition (only trigger if all collectibles are gathered)
-    if (game->map[new_y][new_x] == 'E')
-    {
-        if (game->collected == game->collectibles)
-        {
-            ft_printf("CONGRATS! Total moves: %d\n", game->moves);
-            exit_game(game);
-            return;
-        }
-        else
-        {
-            ft_printf("You need to collect all items before exiting!\n");
-            // Player stays on 'E', no overwrite of 'E' to preserve map
-        }
-    }
-    else
-    {
-        // Only overwrite new position if it's not the exit
-        game->map[new_y][new_x] = 'P'; // Assuming 'P' is player symbol
-    }
-
-    render_map(game);
-}
-*/
 
 int	key_press(int key, t_game *game)
 {
