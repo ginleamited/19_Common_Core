@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/03 22:45:18 by jilin             #+#    #+#              #
-#    Updated: 2025/03/13 22:23:24 by jilin            ###   ########.fr        #
+#    Updated: 2025/03/14 19:37:23 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ $(LIBFT):
 					@make -C ./lib -s
 
 $(MLX):
-					@make -C $(MLX_PATH) -s
+					@make -C $(MLX_PATH) -s 2> /dev/null
 
 all: 				$(NAME)
 
