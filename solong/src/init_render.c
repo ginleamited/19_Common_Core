@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:07 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 03:21:03 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 04:10:25 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ void	render_map(t_game *game)
 			mlx_put_image_to_window(game->mlx, game->win, img,
 				x * TILE_SIZE, y * TILE_SIZE);
 			x++;
-			ft_printf("Rendering tile at (%d, %d)\n", x, y);
 		}
 		y++;
 	}

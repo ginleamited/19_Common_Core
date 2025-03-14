@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 03:59:33 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 04:14:19 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,136 +26,67 @@ static int	is_valid_move(t_game *game, int x, int y)
 static void	player_direction(t_game *game, int dx, int dy)
 {
 	if (dx == 1)
-	{
-		ft_printf("Player moving right\n");
 		game->player_img = game->player_right;
-	}
 	else if (dx == -1)
-	{
-		ft_printf("Player moving left\n");
 		game->player_img = game->player_left;
-	}
 	else if (dy == 1)
-	{
-		ft_printf("Player moving down\n");
 		game->player_img = game->player_down;
-	}
 	else if (dy == -1)
-	{
-		ft_printf("Player moving up\n");
 		game->player_img = game->player_up;
+}
+
+void	move_player(t_game *game, int dx, int dy)
+{
+	int	new_x;
+	int	new_y;
+	t_enemy	*enemy;
+
+	new_x = game->player_x + dx;
+	new_y = game->player_y + dy;
+	if (!is_valid_move(game, new_x, new_y))
+		return ;
+	ft_printf("Player moving to: (%d, %d)\n", new_x, new_y);
+	enemy = game->enemies;
+	while (enemy)
+	{
+		if (enemy->x == new_x && enemy->y == new_y)
+		{
+			ft_printf("💀 Game Over! You were caught by an enemy.\n");
+			exit_game(game);
+		}
+		enemy = enemy->next;
 	}
-}
-
-void move_player(t_game *game, int dx, int dy)
-{
-    // First, explicitly initialize both values to 0 to clear any potential garbage values
-    game->move_dx = 0;
-    game->move_dy = 0;
-    
-    // Then set the specific value we want
-    if (dx != 0) {
-        game->move_dx = dx;
-        // Explicitly ensure dy is 0 for horizontal movement
-        game->move_dy = 0;
-    }
-    else if (dy != 0) {
-        game->move_dy = dy;
-        // Explicitly ensure dx is 0 for vertical movement
-        game->move_dx = 0;
-    }
-    
-    ft_printf("Set movement values - dx: %d, dy: %d\n", game->move_dx, game->move_dy);
-    
-    // Call a new function that doesn't rely on parameters
-    move_player_direct(game);
-}
-
-void move_player_direct(t_game *game)
-{
-    int dx = game->move_dx;
-    int dy = game->move_dy;
-    int new_x;
-    int new_y;
-    t_enemy *enemy;
-    
-    ft_printf("Using stored values - dx: %d, dy: %d\n", dx, dy);
-    
-    // Calculate new position
-    new_x = game->player_x + dx;
-    new_y = game->player_y + dy;
-    
-    ft_printf("Trying to move to: (%d, %d)\n", new_x, new_y);
-    if (!is_valid_move(game, new_x, new_y))
-    {
-        ft_printf("Move blocked\n");
-        return;
-    }
-    
-    ft_printf("Player moving to: (%d, %d)\n", new_x, new_y);
-    enemy = game->enemies;
-    while (enemy)
-    {
-        if (enemy->x == new_x && enemy->y == new_y)
-        {
-            ft_printf("💀 Game Over! You were caught by an enemy.\n");
-            exit_game(game);
-        }
-        enemy = enemy->next;
-    }
-    
-    game->moves++;
-    ft_printf("Moves: %d\n", game->moves);
-    player_direction(game, dx, dy);
-    
-    if (game->map[new_y][new_x] == 'C')
-    {
-        game->collected++;
-        game->map[new_y][new_x] = '0';
-    }
-    
-    // Clear old position
-    game->map[game->player_y][game->player_x] = '0';
-    
-    // Update position
-    game->player_x = new_x;
-    game->player_y = new_y;
-    
-    ft_printf("Position after update: (%d, %d)\n", game->player_x, game->player_y);
-    
-    if (game->map[new_y][new_x] == 'E' && game->collected == game->collectibles)
-    {
-        ft_printf("CONGRATS! Total moves: %d\n", game->moves);
-        exit_game(game);
-    }
-    
-    render_map(game);
+	game->moves++;
+	ft_printf("Moves: %d\n", game->moves);
+	player_direction(game, dx, dy);
+	if (game->map[new_y][new_x] == 'C')
+	{
+		game->collected++;
+		game->map[new_y][new_x] = '0';
+	}
+	game->map[game->player_y][game->player_x] = '0';
+	game->player_x = new_x;
+	game->player_y = new_y;
+	if (game->map[new_y][new_x] == 'E' && game->collected == game->collectibles)
+	{
+		ft_printf("CONGRATS! Total moves: %d\n", game->moves);
+		exit_game(game);
+	}
+	render_map(game);
 }
 
 int	key_press(int key, t_game *game)
 {
-    ft_printf("Key pressed: %d\n", key);
-    if (key == ESC)
-        exit_game(game);
-    else if (key == W)
-    {
-        ft_printf("Moving up - Passing dx: 0, dy: -1\n");
-        move_player(game, 0, -1);
-    }
-    else if (key == A)
-    {
-        ft_printf("Moving left - Passing dx: -1, dy: 0\n");
-        move_player(game, -1, 0);
-    }
-    else if (key == S)
-    {
-        ft_printf("Moving down - Passing dx: 0, dy: 1\n");
-        move_player(game, 0, 1);
-    }
-    else if (key == D)
-    {
-        ft_printf("Moving right - Passing dx: 1, dy: 0\n");
-        move_player(game, 1, 0);
-    }
-    return (0);
+	ft_printf("Key pressed: %d\n", key);
+	if (key == ESC)
+		exit_game(game);
+	else if (key == W)
+		move_player(game, 0, -1);
+	else if (key == A)
+		move_player(game, -1, 0);
+	else if (key == S)
+		move_player(game, 0, 1);
+	else if (key == D)
+		move_player(game, 1, 0);
+	return (0);
 }

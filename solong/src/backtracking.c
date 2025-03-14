@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:23 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 03:07:33 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 04:11:14 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static void	dfs(t_game *g, int **v, int y, int x)
 		|| v[y][x] || g->map[y][x] == '1' || g->map[y][x] == 'X')
 		return ;
 	v[y][x] = 1;
-	ft_printf("Visiting: (%d, %d) -> %c\n", y, x, g->map[y][x]);
 	dfs(g, v, y - 1, x);
 	dfs(g, v, y + 1, x);
 	dfs(g, v, y, x - 1);
@@ -51,35 +50,26 @@ static int	check_reach(t_game *g, int **v)
 {
 	int	i;
 	int	j;
-	int	collected_count;
-	int	exit_reached;
-	int	total_collectibles = 0;
+	int	c;
+	int	e;
 
-	collected_count = 0;
-	exit_reached = 0;
+	c = 0;
+	e = 0;
 	i = -1;
 	while (++i < g->rows)
 	{
 		j = -1;
 		while (++j < g->cols)
 		{
-			if (g->map[i][j] == 'C')
-				total_collectibles++;
 			if (v[i][j])
 			{
-				collected_count += (g->map[i][j] == 'C');
-				exit_reached |= (g->map[i][j] == 'E');
+				c += (g->map[i][j] == 'C');
+				e |= (g->map[i][j] == 'E');
 			}
 		}
 	}
-	if (collected_count != total_collectibles || !exit_reached)
-	{
-		ft_printf("Error: Some collectibles or exit are unreachable!\n");
-		return (0);
-	}
-	return (1);
+	return (c == g->collectibles && e);
 }
-
 
 int	is_path_valid(t_game *g)
 {
