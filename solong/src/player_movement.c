@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 03:27:12 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 03:34:02 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	move_player(t_game *game, int dx, int dy)
     int	new_y;
     t_enemy	*enemy;
 
+    ft_printf("Current position: (%d, %d)\n", game->player_x, game->player_y);
     ft_printf("dx: %d, dy: %d\n", dx, dy);
     new_x = game->player_x + dx;
     new_y = game->player_y + dy;
@@ -99,22 +100,22 @@ int	key_press(int key, t_game *game)
         exit_game(game);
     else if (key == W)
     {
-        ft_printf("Moving up\n"); // Debug print
+        ft_printf("Moving up - Passing dx: 0, dy: -1\n");
         move_player(game, 0, -1);
     }
     else if (key == A)
     {
-        ft_printf("Moving left\n"); // Debug print
+        ft_printf("Moving left - Passing dx: -1, dy: 0\n");
         move_player(game, -1, 0);
     }
     else if (key == S)
     {
-        ft_printf("Moving down\n"); // Debug print
+        ft_printf("Moving down - Passing dx: 0, dy: 1\n");
         move_player(game, 0, 1);
     }
     else if (key == D)
     {
-        ft_printf("Moving right\n"); // Debug print
+        ft_printf("Moving right - Passing dx: 1, dy: 0\n");
         move_player(game, 1, 0);
     }
     return (0);
