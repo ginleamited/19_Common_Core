@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:13 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 02:36:24 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 02:39:53 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	free_map(char **map, int rows)
 
 int	exit_game(t_game *game)
 {
+	free_enemies(game);
 	free_map(game->map, game->rows);
 	free_images(game);
 	if (game->win)

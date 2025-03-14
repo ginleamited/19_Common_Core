@@ -79,5 +79,6 @@ int		key_press(int key, t_game *game);
 void	add_enemy(t_game *game, int x, int y);
 void	detect_enemies(t_game *g, char *line, int y);
 void	render_enemies(t_game *game);
+void	free_enemies(t_game *game);
 
 #endif
