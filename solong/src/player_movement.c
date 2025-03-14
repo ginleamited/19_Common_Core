@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 21:36:23 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 23:32:46 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,16 @@ void	move_player(t_game *game, int dx, int dy)
 	int	new_x;
 	int	new_y;
 	t_enemy	*enemy;
-
-	ft_printf("dx: %d, dy: %d\n", dx, dy); // Debug print to check dx and dy values
+	ft_printf("Move player : playerx: %d, playery: %d\n", game->player_x, game->player_y);
+	ft_printf("dx: %d, dy: %d\n", dx, dy);
 
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
 
-	ft_printf("new_x: %d, new_y: %d\n", new_x, new_y); // Debug print to check new_x and new_y values
+	ft_printf("new_x: %d, new_y: %d\n", new_x, new_y);
 
 	if (!is_valid_move(game, new_x, new_y))
 		return ;
-	ft_printf("Player moving to: (%d, %d)\n", dx, dy);
-	ft_printf("Player moving to: (%d, %d)\n", game->player_x, game->player_y);
-	ft_printf("Player moving to: (%d, %d)\n", new_x, new_y);
 	enemy = game->enemies;
 	while (enemy)
 	{
@@ -85,17 +82,20 @@ void	move_player(t_game *game, int dx, int dy)
 int	key_press(int key, t_game *game)
 {
     ft_printf("Key pressed: %d\n", key);
-    ft_printf("Key constants: W=%d, A=%d, S=%d, D=%d, ESC=%d\n", W, A, S, D, ESC);
     
+	printf("keypress %d %d\n", game->player_x, game->player_y);
     if (key == ESC)
         exit_game(game);
-    else if (key == W || key == 119) // 65362 is often the UP arrow key
+    else if (key == W || key == 119)
+	{
+		printf("keypress %d %d\n", game->player_x, game->player_y);
         move_player(game, 0, -1);
-    else if (key == A || key == 97) // 65361 is often the LEFT arrow key
+	}
+    else if (key == A || key == 97)
         move_player(game, -1, 0);
-    else if (key == S || key == 115) // 65364 is often the DOWN arrow key
+    else if (key == S || key == 115)
         move_player(game, 0, 1);
-    else if (key == D || key == 100) // 65363 is often the RIGHT arrow key
+    else if (key == D || key == 100)
         move_player(game, 1, 0);
     return (0);
 }

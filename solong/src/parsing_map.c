@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:00 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 20:34:03 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 23:10:53 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	count_element(t_game *g, char c, int *count)
 		{
 			if (g->map[y][x] == 'P')
 			{
+				printf("JOUEURy:%d x:%d\n", y, x);
 				g->player_x = x;
 				g->player_y = y;
 			}
