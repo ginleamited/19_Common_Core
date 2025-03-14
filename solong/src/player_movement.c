@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 03:49:45 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 03:55:11 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,27 @@ static void	player_direction(t_game *game, int dx, int dy)
 	}
 }
 
-void	move_player(t_game *game, int dx, int dy)
+void move_player(t_game *game, int dx, int dy)
 {
-    int	new_x;
-    int	new_y;
-    t_enemy	*enemy;
+    // Store the movement direction in the game struct to avoid parameter corruption
+    game->move_dx = dx;
+    game->move_dy = dy;
     
-    // Remove the local variable copies that might be causing issues
-    ft_printf("Current position before move: (%d, %d)\n", game->player_x, game->player_y);
-    ft_printf("Received movement values - dx: %d, dy: %d\n", dx, dy);
+    // Call a new function that doesn't rely on parameters
+    move_player_direct(game);
+}
+
+void move_player_direct(t_game *game)
+{
+    int dx = game->move_dx;
+    int dy = game->move_dy;
+    int new_x;
+    int new_y;
+    t_enemy *enemy;
     
-    // Calculate new position directly from parameters
+    ft_printf("Using stored values - dx: %d, dy: %d\n", dx, dy);
+    
+    // Calculate new position
     new_x = game->player_x + dx;
     new_y = game->player_y + dy;
     

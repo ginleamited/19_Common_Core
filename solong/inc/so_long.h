@@ -51,6 +51,8 @@ typedef struct s_game
 	void	*floor_img;
 	// Game Stats
 	int		moves;
+	int		move_dx;
+	int		move_dy;
 }	t_game;
 
 // Map Parsing and backtracking
