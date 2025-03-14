@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 03:55:11 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 03:59:33 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,23 @@ static void	player_direction(t_game *game, int dx, int dy)
 
 void move_player(t_game *game, int dx, int dy)
 {
-    // Store the movement direction in the game struct to avoid parameter corruption
-    game->move_dx = dx;
-    game->move_dy = dy;
+    // First, explicitly initialize both values to 0 to clear any potential garbage values
+    game->move_dx = 0;
+    game->move_dy = 0;
+    
+    // Then set the specific value we want
+    if (dx != 0) {
+        game->move_dx = dx;
+        // Explicitly ensure dy is 0 for horizontal movement
+        game->move_dy = 0;
+    }
+    else if (dy != 0) {
+        game->move_dy = dy;
+        // Explicitly ensure dx is 0 for vertical movement
+        game->move_dx = 0;
+    }
+    
+    ft_printf("Set movement values - dx: %d, dy: %d\n", game->move_dx, game->move_dy);
     
     // Call a new function that doesn't rely on parameters
     move_player_direct(game);
