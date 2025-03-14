@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:13 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 18:26:47 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 02:36:24 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	free_images(t_game *game)
 		mlx_destroy_image(game->mlx, game->collectible_img);
 	if (game->exit_img)
 		mlx_destroy_image(game->mlx, game->exit_img);
+	if (game->enemy_img)
+		mlx_destroy_image(game->mlx, game->enemy_img);
 }
 
 void	free_map(char **map, int rows)

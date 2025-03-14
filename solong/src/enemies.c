@@ -25,13 +25,15 @@ void render_enemies(t_game *game)
 
 void add_enemy(t_game *game, int x, int y)
 {
-    t_enemy *new_enemy = malloc(sizeof(t_enemy));
-    if (!new_enemy)
-        return;
-    new_enemy->x = x;
-    new_enemy->y = y;
-    new_enemy->next = game->enemies;
-    game->enemies = new_enemy;
+	t_enemy	*new_enemy;
+
+	new_enemy = malloc(sizeof(t_enemy));
+	if (!new_enemy)
+		return;
+	new_enemy->x = x;
+	new_enemy->y = y;
+	new_enemy->next = game->enemies;
+	game->enemies = new_enemy;
 }
 
 void	detect_enemies(t_game *g, char *line, int y)
