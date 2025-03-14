@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 23:38:06 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/15 00:01:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	player_direction(t_game *game, int dx, int dy)
 	else if (dy == -1)
 		game->player_img = game->player_up;
 }
-
+/*
 void	move_player(t_game *game, int dx, int dy)
 {
 	int	new_x;
@@ -78,18 +78,15 @@ void	move_player(t_game *game, int dx, int dy)
 	}
 	render_map(game);
 }
-
+*/
 void move_player(t_game *game, int dx, int dy)
 {
+	printf("move_player: player_x: %d, player_y: %d\n", game->player_x+dx, game->player_y+dy);
     int new_x = game->player_x + dx;
     int new_y = game->player_y + dy;
     t_enemy *enemy;
 
-    // Debug output (optional, consider removing in final version)
-    ft_printf("Move player: player_x: %d, player_y: %d, dx: %d, dy: %d\n", 
-              game->player_x, game->player_y, dx, dy);
-    ft_printf("new_x: %d, new_y: %d\n", new_x, new_y);
-
+    
     // Check if the move is valid (boundaries, walls, etc.)
     if (!is_valid_move(game, new_x, new_y))
         return;
@@ -152,14 +149,10 @@ int	key_press(int key, t_game *game)
 {
     ft_printf("Key pressed: %d\n", key);
     
-	printf("keypress %d %d\n", game->player_x, game->player_y);
     if (key == ESC)
         exit_game(game);
     else if (key == W || key == 119)
-	{
-		printf("keypress %d %d\n", game->player_x, game->player_y);
         move_player(game, 0, -1);
-	}
     else if (key == A || key == 97)
         move_player(game, -1, 0);
     else if (key == S || key == 115)
