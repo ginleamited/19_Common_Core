@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:00 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 17:24:24 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 20:34:03 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	validate_map(t_game *g)
 	if (p != 1 || e != 1 || c < 1)
 		return (ft_printf("Error\nInvalid P/E/C count\n"), 0);
 	if (!is_path_valid(g))
-		return (ft_printf("Error\nUnreachable elements or exit\n"), 0);
+		return (ft_printf("Error\nUnreachable elements\n"), 0);
 	return (1);
 }
 

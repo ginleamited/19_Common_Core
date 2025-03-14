@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:23 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 17:41:26 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 04:11:14 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ static int	**init_visited(t_game *g)
 static void	dfs(t_game *g, int **v, int y, int x)
 {
 	if (y < 0 || x < 0 || y >= g->rows || x >= g->cols
-		|| v[y][x] || g->map[y][x] == '1')
+		|| v[y][x] || g->map[y][x] == '1' || g->map[y][x] == 'X')
 		return ;
-	if (g->map[y][x] == 'X')
-        return;
 	v[y][x] = 1;
 	dfs(g, v, y - 1, x);
 	dfs(g, v, y + 1, x);
