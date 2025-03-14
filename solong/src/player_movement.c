@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/15 00:01:01 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/15 00:10:24 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ static void	player_direction(t_game *game, int dx, int dy)
 	else if (dy == -1)
 		game->player_img = game->player_up;
 }
-/*
+
 void	move_player(t_game *game, int dx, int dy)
 {
 	int	new_x;
 	int	new_y;
-	t_enemy	*enemy;
 	ft_printf("Move player : playerx: %d, playery: %d\n", game->player_x, game->player_y);
 	ft_printf("dx: %d, dy: %d\n", dx, dy);
-
+	
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
-
+	t_enemy	*enemy;
+	
 	ft_printf("new_x: %d, new_y: %d\n", new_x, new_y);
 
 	if (!is_valid_move(game, new_x, new_y))
@@ -60,14 +60,14 @@ void	move_player(t_game *game, int dx, int dy)
 		}
 		enemy = enemy->next;
 	}
-	game->moves++;
-	ft_printf("Moves: %d\n", game->moves);
-	player_direction(game, dx, dy);
 	if (game->map[new_y][new_x] == 'C')
 	{
 		game->collected++;
 		game->map[new_y][new_x] = '0';
 	}
+	game->moves++;
+	ft_printf("Moves: %d\n", game->moves);
+	player_direction(game, dx, dy);
 	game->map[game->player_y][game->player_x] = '0';
 	game->player_x = new_x;
 	game->player_y = new_y;
@@ -78,7 +78,7 @@ void	move_player(t_game *game, int dx, int dy)
 	}
 	render_map(game);
 }
-*/
+/*
 void move_player(t_game *game, int dx, int dy)
 {
 	printf("move_player: player_x: %d, player_y: %d\n", game->player_x+dx, game->player_y+dy);
@@ -144,6 +144,7 @@ void move_player(t_game *game, int dx, int dy)
 
     render_map(game);
 }
+*/
 
 int	key_press(int key, t_game *game)
 {
