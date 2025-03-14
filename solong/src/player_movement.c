@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 03:03:36 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 03:12:00 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,25 @@ static int	is_valid_move(t_game *game, int x, int y)
 static void	player_direction(t_game *game, int dx, int dy)
 {
 	if (dx == 1)
+	{
+		ft_printf("Player moving right\n");
 		game->player_img = game->player_right;
+	}
 	else if (dx == -1)
+	{
+		ft_printf("Player moving left\n");
 		game->player_img = game->player_left;
+	}
 	else if (dy == 1)
+	{
+		ft_printf("Player moving down\n");
 		game->player_img = game->player_down;
+	}
 	else if (dy == -1)
+	{
+		ft_printf("Player moving up\n");
 		game->player_img = game->player_up;
+	}
 }
 
 void	move_player(t_game *game, int dx, int dy)
@@ -43,8 +55,12 @@ void	move_player(t_game *game, int dx, int dy)
 
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
+	ft_printf("Trying to move to: (%d, %d)\n", new_x, new_y);
 	if (!is_valid_move(game, new_x, new_y))
+	{
+		ft_printf("Move blocked\n");
 		return ;
+	}
 	ft_printf("Player moving to: (%d, %d)\n", new_x, new_y);
 	enemy = game->enemies;
 	while (enemy)
