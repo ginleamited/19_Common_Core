@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 03:34:02 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 03:42:51 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,14 @@ void	move_player(t_game *game, int dx, int dy)
     int	new_y;
     t_enemy	*enemy;
 
+    // Make local copies to ensure values don't get corrupted
+    int move_dx = dx;
+    int move_dy = dy;
+    
     ft_printf("Current position: (%d, %d)\n", game->player_x, game->player_y);
-    ft_printf("dx: %d, dy: %d\n", dx, dy);
-    new_x = game->player_x + dx;
-    new_y = game->player_y + dy;
+    ft_printf("dx: %d, dy: %d\n", move_dx, move_dy);
+    new_x = game->player_x + move_dx;
+    new_y = game->player_y + move_dy;
     ft_printf("Trying to move to: (%d, %d)\n", new_x, new_y);
     if (!is_valid_move(game, new_x, new_y))
     {
@@ -76,7 +80,7 @@ void	move_player(t_game *game, int dx, int dy)
     }
     game->moves++;
     ft_printf("Moves: %d\n", game->moves);
-    player_direction(game, dx, dy);
+    player_direction(game, move_dx, move_dy);
     if (game->map[new_y][new_x] == 'C')
     {
         game->collected++;
