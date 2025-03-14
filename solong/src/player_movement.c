@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 02:05:26 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 02:21:06 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ void	move_player(t_game *game, int dx, int dy)
 {
 	int	new_x;
 	int	new_y;
+	t_enemy	*enemy;
 
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
 	if (!is_valid_move(game, new_x, new_y))
 		return ;
-		enemy = game->enemies;
+	enemy = game->enemies;
 	while (enemy)
 	{
 		if (enemy->x == new_x && enemy->y == new_y)
@@ -65,8 +66,7 @@ void	move_player(t_game *game, int dx, int dy)
 	game->map[game->player_y][game->player_x] = '0';
 	game->player_x = new_x;
 	game->player_y = new_y;
-	if (game->map[game->player_y][game->player_x] == 'E'
-		&& game->collected == game->collectibles)
+	if (game->map[new_y][new_x] == 'E' && game->collected == game->collectibles)
 	{
 		ft_printf("CONGRATS! Total moves: %d\n", game->moves);
 		exit_game(game);
