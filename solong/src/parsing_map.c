@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:00 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 20:06:26 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 02:01:21 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static int	fill_map(t_game *g, char *file)
 		if (len > 0 && line[len - 1] == '\n')
 			line[len - 1] = '\0';
 		g->map[++y] = line;
+		detect_enemies(g, line, y);
 		line = get_next_line(fd);
 	}
 	g->map[++y] = NULL;

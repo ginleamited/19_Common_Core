@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:54 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/13 18:48:33 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 01:59:54 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static int	is_valid_char(char c)
 {
-	return (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P');
+	return (c == '0' || c == '1' || c == 'C' || c == 'E' ||
+			c == 'P' || c == 'X');
 }
 
 int	is_map_characters(t_game *g)
