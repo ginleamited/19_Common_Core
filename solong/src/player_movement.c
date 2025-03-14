@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 03:42:51 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 03:49:45 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,22 @@ void	move_player(t_game *game, int dx, int dy)
     int	new_x;
     int	new_y;
     t_enemy	*enemy;
-
-    // Make local copies to ensure values don't get corrupted
-    int move_dx = dx;
-    int move_dy = dy;
     
-    ft_printf("Current position: (%d, %d)\n", game->player_x, game->player_y);
-    ft_printf("dx: %d, dy: %d\n", move_dx, move_dy);
-    new_x = game->player_x + move_dx;
-    new_y = game->player_y + move_dy;
+    // Remove the local variable copies that might be causing issues
+    ft_printf("Current position before move: (%d, %d)\n", game->player_x, game->player_y);
+    ft_printf("Received movement values - dx: %d, dy: %d\n", dx, dy);
+    
+    // Calculate new position directly from parameters
+    new_x = game->player_x + dx;
+    new_y = game->player_y + dy;
+    
     ft_printf("Trying to move to: (%d, %d)\n", new_x, new_y);
     if (!is_valid_move(game, new_x, new_y))
     {
         ft_printf("Move blocked\n");
-        return ;
+        return;
     }
+    
     ft_printf("Player moving to: (%d, %d)\n", new_x, new_y);
     enemy = game->enemies;
     while (enemy)
@@ -78,22 +79,32 @@ void	move_player(t_game *game, int dx, int dy)
         }
         enemy = enemy->next;
     }
+    
     game->moves++;
     ft_printf("Moves: %d\n", game->moves);
-    player_direction(game, move_dx, move_dy);
+    player_direction(game, dx, dy);
+    
     if (game->map[new_y][new_x] == 'C')
     {
         game->collected++;
         game->map[new_y][new_x] = '0';
     }
+    
+    // Clear old position
     game->map[game->player_y][game->player_x] = '0';
+    
+    // Update position
     game->player_x = new_x;
     game->player_y = new_y;
+    
+    ft_printf("Position after update: (%d, %d)\n", game->player_x, game->player_y);
+    
     if (game->map[new_y][new_x] == 'E' && game->collected == game->collectibles)
     {
         ft_printf("CONGRATS! Total moves: %d\n", game->moves);
         exit_game(game);
     }
+    
     render_map(game);
 }
 
