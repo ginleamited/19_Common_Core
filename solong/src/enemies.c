@@ -48,15 +48,14 @@ void	detect_enemies(t_game *g, char *line, int y)
 	}
 }
 
-void	free_enemies(t_game *game)
+void free_enemies(t_enemy *enemy)
 {
-	t_enemy	*tmp;
+    t_enemy *temp;
 
-	while (game->enemies)
-	{
-		tmp = game->enemies;
-		game->enemies = game->enemies->next;
-		free(tmp);
-	}
-	game->enemies = NULL;
+    while (enemy)
+    {
+        temp = enemy;
+        enemy = enemy->next;
+        free(temp);
+    }
 }
