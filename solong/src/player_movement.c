@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 03:12:00 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 03:21:52 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	move_player(t_game *game, int dx, int dy)
 	int	new_y;
 	t_enemy	*enemy;
 
+	ft_printf("dx: %d, dy: %d\n", dx, dy);
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
 	ft_printf("Trying to move to: (%d, %d)\n", new_x, new_y);
@@ -93,16 +94,28 @@ void	move_player(t_game *game, int dx, int dy)
 
 int	key_press(int key, t_game *game)
 {
-	ft_printf("Key pressed: %d\n", key);
-	if (key == ESC)
-		exit_game(game);
-	else if (key == W)
-		move_player(game, 0, -1);
-	else if (key == A)
-		move_player(game, -1, 0);
-	else if (key == S)
-		move_player(game, 0, 1);
-	else if (key == D)
-		move_player(game, 1, 0);
-	return (0);
+    ft_printf("Key pressed: %d\n", key);
+    if (key == ESC)
+        exit_game(game);
+    else if (key == W)
+    {
+        ft_printf("Moving up\n"); // Debug print
+        move_player(game, 0, -1);
+    }
+    else if (key == A)
+    {
+        ft_printf("Moving left\n"); // Debug print
+        move_player(game, -1, 0);
+    }
+    else if (key == S)
+    {
+        ft_printf("Moving down\n"); // Debug print
+        move_player(game, 0, 1);
+    }
+    else if (key == D)
+    {
+        ft_printf("Moving right\n"); // Debug print
+        move_player(game, 1, 0);
+    }
+    return (0);
 }
