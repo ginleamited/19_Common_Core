@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 02:21:06 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/14 03:03:36 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	move_player(t_game *game, int dx, int dy)
 	new_y = game->player_y + dy;
 	if (!is_valid_move(game, new_x, new_y))
 		return ;
+	ft_printf("Player moving to: (%d, %d)\n", new_x, new_y);
 	enemy = game->enemies;
 	while (enemy)
 	{
