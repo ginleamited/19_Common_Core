@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:00 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 23:10:53 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/15 16:35:17 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,8 @@ int	validate_map(t_game *g)
 	p = 0;
 	e = 0;
 	c = 0;
-	if (!is_map_characters(g))
-		return (ft_printf("Error\nInvalid characters\n"), 0);
-	if (!is_map_rectangular(g))
-		return (ft_printf("Error\nMap not rectangular\n"), 0);
+	if (!is_map_valid(g))
+		return (ft_printf("Error\nInvalid char or map shape\n"), 0);
 	count_element(g, 'P', &p);
 	count_element(g, 'E', &e);
 	count_element(g, 'C', &c);

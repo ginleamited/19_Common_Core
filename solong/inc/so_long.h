@@ -56,8 +56,8 @@ typedef struct s_game
 }	t_game;
 
 // Map Parsing and backtracking
-int		is_map_characters(t_game *g);
-int		is_map_rectangular(t_game *g);
+int		is_valid_move(t_game *game, int x, int y);
+int		is_map_valid(t_game *g);
 int		is_map_surrounded(t_game *g);
 int		is_path_valid(t_game *g);
 int		validate_map(t_game *game);
@@ -70,10 +70,12 @@ void	free_2d_array(void **arr, int height);
 
 // Initialization and Rendering
 int		init_game(t_game *game);
+int		load_images(t_game *game);
 void	render_map(t_game *game);
 void	display_moves(t_game *game);
 
 // Player Movement and Input
+void	player_direction(t_game *game, int dx, int dy);
 void	move_player(t_game *game, int dx, int dy);
 int		key_press(int key, t_game *game);
 
