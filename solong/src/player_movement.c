@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/15 00:31:52 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/15 15:42:07 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ static void	player_direction(t_game *game, int dx, int dy)
 
 void	move_player(t_game *game, int dx, int dy)
 {
-	int	new_x;
-	int	new_y;
-	
+	int		new_x;
+	int		new_y;
+	t_enemy	*enemy;
+
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
-	t_enemy	*enemy;
-	printf("move_player: player_x: %d, player_y: %d\n", game->player_x+dx, game->player_y+dy);
+	// printf("move_player: player_x: %d, player_y: %d\n", game->player_x+dx, game->player_y+dy);
 	if (!is_valid_move(game, new_x, new_y))
 		return ;
 	enemy = game->enemies;
@@ -78,17 +78,16 @@ void	move_player(t_game *game, int dx, int dy)
 
 int	key_press(int key, t_game *game)
 {
-    ft_printf("Key pressed: %d\n", key);
-    
-    if (key == ESC)
-        exit_game(game);
-    else if (key == W || key == 119)
-        move_player(game, 0, -1);
-    else if (key == A || key == 97)
-        move_player(game, -1, 0);
-    else if (key == S || key == 115)
-        move_player(game, 0, 1);
-    else if (key == D || key == 100)
-        move_player(game, 1, 0);
-    return (0);
+	ft_printf("Key pressed: %d\n", key);
+	if (key == ESC)
+		exit_game(game);
+	else if (key == W || key == 119)
+		move_player(game, 0, -1);
+	else if (key == A || key == 97)
+		move_player(game, -1, 0);
+	else if (key == S || key == 115)
+		move_player(game, 0, 1);
+	else if (key == D || key == 100)
+		move_player(game, 1, 0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:07 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 23:54:10 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/15 15:35:31 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	init_mlx_and_window(t_game *game)
 {
 	int	window_width;
 	int	window_height;
-	
+
 	window_width = game->cols * TILE_SIZE;
 	window_height = game->rows * TILE_SIZE;
 	game->mlx = mlx_init();

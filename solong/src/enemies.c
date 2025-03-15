@@ -12,24 +12,26 @@
 
 #include "../inc/so_long.h"
 
-void render_enemies(t_game *game)
+void	render_enemies(t_game *game)
 {
-    t_enemy *enemy = game->enemies;
-    while (enemy)
-    {
-        mlx_put_image_to_window(game->mlx, game->win, game->enemy_img,
-                                enemy->x * TILE_SIZE, enemy->y * TILE_SIZE);
-        enemy = enemy->next;
-    }
+	t_enemy	*enemy;
+
+	enemy = game->enemies;
+	while (enemy)
+	{
+		mlx_put_image_to_window(game->mlx, game->win, game->enemy_img,
+			enemy->x * TILE_SIZE, enemy->y * TILE_SIZE);
+		enemy = enemy->next;
+	}
 }
 
-void add_enemy(t_game *game, int x, int y)
+void	add_enemy(t_game *game, int x, int y)
 {
 	t_enemy	*new_enemy;
 
 	new_enemy = malloc(sizeof(t_enemy));
 	if (!new_enemy)
-		return;
+		return ;
 	new_enemy->x = x;
 	new_enemy->y = y;
 	new_enemy->next = game->enemies;
@@ -48,14 +50,14 @@ void	detect_enemies(t_game *g, char *line, int y)
 	}
 }
 
-void free_enemies(t_enemy *enemies)
+void	free_enemies(t_enemy *enemies)
 {
-    t_enemy *temp;
+	t_enemy	*temp;
 
-    while (enemies)
-    {
-        temp = enemies;
-        enemies = enemies->next;
-        free(temp);
-    }
+	while (enemies)
+	{
+		temp = enemies;
+		enemies = enemies->next;
+		free(temp);
+	}
 }

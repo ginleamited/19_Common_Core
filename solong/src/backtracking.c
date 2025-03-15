@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:23 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 22:50:36 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/15 15:55:11 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	dfs(t_game *g, int **v, int y, int x)
 		|| v[y][x] || g->map[y][x] == '1' || g->map[y][x] == 'X')
 		return ;
 	if (g->map[y][x] == 'E')
-	{	
+	{
 		v[y][x] = 1;
 		return ;
 	}
@@ -85,12 +85,7 @@ int	is_path_valid(t_game *g)
 	if (!v)
 		return (0);
 	dfs(g, v, g->player_y, g->player_x);
-	// for (int i = 0; i < g->rows; i++) 
-	// {
-    // 	for (int j = 0; j < g->cols; j++) 
-    //         printf("%d ", v[i][j]);
-    //     printf("\n");
-    // }	
+
 	res = check_reach(g, v);
 	free_2d_array((void **)v, g->rows);
 	return (res);
