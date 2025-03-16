@@ -66,7 +66,7 @@ int		parse_map(t_game *game, char *file);
 // Game Cleanup and Exit
 void	free_map(char **map, int rows);
 int		exit_game(t_game *game);
-void	free_2d_array(void **arr, int height);
+void	free_2D_map(void **arr, int height);
 
 // Initialization and Rendering
 int		init_game(t_game *game);
@@ -83,6 +83,5 @@ int		key_press(int key, t_game *game);
 void	add_enemy(t_game *game, int x, int y);
 void	detect_enemies(t_game *g, char *line, int y);
 void	render_enemies(t_game *game);
-void	free_enemies(t_enemy *enemies);
 
 #endif

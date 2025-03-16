@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:23 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/15 15:56:30 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 12:36:13 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static int	**init_visited(t_game *g)
+static int	**init_2D_map(t_game *g)
 {
 	int	**v;
 	int	i;
@@ -81,11 +81,11 @@ int	is_path_valid(t_game *g)
 	int	**v;
 	int	res;
 
-	v = init_visited(g);
+	v = init_2D_map(g);
 	if (!v)
 		return (0);
 	dfs(g, v, g->player_y, g->player_x);
 	res = check_reach(g, v);
-	free_2d_array((void **)v, g->rows);
+	free_2D_map((void **)v, g->rows);
 	return (res);
 }

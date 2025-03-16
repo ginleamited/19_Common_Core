@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/16 11:53:43 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 13:36:21 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static int	check_enemy_collision(t_game *game, int new_x, int new_y)
+static int	enemy_collision(t_game *game, int new_x, int new_y)
 {
 	t_enemy	*enemy;
 
@@ -23,14 +23,14 @@ static int	check_enemy_collision(t_game *game, int new_x, int new_y)
 		{
 			ft_printf("💀 Game Over! You were caught by an enemy.\n");
 			exit_game(game);
-			return (0);
+			return (1);
 		}
 		enemy = enemy->next;
 	}
-	return (1);
+	return (0);
 }
 
-static void	handle_collectible_and_exit(t_game *game, int new_x, int new_y)
+static void	collectible_and_exit(t_game *game, int new_x, int new_y)
 {
 	if (game->map[new_y][new_x] == 'C')
 	{
@@ -60,13 +60,13 @@ void	move_player(t_game *game, int dx, int dy)
 	new_y = game->player_y + dy;
 	if (!is_valid_move(game, new_x, new_y))
 		return ;
-	if (!check_enemy_collision(game, new_x, new_y))
+	if (enemy_collision(game, new_x, new_y))
 		return ;
 	game->moves++;
 	ft_printf("Moves: %d\n", game->moves);
 	player_direction(game, dx, dy);
 	update_player_position(game, new_x, new_y);
-	handle_collectible_and_exit(game, new_x, new_y);
+	collectible_and_exit(game, new_x, new_y);
 	render_map(game);
 }
 
