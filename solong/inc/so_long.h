@@ -63,14 +63,14 @@ int		parse_map(t_game *game, char *file);
 // Game Cleanup and Exit
 void	free_map(char **map, int rows);
 int		exit_game(t_game *game);
-void	free_2D_map(void **arr, int height);
+void	free_2d_map(void **arr, int height);
 // Initialization and Rendering
 int		init_game(t_game *game);
 int		load_images(t_game *game);
 void	render_game(t_game *game);
 void	display_moves(t_game *game);
 // Player Movement and Input
-void 	find_player_position(t_game *g);
+void 	player_position(t_game *g);
 void	player_direction(t_game *game, int dx, int dy);
 void	move_player(t_game *game, int dx, int dy);
 int		key_press(int key, t_game *game);

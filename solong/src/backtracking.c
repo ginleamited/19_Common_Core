@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:23 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/16 14:21:08 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 14:36:28 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,11 @@ int	is_path_valid(t_game *g)
 	int	**v;
 	int	res;
 
-	v = init_2D_map(g);
+	v = init_2d_map(g);
 	if (!v)
 		return (0);
 	dfs(g, v, g->player_y, g->player_x);
 	res = check_reach(g, v);
-	free_2D_map((void **)v, g->rows);
+	free_2d_map((void **)v, g->rows);
 	return (res);
 }
