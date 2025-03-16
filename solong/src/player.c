@@ -1,24 +1,24 @@
 #include "../inc/so_long.h"
 
-void find_player_position(t_game *g)
+void	player_position(t_game *g)
 {
-    int y;
-    int x;
+	int	y;
+	int	x;
 
-    y = -1;
-    while (++y < g->rows)
-    {
-        x = -1;
-        while (++x < g->cols)
-        {
-            if (g->map[y][x] == 'P')
-            {
-                g->player_x = x;
-                g->player_y = y;
-                return;
-            }
-        }
-    }
+	y = -1;
+	while (++y < g->rows)
+	{
+		x = -1;
+		while (++x < g->cols)
+		{
+			if (g->map[y][x] == 'P')
+			{
+				g->player_x = x;
+				g->player_y = y;
+				return ;
+			}
+		}
+	}
 }
 
 void	player_direction(t_game *game, int dx, int dy)

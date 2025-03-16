@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:23 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/16 12:36:13 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 14:21:08 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static int	**init_2D_map(t_game *g)
+static int	**init_2d_map(t_game *g)
 {
 	int	**v;
 	int	i;
