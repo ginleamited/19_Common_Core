@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:13 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 04:26:29 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 11:49:28 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,16 @@ void	free_2d_array(void **arr, int height)
 	while (++i < height)
 		free(arr[i]);
 	free(arr);
+}
+
+void	free_enemies(t_enemy *enemies)
+{
+	t_enemy	*temp;
+
+	while (enemies)
+	{
+		temp = enemies;
+		enemies = enemies->next;
+		free(temp);
+	}
 }

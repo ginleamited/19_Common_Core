@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/15 16:46:59 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 11:53:43 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ static void	handle_collectible_and_exit(t_game *game, int new_x, int new_y)
 	}
 }
 
+static void	update_player_position(t_game *game, int new_x, int new_y)
+{
+	game->map[game->player_y][game->player_x] = '0';
+	game->player_x = new_x;
+	game->player_y = new_y;
+}
+
 void	move_player(t_game *game, int dx, int dy)
 {
 	int	new_x;
@@ -58,9 +65,7 @@ void	move_player(t_game *game, int dx, int dy)
 	game->moves++;
 	ft_printf("Moves: %d\n", game->moves);
 	player_direction(game, dx, dy);
-	game->map[game->player_y][game->player_x] = '0';
-	game->player_x = new_x;
-	game->player_y = new_y;
+	update_player_position(game, new_x, new_y);
 	handle_collectible_and_exit(game, new_x, new_y);
 	render_map(game);
 }
