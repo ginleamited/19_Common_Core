@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:07 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/16 14:20:57 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 14:42:11 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	init_game(t_game *game)
 		return (0);
 	game->moves = 0;
 	game->collected = 0;
-	game->player_img = game->player_down;
 	return (1);
 }
 

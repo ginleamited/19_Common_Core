@@ -47,5 +47,6 @@ int	load_images(t_game *game)
 
 	load_map_images(game, &width, &height);
 	load_player_images(game, &width, &height);
+	game->player_img = game->player_down;
 	return (1);
 }
