@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:48 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/16 13:36:21 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 14:02:20 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	move_player(t_game *game, int dx, int dy)
 	player_direction(game, dx, dy);
 	update_player_position(game, new_x, new_y);
 	collectible_and_exit(game, new_x, new_y);
-	render_map(game);
+	render_game(game);
 }
 
 int	key_press(int key, t_game *game)

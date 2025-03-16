@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:07 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/16 13:01:21 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 14:01:56 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	init_game(t_game *game)
 	return (1);
 }
 
-void	render_map(t_game *game)
+void	render_game(t_game *game)
 {
 	int		x;
 	int		y;

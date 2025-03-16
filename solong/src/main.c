@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 21:05:45 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/14 16:53:32 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 14:02:13 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 		return (ft_printf("ERROR: Invalid map\n"), exit_game(&game), 1);
 	if (!init_game(&game))
 		return (ft_printf("ERROR: Game init failed\n"), exit_game(&game), 1);
-	render_map(&game);
+	render_game(&game);
 	mlx_hook(game.win, 2, 1L << 0, key_press, &game);
 	mlx_hook(game.win, 17, 0, (int (*)())exit_game, &game);
 	mlx_loop(game.mlx);
