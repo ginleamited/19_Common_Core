@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/03 22:45:18 by jilin             #+#    #+#              #
-#    Updated: 2025/03/16 11:43:01 by jilin            ###   ########.fr        #
+#    Updated: 2025/03/16 11:57:20 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,13 +29,13 @@ RM					= rm -f
 # Source Files
 SRCS	=	$(SRC_DIR)main.c \
 				$(SRC_DIR)backtracking.c \
+				$(SRC_DIR)enemies.c \
 				$(SRC_DIR)free_exit.c \
 				$(SRC_DIR)init_render.c \
-				$(SRC_DIR)parsing_map.c \
+				$(SRC_DIR)load_images.c \
+				$(SRC_DIR)map_parsing.c \
 				$(SRC_DIR)player_movement.c \
 				$(SRC_DIR)utils.c \
-				$(SRC_DIR)enemies.c \
-				$(SRC_DIR)load_images.c \
 
 
 # Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
