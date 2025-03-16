@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 11:57:45 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/16 13:14:15 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 14:08:51 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,8 @@ static void	count_element(t_game *g, char c, int *count)
 	{
 		x = -1;
 		while (++x < g->cols)
-		{
-			if (g->map[y][x] == 'P')
-			{
-				g->player_x = x;
-				g->player_y = y;
-			}
 			if (g->map[y][x] == c)
 				(*count)++;
-		}
 	}
 }
 
@@ -100,6 +93,7 @@ int	validate_map(t_game *g)
 		return (ft_printf("Error\nMissing walls\n"), 0);
 	if (p != 1 || e != 1 || c < 1)
 		return (ft_printf("Error\nInvalid P/E/C count\n"), 0);
+	find_player_position(g);
 	if (!is_path_valid(g))
 		return (ft_printf("Error\nUnreachable elements\n"), 0);
 	return (1);

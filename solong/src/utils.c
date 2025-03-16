@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:40:54 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/15 16:44:55 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 14:12:13 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,6 @@ int	is_valid_move(t_game *game, int x, int y)
 	if (game->map[y][x] == 'E' && game->collected != game->collectibles)
 		return (0);
 	return (1);
-}
-
-void	player_direction(t_game *game, int dx, int dy)
-{
-	if (dx == 1)
-		game->player_img = game->player_right;
-	else if (dx == -1)
-		game->player_img = game->player_left;
-	else if (dy == 1)
-		game->player_img = game->player_down;
-	else if (dy == -1)
-		game->player_img = game->player_up;
 }
 
 void	display_moves(t_game *game)

@@ -51,8 +51,6 @@ typedef struct s_game
 	void	*floor_img;
 	// Game Stats
 	int		moves;
-	int		move_dx;
-	int		move_dy;
 }	t_game;
 
 // Map Parsing and backtracking
@@ -72,6 +70,7 @@ int		load_images(t_game *game);
 void	render_game(t_game *game);
 void	display_moves(t_game *game);
 // Player Movement and Input
+void 	find_player_position(t_game *g);
 void	player_direction(t_game *game, int dx, int dy);
 void	move_player(t_game *game, int dx, int dy);
 int		key_press(int key, t_game *game);
