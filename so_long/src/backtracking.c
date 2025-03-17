@@ -6,13 +6,13 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:23 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/11 19:41:25 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/16 14:36:28 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static int	**init_visited(t_game *g)
+static int	**init_2d_map(t_game *g)
 {
 	int	**v;
 	int	i;
@@ -37,8 +37,13 @@ static int	**init_visited(t_game *g)
 static void	dfs(t_game *g, int **v, int y, int x)
 {
 	if (y < 0 || x < 0 || y >= g->rows || x >= g->cols
-		|| v[y][x] || g->map[y][x] == '1')
+		|| v[y][x] || g->map[y][x] == '1' || g->map[y][x] == 'X')
 		return ;
+	if (g->map[y][x] == 'E')
+	{
+		v[y][x] = 1;
+		return ;
+	}
 	v[y][x] = 1;
 	dfs(g, v, y - 1, x);
 	dfs(g, v, y + 1, x);
@@ -76,11 +81,11 @@ int	is_path_valid(t_game *g)
 	int	**v;
 	int	res;
 
-	v = init_visited(g);
+	v = init_2d_map(g);
 	if (!v)
 		return (0);
 	dfs(g, v, g->player_y, g->player_x);
 	res = check_reach(g, v);
-	free_2d_array((void **)v, g->rows);
+	free_2d_map((void **)v, g->rows);
 	return (res);
 }
