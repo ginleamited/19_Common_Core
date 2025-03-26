@@ -1,34 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/20 21:02:55 by jilin            ###   ########.fr       */
+/*   Created: 2025/03/17 19:38:58 by jilin             #+#    #+#             */
+/*   Updated: 2025/03/17 19:38:59 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <string.h>
-# include "../lib/inc/libft.h"
-
-typedef struct s_pipex
-{
-	int		in_fd;
-	int		out_fd;
-	t_bool	here_doc;
-	t_bool	is_invalid_infile;
-	char	**cmd_paths;
-	char	***cmd_args;
-	int		cmd_count;
-}	t_pipex;
-
-#endif

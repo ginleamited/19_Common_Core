@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 19:41:07 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/16 14:42:11 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/26 14:21:45 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	render_game(t_game *game)
 		}
 		y++;
 	}
+	printf("move_player: player_x: %d, player_y: %d\n", game->player_x+dx, game->player_y+dy);
 	mlx_put_image_to_window(game->mlx, game->win, game->player_img,
 		game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
 	display_moves(game);
