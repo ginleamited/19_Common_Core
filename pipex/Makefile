@@ -6,7 +6,7 @@
 #    By: jilin <jilin@student.s19.be>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/03 22:45:18 by jilin             #+#    #+#              #
-#    Updated: 2025/03/17 18:29:33 by jilin            ###   ########.fr        #
+#    Updated: 2025/03/26 16:12:08 by jilin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,18 +25,14 @@ CFLAGS				= -Wall -Werror -Wextra -g3 #-fsanitize=address
 RM					= rm -f
 
 # Source Files
-SRCS	=	$(SRC_DIR)main.c \
-				$(SRC_DIR)
+SRCS				= $(SRC_DIR)main.c
 
-
-# Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
+# Object Files
 OBJ					= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
-# Include directories
-INCLUDES			= -I$(INC)
-
 # Libraries
-LIBS = -L./lib -lft
+INCLUDES			= -I$(INC)
+LIBS				= -L./lib -lft
 
 # Colors
 GREEN   			= "\\033[32m"
@@ -64,7 +60,6 @@ PIPEX_LOGO = "\033[5;36m\
 ╚═╝     ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝ \n\
 \033[0m"
 
-
 # Build rules
 start:				
 					@make all
@@ -72,14 +67,11 @@ start:
 $(LIBFT):
 					@make -C ./lib -s
 
-$(MLX):
-					@make -C $(MLX_PATH) -s 2> /dev/null
+all:				$(NAME)
 
-all: 				$(NAME)
-
-$(NAME): 			$(OBJ) $(LIBFT) $(MLX)
+$(NAME):			$(OBJ) $(LIBFT)
 					@printf "\n"
-					@printf $(SO_LONG_LOGO)
+					@printf $(PIPEX_LOGO)
 					@echo "$(GREEN)Linking objects to create executable...$(NC)"
 					@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBS) -o $(NAME)
 					@echo "$(GREEN)Executable $(NAME) created!$(NC)"
@@ -88,19 +80,22 @@ $(NAME): 			$(OBJ) $(LIBFT) $(MLX)
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
 					@mkdir -p $(@D)
 					@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-					$(call progress_bar)
+					@echo "$(YELLOW)Compiling $<...$(NC)"
 
 clean:
 					@$(RM) -r $(OBJ_DIR)
 					@make clean -C ./lib --no-print-directory
-					@make clean -C $(MLX_PATH) --no-print-directory
+					@echo "$(GREEN)Object files cleaned!$(NC)"
 
-fclean: 			clean
+fclean:				clean
 					@$(RM) $(NAME)
 					@$(RM) $(LIBFT)
-					@$(RM) $(MLX)
+					@echo "$(GREEN)Executable and libraries cleaned!$(NC)"
 
-re: 				fclean all
+re:					fclean all
 
-# Phony targets represent actions not files
-.PHONY: 			start all clean fclean re
+norm:
+					@norminette $(SRC_DIR) $(INC) | grep -v "OK" || echo "$(GREEN)Norminette OK!$(NC)"
+
+# Phony targets
+.PHONY:				start all clean fclean re norm
