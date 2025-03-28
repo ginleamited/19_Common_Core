@@ -6,31 +6,33 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/26 16:17:15 by jilin            ###   ########.fr       */
+/*   Updated: 2025/03/28 03:00:28 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <stdlib.h>
+# include <sys/stat.h>
 # include <unistd.h>
-# include <sys/wait.h>
+# include <stdlib.h>
 # include <fcntl.h>
-# include <string.h>
+# include <stdio.h>
 # include "../lib/inc/libft.h"
 
 typedef struct s_files
 {
-	int *fd_in;
-	int *fd_out;
-	int *pipefd;
-	char **argv;
+	int		*fd_in;
+	int		*fd_out;
+	int		pipefd[2];
+	char	**argv;
 }	t_files;
 
-char	*get_env(char *name, char **envp);
-char	**parse_cmd(char *cmd_str);
-char	*find_path(char *cmd, char **envp);
-
+void	ft_first_child(int fd[2], int file1, char *cmd1, char **env);
+void	ft_second_child(int fd[2], int file2, char *cmd2, char **env);
+void	ft_run(char **args, char *cmd, char **env);
+char	**ft_find_path(char **env);
+void	ft_free(char **str);
+void	ft_error(char *message, int exitcode);
 
 #endif
