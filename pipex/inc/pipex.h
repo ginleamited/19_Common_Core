@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/28 03:00:28 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/05 03:32:22 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PIPEX_H
 
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
