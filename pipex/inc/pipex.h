@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/11 22:03:55 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 00:44:30 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,24 @@
 # include <stdio.h>
 # include "../lib/inc/libft.h"
 
-void	ft_run(char **args, char *cmd, char **env);
+/* pipex.c */
+void	close_pipes(int fd[2]);
+
+/* pipex_child.c */
 void	ft_first_child(int fd[2], int file1, char *cmd1, char **env);
 void	ft_second_child(int fd[2], int file2, char *cmd2, char **env);
+
+/* pipex_process.c */
+void	execute_command(char *cmd, char **env);
+void	setup_io_first(int fd[2], int file1);
+void	setup_io_second(int fd[2], int file2);
+
+/* pipex_utils.c */
 char	**ft_find_path(char **env);
 void	ft_free(char **str);
 void	ft_error(char *message, int exitcode);
+
+/* pipex_cmd.c */
+void	ft_run(char **args, char *cmd, char **env);
 
 #endif

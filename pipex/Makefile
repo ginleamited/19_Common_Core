@@ -14,7 +14,11 @@ DEBUG_FLAGS			= -fsanitize=address
 RM					= rm -f
 
 # Source Files
-SRCS				= $(SRC_DIR)pipex.c $(SRC_DIR)pipex_process.c $(SRC_DIR)pipex_utils.c
+SRCS				= $(SRC_DIR)pipex.c \
+                    $(SRC_DIR)pipex_process.c \
+                    $(SRC_DIR)pipex_utils.c \
+                    $(SRC_DIR)pipex_child.c \
+                    $(SRC_DIR)pipex_cmd.c
 					
 # Object Files
 OBJ					= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
@@ -37,7 +41,7 @@ define progress_bar
 	$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
 	printf "\r$(YELLOW)Compiling pipex... [%-$(TOTAL_FILES)s] %d/%d $(NC)" \
 	$$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
-	if [ $(CURRENT_FILE) -eq $(TOTAL_FILES) ]; then echo ""; fi
+	if [ $(CURRENT_FILE) -eq $(TOTAL_FILES); then echo ""; fi
 endef
 
 # PIPEX ASCII Art - Removed blinking effect for better compatibility
