@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/10 17:54:01 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/11 18:41:35 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,6 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "../lib/inc/libft.h"
-
-typedef struct s_files
-{
-	int		*fd_in;
-	int		*fd_out;
-	int		pipefd[2];
-	char	**argv;
-}	t_files;
 
 void	ft_run(char **args, char *cmd, char **env);
 void	ft_first_child(int fd[2], int file1, char *cmd1, char **env);
