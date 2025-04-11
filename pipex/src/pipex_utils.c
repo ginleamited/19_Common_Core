@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 00:37:53 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 00:37:54 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 01:04:47 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ char	**ft_find_path(char **env)
     i = 0;
     while (env[i])
     {
-        if (ft_strncmp(env[i], "PATH", 4) == 0)
+        if (ft_strncmp(env[i], "PATH=", 5) == 0)
         {
-            env[i] += 5;
-            path = ft_split(env[i], ':');
-            break ;
+            path = ft_split(env[i] + 5, ':');
+            break;
         }
         i++;
     }
