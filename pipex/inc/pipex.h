@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 01:38:10 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 01:39:55 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 
 typedef struct s_process
 {
-    int		fd[2];
-    int		file;
-    char	*cmd;
-    char	**env;
+	int		fd[2];
+	int		file;
+	char	*cmd;
+	char	**env;
 }	t_process;
 
 /* pipex_child.c */
