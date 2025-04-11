@@ -38,10 +38,10 @@ TOTAL_FILES 		:= $(words $(SRCS))
 CURRENT_FILE 		:= 0
 
 define progress_bar
-	$(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
-	printf "\r$(YELLOW)Compiling pipex... [%-$(TOTAL_FILES)s] %d/%d $(NC)" \
-	$$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
-	if [ $(CURRENT_FILE) -eq $(TOTAL_FILES); then echo ""; fi
+    $(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
+    printf "\r$(YELLOW)Compiling pipex... [%-$(TOTAL_FILES)s] %d/%d $(NC)" \
+    $$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
+    @if [ "$(CURRENT_FILE)" -eq "$(TOTAL_FILES)" ]; then echo ""; fi
 endef
 
 # PIPEX ASCII Art - Removed blinking effect for better compatibility
