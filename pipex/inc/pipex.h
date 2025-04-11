@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/11 18:41:35 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/11 22:03:55 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <sys/stat.h>
 # include <sys/wait.h>
+# include <errno.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>

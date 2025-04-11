@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:38:41 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/27 20:40:37 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/11 22:05:34 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_free(char **str)
 
 void	ft_error(char *message, int exitcode)
 {
-	ft_putstr_fd(message, 2);
+	if (message)
+		ft_putstr_fd(message, 2);
 	exit(exitcode);
 }
