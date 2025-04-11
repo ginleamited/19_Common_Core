@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 01:25:01 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 01:38:10 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ft_second_child(int fd[2], int file2, char *cmd2, char **env);
 
 /* pipex_process.c */
 void	execute_command(char *cmd, char **env);
-void	setup_io_first(int fd[2], int file1);
-void	setup_io_second(int fd[2], int file2);
+void	setup_first_io(int fd[2], int file1);
+void	setup_second_io(int fd[2], int file2);
 
 /* pipex_utils.c */
 char	**ft_find_path(char **env);

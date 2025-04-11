@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 00:37:11 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 01:28:00 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 01:37:45 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	setup_stdin(int file1, int fd[2])
 	}
 }
 
-void	setup_io_first(int fd[2], int file1)
+void	setup_first_io(int fd[2], int file1)
 {
 	close(fd[0]);
 	setup_stdin(file1, fd);
@@ -50,7 +50,7 @@ void	setup_io_first(int fd[2], int file1)
 	close(fd[1]);
 }
 
-void	setup_io_second(int fd[2], int file2)
+void	setup_second_io(int fd[2], int file2)
 {
 	close(fd[1]);
 	if (dup2(fd[0], STDIN_FILENO) < 0)
