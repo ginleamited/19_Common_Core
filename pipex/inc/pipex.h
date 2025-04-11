@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/05 03:32:22 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/10 17:54:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ typedef struct s_files
 	char	**argv;
 }	t_files;
 
+void	ft_run(char **args, char *cmd, char **env);
 void	ft_first_child(int fd[2], int file1, char *cmd1, char **env);
 void	ft_second_child(int fd[2], int file2, char *cmd2, char **env);
-void	ft_run(char **args, char *cmd, char **env);
 char	**ft_find_path(char **env);
 void	ft_free(char **str);
 void	ft_error(char *message, int exitcode);
