@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:38:43 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 00:11:36 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 00:15:08 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,15 @@ void	ft_run(char **args, char *cmd, char **env)
 void ft_first_child(int fd[2], int file1, char *cmd, char **env)
 {
     char **args;
+    int devnull;
     
     // Close read end of pipe
     close(fd[0]);
     
-    // If file1 is valid, redirect stdin to file1
+    // Redirect stdin properly
     if (file1 >= 0)
     {
+        // File opened successfully, use it as stdin
         if (dup2(file1, STDIN_FILENO) < 0)
         {
             perror("dup2");
@@ -73,7 +75,16 @@ void ft_first_child(int fd[2], int file1, char *cmd, char **env)
         }
         close(file1);
     }
-    // If file1 is invalid, stdin remains as is (likely /dev/null)
+    else
+    {
+        // File couldn't be opened, use /dev/null instead
+        devnull = open("/dev/null", O_RDONLY);
+        if (devnull >= 0)
+        {
+            dup2(devnull, STDIN_FILENO);
+            close(devnull);
+        }
+    }
     
     // Redirect stdout to pipe write end
     if (dup2(fd[1], STDOUT_FILENO) < 0)
@@ -84,11 +95,10 @@ void ft_first_child(int fd[2], int file1, char *cmd, char **env)
     }
     close(fd[1]);
     
-    // Execute command (if empty, exit with status 0)
+    // Rest of your code remains the same
     if (!cmd || cmd[0] == '\0')
         exit(0);
     
-    // Use your existing command execution logic
     args = ft_split(cmd, ' ');
     if (!args)
         exit(1);
@@ -102,7 +112,6 @@ void ft_first_child(int fd[2], int file1, char *cmd, char **env)
     }
     ft_run(args, args[0], env);
     
-    // This line will only be reached if ft_run fails
     ft_free(args);
     exit(127);
 }
