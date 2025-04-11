@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 20:24:29 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 00:20:50 by jilin            ###   ########.fr       */
+/*   Created: 2025/04/12 00:36:15 by jilin             #+#    #+#             */
+/*   Updated: 2025/04/12 00:39:57 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	close_pipes(int fd[2])
 {
-	close(fd[0]);
-	close(fd[1]);
+    close(fd[0]);
+    close(fd[1]);
 }
 
 static void	setup_files(int *file1, int *file2, char **argv)
@@ -28,7 +28,7 @@ static void	setup_files(int *file1, int *file2, char **argv)
         perror(argv[4]);
 }
 
-static void	create_processes(int fd[2], int file1, int file2, 
+static void	create_processes(int fd[2], int file1, int file2,
                             char **argv, char **env, pid_t id[2])
 {
     id[0] = fork();
@@ -43,14 +43,34 @@ static void	create_processes(int fd[2], int file1, int file2,
         ft_second_child(fd, file2, argv[3], env);
 }
 
+static int	wait_for_children(pid_t id[2])
+{
+    int	status1;
+    int	status2;
+
+    waitpid(id[0], &status1, 0);
+    waitpid(id[1], &status2, 0);
+    if (WIFEXITED(status2))
+        return (WEXITSTATUS(status2));
+    return (1);
+}
+
+static void	close_resources(int fd[2], int file1, int file2)
+{
+    close_pipes(fd);
+    if (file1 >= 0)
+        close(file1);
+    if (file2 >= 0)
+        close(file2);
+}
+
 int	main(int argc, char **argv, char **env)
 {
     int		file1;
     int		file2;
     int		fd[2];
     pid_t	id[2];
-    int		status1;
-    int		status2;
+    int		exit_code;
 
     if (argc != 5)
         ft_error("Usage: ./pipex file1 cmd1 cmd2 file2\n", 1);
@@ -58,14 +78,7 @@ int	main(int argc, char **argv, char **env)
     if (pipe(fd) < 0)
         ft_error("Setup failed\n", 1);
     create_processes(fd, file1, file2, argv, env, id);
-    close_pipes(fd);
-    if (file1 >= 0)
-        close(file1);
-    if (file2 >= 0)
-        close(file2);
-    waitpid(id[0], &status1, 0);
-    waitpid(id[1], &status2, 0);
-    if (WIFEXITED(status2))
-        return (WEXITSTATUS(status2));
-    return (1);
+    close_resources(fd, file1, file2);
+    exit_code = wait_for_children(id);
+    return (exit_code);
 }
