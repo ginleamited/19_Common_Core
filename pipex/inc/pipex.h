@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 00:44:30 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 01:25:01 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@
 # include <stdio.h>
 # include "../lib/inc/libft.h"
 
-/* pipex.c */
-void	close_pipes(int fd[2]);
+typedef struct s_process
+{
+    int		fd[2];
+    int		file;
+    char	*cmd;
+    char	**env;
+}	t_process;
 
 /* pipex_child.c */
 void	ft_first_child(int fd[2], int file1, char *cmd1, char **env);

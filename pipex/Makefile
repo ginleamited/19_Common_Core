@@ -15,9 +15,8 @@ RM					= rm -f
 
 # Source Files
 SRCS				= $(SRC_DIR)pipex.c \
-                    $(SRC_DIR)pipex_process.c \
+                    $(SRC_DIR)pipex_io.c \
                     $(SRC_DIR)pipex_utils.c \
-                    $(SRC_DIR)pipex_child.c \
                     $(SRC_DIR)pipex_cmd.c
 					
 # Object Files
