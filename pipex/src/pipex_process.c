@@ -6,26 +6,34 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:38:43 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 00:15:08 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 00:17:42 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_run(char **args, char *cmd, char **env)
+void ft_run(char **args, char *cmd, char **env)
 {
-    char	**path;
-    char	*temp;
-    char	*newcmd;
-    int		i;
+    char **path;
+    char *temp;
+    char *cmd_path = NULL;
+    int i;
+
+    if (!cmd || !args || !args[0])
+    {
+        ft_free(args);
+        exit(127);
+    }
 
     path = ft_find_path(env);
     if (!path)
     {
         ft_putstr_fd("PATH not found\n", 2);
-        ft_free(args);  // Free args before exiting
+        ft_free(args);
         exit(127);
     }
+
+    // First find the executable path
     i = 0;
     while (path[i])
     {
@@ -36,23 +44,40 @@ void	ft_run(char **args, char *cmd, char **env)
             ft_free(args);
             exit(1);
         }
-        newcmd = ft_strjoin(temp, cmd);
+        cmd_path = ft_strjoin(temp, cmd);
         free(temp);
-        if (!newcmd)
+        if (!cmd_path)
         {
             ft_free(path);
             ft_free(args);
             exit(1);
         }
-        execve(newcmd, args, env);
-        free(newcmd);
+        
+        // Check if the file exists and is executable
+        if (access(cmd_path, X_OK) == 0)
+            break;
+            
+        free(cmd_path);
+        cmd_path = NULL;
         i++;
     }
+
+    // Clean up path array
     ft_free(path);
+    
+    // Execute the command if found
+    if (cmd_path)
+    {
+        execve(cmd_path, args, env);
+        free(cmd_path);  // If execve fails
+    }
+    
+    // Command not found
     ft_putstr_fd("Failed to execute: ", 2);
     ft_putstr_fd(cmd, 2);
     ft_putstr_fd("\n", 2);
-    // Don't need to free args here as the caller will handle it
+    ft_free(args);
+    exit(127);
 }
 
 void ft_first_child(int fd[2], int file1, char *cmd, char **env)
