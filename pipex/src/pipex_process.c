@@ -6,18 +6,40 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:38:43 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 00:17:42 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 00:21:35 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+static char	*find_executable(char **path, char *cmd)
+{
+    char	*temp;
+    char	*cmd_path;
+    int		i;
+
+    i = 0;
+    while (path[i])
+    {
+        temp = ft_strjoin(path[i], "/");
+        if (!temp)
+            return (NULL);
+        cmd_path = ft_strjoin(temp, cmd);
+        free(temp);
+        if (!cmd_path)
+            return (NULL);
+        if (access(cmd_path, X_OK) == 0)
+            return (cmd_path);
+        free(cmd_path);
+        i++;
+    }
+    return (NULL);
+}
+
 void ft_run(char **args, char *cmd, char **env)
 {
     char **path;
-    char *temp;
-    char *cmd_path = NULL;
-    int i;
+    char *cmd_path;
 
     if (!cmd || !args || !args[0])
     {
@@ -33,46 +55,15 @@ void ft_run(char **args, char *cmd, char **env)
         exit(127);
     }
 
-    // First find the executable path
-    i = 0;
-    while (path[i])
-    {
-        temp = ft_strjoin(path[i], "/");
-        if (!temp)
-        {
-            ft_free(path);
-            ft_free(args);
-            exit(1);
-        }
-        cmd_path = ft_strjoin(temp, cmd);
-        free(temp);
-        if (!cmd_path)
-        {
-            ft_free(path);
-            ft_free(args);
-            exit(1);
-        }
-        
-        // Check if the file exists and is executable
-        if (access(cmd_path, X_OK) == 0)
-            break;
-            
-        free(cmd_path);
-        cmd_path = NULL;
-        i++;
-    }
-
-    // Clean up path array
+    cmd_path = find_executable(path, cmd);
     ft_free(path);
-    
-    // Execute the command if found
+
     if (cmd_path)
     {
         execve(cmd_path, args, env);
-        free(cmd_path);  // If execve fails
+        free(cmd_path);
     }
-    
-    // Command not found
+
     ft_putstr_fd("Failed to execute: ", 2);
     ft_putstr_fd(cmd, 2);
     ft_putstr_fd("\n", 2);
@@ -80,18 +71,13 @@ void ft_run(char **args, char *cmd, char **env)
     exit(127);
 }
 
-void ft_first_child(int fd[2], int file1, char *cmd, char **env)
+static void setup_io_first(int fd[2], int file1)
 {
-    char **args;
     int devnull;
-    
-    // Close read end of pipe
+
     close(fd[0]);
-    
-    // Redirect stdin properly
     if (file1 >= 0)
     {
-        // File opened successfully, use it as stdin
         if (dup2(file1, STDIN_FILENO) < 0)
         {
             perror("dup2");
@@ -102,7 +88,6 @@ void ft_first_child(int fd[2], int file1, char *cmd, char **env)
     }
     else
     {
-        // File couldn't be opened, use /dev/null instead
         devnull = open("/dev/null", O_RDONLY);
         if (devnull >= 0)
         {
@@ -110,8 +95,6 @@ void ft_first_child(int fd[2], int file1, char *cmd, char **env)
             close(devnull);
         }
     }
-    
-    // Redirect stdout to pipe write end
     if (dup2(fd[1], STDOUT_FILENO) < 0)
     {
         perror("dup2");
@@ -119,50 +102,34 @@ void ft_first_child(int fd[2], int file1, char *cmd, char **env)
         exit(1);
     }
     close(fd[1]);
-    
-    // Rest of your code remains the same
-    if (!cmd || cmd[0] == '\0')
-        exit(0);
-    
-    args = ft_split(cmd, ' ');
-    if (!args)
-        exit(1);
-    
-    if (args[0] && args[0][0] == '/')
-    {
-        execve(args[0], args, env);
-        perror("execve");
-        ft_free(args);
-        exit(127);
-    }
-    ft_run(args, args[0], env);
-    
-    ft_free(args);
-    exit(127);
 }
 
-void ft_second_child(int fd[2], int file2, char *cmd2, char **env)
+static void setup_io_second(int fd[2], int file2)
 {
-    char **args;
-
     close(fd[1]);
-    
-    // Execute command (if empty, exit with status 0)
-    if (!cmd2 || cmd2[0] == '\0')
-        exit(0);
-    
-    if (dup2(fd[0], 0) == -1 || dup2(file2, 1) == -1)
+    if (dup2(fd[0], STDIN_FILENO) < 0)
+    {
+        perror("dup2");
+        exit(1);
+    }
+    if (dup2(file2, STDOUT_FILENO) < 0)
     {
         perror("dup2");
         exit(1);
     }
     close(fd[0]);
     close(file2);
-    
-    args = ft_split(cmd2, ' ');
+}
+
+void execute_command(char *cmd, char **env)
+{
+    char **args;
+
+    if (!cmd || cmd[0] == '\0')
+        exit(0);
+    args = ft_split(cmd, ' ');
     if (!args)
         exit(1);
-    
     if (args[0] && args[0][0] == '/')
     {
         execve(args[0], args, env);
@@ -171,8 +138,18 @@ void ft_second_child(int fd[2], int file2, char *cmd2, char **env)
         exit(127);
     }
     ft_run(args, args[0], env);
-    
-    // This line will only be reached if ft_run fails
     ft_free(args);
     exit(127);
+}
+
+void ft_first_child(int fd[2], int file1, char *cmd, char **env)
+{
+    setup_io_first(fd, file1);
+    execute_command(cmd, env);
+}
+
+void ft_second_child(int fd[2], int file2, char *cmd, char **env)
+{
+    setup_io_second(fd, file2);
+    execute_command(cmd, env);
 }
