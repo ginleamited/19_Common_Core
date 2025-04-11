@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 20:38:43 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 00:07:58 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 00:11:36 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,45 @@
 
 void	ft_run(char **args, char *cmd, char **env)
 {
-	char	**path;
-	char	*temp;
-	char	*newcmd;
-	int		i;
+    char	**path;
+    char	*temp;
+    char	*newcmd;
+    int		i;
 
-	path = ft_find_path(env);
-	if (!path)
-		ft_error("PATH not found\n", 127);
-	i = 0;
-	while (path[i])
-	{
-		temp = ft_strjoin(path[i], "/");
-		newcmd = ft_strjoin(temp, cmd);
-		free(temp);
-		execve(newcmd, args, env);
-		free(newcmd);
-		i++;
-	}
-	ft_free(path);
-	ft_putstr_fd("Failed to execute: ", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd("\n", 2);
-	exit(127);
+    path = ft_find_path(env);
+    if (!path)
+    {
+        ft_putstr_fd("PATH not found\n", 2);
+        ft_free(args);  // Free args before exiting
+        exit(127);
+    }
+    i = 0;
+    while (path[i])
+    {
+        temp = ft_strjoin(path[i], "/");
+        if (!temp)
+        {
+            ft_free(path);
+            ft_free(args);
+            exit(1);
+        }
+        newcmd = ft_strjoin(temp, cmd);
+        free(temp);
+        if (!newcmd)
+        {
+            ft_free(path);
+            ft_free(args);
+            exit(1);
+        }
+        execve(newcmd, args, env);
+        free(newcmd);
+        i++;
+    }
+    ft_free(path);
+    ft_putstr_fd("Failed to execute: ", 2);
+    ft_putstr_fd(cmd, 2);
+    ft_putstr_fd("\n", 2);
+    // Don't need to free args here as the caller will handle it
 }
 
 void ft_first_child(int fd[2], int file1, char *cmd, char **env)
@@ -50,14 +66,22 @@ void ft_first_child(int fd[2], int file1, char *cmd, char **env)
     if (file1 >= 0)
     {
         if (dup2(file1, STDIN_FILENO) < 0)
+        {
+            perror("dup2");
+            close(fd[1]);
             exit(1);
+        }
         close(file1);
     }
-    // If file1 is invalid, stdin remains /dev/null
+    // If file1 is invalid, stdin remains as is (likely /dev/null)
     
     // Redirect stdout to pipe write end
     if (dup2(fd[1], STDOUT_FILENO) < 0)
+    {
+        perror("dup2");
+        close(fd[1]);
         exit(1);
+    }
     close(fd[1]);
     
     // Execute command (if empty, exit with status 0)
