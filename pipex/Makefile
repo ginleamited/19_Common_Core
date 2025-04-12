@@ -15,9 +15,9 @@ RM					= rm -f
 
 # Source Files
 SRCS				= $(SRC_DIR)pipex.c \
-                    $(SRC_DIR)pipex_io.c \
-                    $(SRC_DIR)pipex_utils.c \
-                    $(SRC_DIR)pipex_cmd.c
+                    $(SRC_DIR)pipex_path.c \
+                    $(SRC_DIR)pipex_redirect.c \
+                    $(SRC_DIR)pipex_utils.c
 					
 # Object Files
 OBJ					= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
