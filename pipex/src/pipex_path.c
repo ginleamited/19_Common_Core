@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 00:38:15 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 01:27:12 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 01:56:50 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,27 @@ static void	handle_cmd_not_found(char *cmd, char **args)
 	ft_putstr_fd("Failed to execute: ", 2);
 	ft_putstr_fd(cmd, 2);
 	ft_putstr_fd("\n", 2);
+	ft_free(args);
+	exit(127);
+}
+
+void	execute_command(char *cmd, char **env)
+{
+	char	**args;
+
+	if (!cmd || cmd[0] == '\0')
+		exit(0);
+	args = ft_split(cmd, ' ');
+	if (!args)
+		exit(1);
+	if (args[0] && args[0][0] == '/')
+	{
+		execve(args[0], args, env);
+		perror("execve");
+		ft_free(args);
+		exit(127);
+	}
+	ft_run(args, args[0], env);
 	ft_free(args);
 	exit(127);
 }

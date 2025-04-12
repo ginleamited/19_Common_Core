@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 00:37:11 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 01:37:45 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 01:56:45 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,25 +65,4 @@ void	setup_second_io(int fd[2], int file2)
 	}
 	close(fd[0]);
 	close(file2);
-}
-
-void	execute_command(char *cmd, char **env)
-{
-	char	**args;
-
-	if (!cmd || cmd[0] == '\0')
-		exit(0);
-	args = ft_split(cmd, ' ');
-	if (!args)
-		exit(1);
-	if (args[0] && args[0][0] == '/')
-	{
-		execve(args[0], args, env);
-		perror("execve");
-		ft_free(args);
-		exit(127);
-	}
-	ft_run(args, args[0], env);
-	ft_free(args);
-	exit(127);
 }
