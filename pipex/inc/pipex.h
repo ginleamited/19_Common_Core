@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 01:58:26 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 02:16:08 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ void	setup_second_io(int fd[2], int file2);
 char	**ft_find_path(char **env);
 void	ft_free(char **str);
 void	ft_error(char *message, int exitcode);
-
 
 #endif
