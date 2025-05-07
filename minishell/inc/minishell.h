@@ -18,15 +18,14 @@
 # include <string.h>
 # include "../../inc/libft.h"
 
-
 typedef struct s_command {
-    char **argv;                // arguments of the command
-    char *infile;               // input file (for <)
-    char *outfile;              // output file (for > or >>)
-    int   append;               // 1 if >>, 0 if >
-    struct s_command *next;     // next command in pipeline
+    char *cmd;              // Command name (e.g., "ls")
+    char **args;            // Argument array (e.g., {"ls", "-l", NULL})
+    char *input_file;       // Input redirection (e.g., "in.txt")
+    char *output_file;      // Output redirection (e.g., "out.txt")
+    int append;             // 1 if >>, 0 if >
+    int is_heredoc;         // 1 if <<, 0 otherwise
+    struct s_command *next; // Next command (for pipes)
 } t_command;
-
-
 
 #endif
