@@ -22,7 +22,7 @@ nody_process = None  # To store the nody-greeter process reference
 def on_press(key):
     global stop_program
     try:
-        if key.char == 'k':  # Check if the 'k' key is pressed
+        if key.char == '+':  # Check if the '+' key is pressed
             stop_program = True
     except AttributeError:
         pass
@@ -43,7 +43,7 @@ def main(move_size):
             if nody_process:
                 nody_process.terminate()
                 nody_process.wait()
-            mouse.move(3734, 19)
+            mouse.move(3602, 13)
             time.sleep(1)
             pyautogui.click()
             sys.exit()
@@ -57,7 +57,7 @@ def main(move_size):
             if nody_process:
                 nody_process.terminate()
                 nody_process.wait()
-            mouse.move(3734, 19)
+            mouse.move(3602, 13)
             time.sleep(1)
             pyautogui.click()
             sys.exit()
