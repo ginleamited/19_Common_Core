@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:03:52 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/05 19:10:20 by jilin            ###   ########.fr       */
+/*   Updated: 2025/05/09 00:55:29 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,7 @@ char	*ft_strtrim(const char *s1, const char *set);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+void	ft_free_array(char **arr);
+char	*ft_strndup(const char *s, size_t n);
 
 #endif

@@ -13,19 +13,14 @@ CFLAGS				= -Wall -Werror -Wextra -g3
 DEBUG_FLAGS			= -fsanitize=address
 RM					= rm -f
 
-# Source Files
-SRCS				= $(SRC_DIR)minishell.c \
-                    $(SRC_DIR).c \
-                    $(SRC_DIR).c \
-                    $(SRC_DIR)
-					
-# Object Files
+# Source and Object Files
+SRCS				= $(shell find $(SRC_DIR) -name '*.c')
 OBJ					= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 DEPS				= $(OBJ:.o=.d)
 
 # Libraries
-INCLUDES			= -I$(INC)
-LIBS				= -L./lib -lft
+INCLUDES			= -I$(INC) -I/usr/include/readline
+LIBS				= -L./lib -lft -lreadline
 
 # Colors
 GREEN   			= "\\033[32m"
@@ -38,12 +33,12 @@ CURRENT_FILE 		:= 0
 
 define progress_bar
     $(eval CURRENT_FILE=$(shell echo $$(($(CURRENT_FILE) + 1))))
-    printf "\r$(YELLOW)Compiling pipex... [%-$(TOTAL_FILES)s] %d/%d $(NC)" \
+    printf "\r$(YELLOW)Compiling minishell... [%-$(TOTAL_FILES)s] %d/%d $(NC)" \
     $$(for i in $$(seq 1 $(CURRENT_FILE)); do printf "#"; done) $(CURRENT_FILE) $(TOTAL_FILES)
     @if [ "$(CURRENT_FILE)" -eq "$(TOTAL_FILES)" ]; then echo ""; fi
 endef
 
-# PIPEX ASCII Art - Removed blinking effect for better compatibility
+# MINISHELL ASCII Art
 MINISHELL_LOGO = "\033[1;36m\
 ███╗   ███╗██╗███╗   ██╗██╗███████╗██╗  ██╗███████╗██╗     ██╗      \n\
 ████╗ ████║██║████╗  ██║██║██╔════╝██║  ██║██╔════╝██║     ██║      \n\
@@ -51,8 +46,7 @@ MINISHELL_LOGO = "\033[1;36m\
 ██║╚██╔╝██║██║██║╚██╗██║██║╚════██║██╔══██║██╔══╝  ██║     ██║      \n\
 ██║ ╚═╝ ██║██║██║ ╚████║██║███████║██║  ██║███████╗███████╗███████╗ \n\
 ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚══════╝╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ \n\
-\033[0m"                                                               
-
+\033[0m"
 
 # Build rules
 start:				
@@ -71,7 +65,7 @@ $(NAME):			$(OBJ) $(LIBFT)
 					@echo "$(GREEN)Executable $(NAME) created!$(NC)"
 
 # Compile object files from source files
-$(OBJ_DIR)%.o:		$(SRC_DIR)%.c $(INC)minishell.h
+$(OBJ_DIR)%.o:		$(SRC_DIR)%.c
 					@mkdir -p $(@D)
 					@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ -MMD
 					@$(call progress_bar)
@@ -94,7 +88,8 @@ re:					fclean all
 
 norm:
 					@echo "$(YELLOW)Running Norminette...$(NC)"
-					@norminette $(SRC_DIR) $(INC) | grep -v "OK!" || echo "$(GREEN)All files are OK!$(NC)"
+					@norminette $(SRC_DIR) $(INC) || true
+					@echo "$(GREEN)Norminette check complete!$(NC)"
 
 # Include dependency files
 -include $(DEPS)

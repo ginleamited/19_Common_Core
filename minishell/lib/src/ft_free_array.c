@@ -6,11 +6,11 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:45:37 by jilin             #+#    #+#             */
-/*   Updated: 2025/03/27 14:45:59 by jilin            ###   ########.fr       */
+/*   Updated: 2025/05/09 00:44:06 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/libft.h"
 
 void	ft_free_array(char **array)
 {

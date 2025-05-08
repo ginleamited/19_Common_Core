@@ -22,7 +22,7 @@ nody_process = None  # To store the nody-greeter process reference
 def on_press(key):
     global stop_program
     try:
-        if key.char == '+':  # Check if the '+' key is pressed
+        if key.char == '-':  # Check if the '-' key is pressed
             stop_program = True
     except AttributeError:
         pass
