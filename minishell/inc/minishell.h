@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 16:31:51 by jilin             #+#    #+#             */
-/*   Updated: 2025/05/09 01:16:43 by jilin            ###   ########.fr       */
+/*   Updated: 2025/05/09 01:41:35 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_command {
 int execute(t_command *cmd, char ***env);
 int execute_builtin(t_command *cmd, char ***env);
 int execute_external(t_command *cmd, char **env);
-int execute_pipeline(t_command *cmd, char **env); // Changed from void to int
+int execute_pipeline(t_command *cmd, char **env);
 void setup_redirections(t_command *cmd);
 char **duplicate_env(char **envp);
 char *get_env(char *key, char **env);
@@ -50,6 +50,7 @@ void test_mock_parser(void);
 void free_command(t_command *cmd);
 t_command *parse_input(char *input);
 int is_builtin(char *cmd);
+char **ft_arraydup(char **arr); // Added for mock_parser.c
 
 // Built-in prototypes
 int builtin_cd(char **args, char ***env);
