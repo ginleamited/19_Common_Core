@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/17 20:43:24 by jilin            ###   ########.fr       */
+/*   Updated: 2025/04/12 02:18:19 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ typedef struct s_process
 	char	**env;
 }	t_process;
 
-/* pipex_path.c */
+/* pipex_cmd.c */
 void	execute_command(char *cmd, char **env);
 void	ft_run(char **args, char *cmd, char **env);
 
-/* pipex_redirect.c */
+/* pipex_io.c */
 void	setup_first_io(int fd[2], int file1);
 void	setup_second_io(int fd[2], int file2);
 
