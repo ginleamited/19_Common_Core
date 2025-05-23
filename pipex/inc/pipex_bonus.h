@@ -3,26 +3,15 @@
 
 # include "pipex.h"
 
-# define ERR_HEREDOC "here_doc error"
+# define READ_END 0
+# define WRITE_END 1
+# define HDOC_WRITE 1
+# define HDOC_READ 0
 
-typedef struct s_pipex_bonus
-{
-    int     fd_in;
-    int     fd_out;
-    int     here_doc;
-    char    *limiter;
-    pid_t   *pids;
-    int     cmd_count;
-    int     pipefd[2];
-    int     prev_pipe;
-    char    **env;
-}   t_pipex_bonus;
-
-/* Bonus Functions */
-void    handle_heredoc(char *limiter, t_pipex_bonus *px);
-void    create_process(t_pipex_bonus *px, char *cmd, char **env);
-void    execute_last_cmd(t_pipex_bonus *px, char *cmd, char *outfile, char **env);
-void    close_pipes(t_pipex_bonus *px);
-void    wait_for_children(t_pipex_bonus *px);
+// Function prototypes
+void	handle_multiple_pipes(int argc, char **argv, char **env);
+void	here_doc(char *limiter, int argc, char **argv, char **env);
+int		open_file_bonus(char *file, int flags, mode_t mode);
+void	exec_pipe(char *cmd, char **env);
 
 #endif

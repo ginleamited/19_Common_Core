@@ -6,7 +6,7 @@
 /*   By: jilin <jilin@student.s19.be>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 18:29:49 by jilin             #+#    #+#             */
-/*   Updated: 2025/04/12 02:18:19 by jilin            ###   ########.fr       */
+/*   Updated: 2025/05/23 20:44:28 by jilin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,6 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "../lib/inc/libft.h"
-
-typedef struct s_process
-{
-	int		fd[2];
-	int		file;
-	char	*cmd;
-	char	**env;
-}	t_process;
 
 /* pipex_cmd.c */
 void	execute_command(char *cmd, char **env);
